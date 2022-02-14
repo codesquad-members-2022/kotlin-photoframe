@@ -43,9 +43,13 @@
   
 ### 다른 Activity로 이동하기
 
-  <img width="300" alt="스크린샷 2022-02-14 오후 6 01 10" src="https://user-images.githubusercontent.com/66770613/153832459-9d2e33de-3f2a-44c9-8d62-908b2fa006f3.png" width = 250px height = 500px >
+  <img width="300" alt="스크린샷 2022-02-14 오후 6 01 10" src="https://user-images.githubusercontent.com/66770613/153832459-9d2e33de-3f2a-44c9-8d62-908b2fa006f3.png" width = 250px height = 500px >  
   
-  <img width="300" alt="스크린샷 2022-02-14 오후 6 00 53" src="https://user-images.githubusercontent.com/66770613/153832488-cc01d33a-4437-437a-8dc9-8e27363867b8.png" width = 250px height = 500px>
+  <img width="300" alt="스크린샷 2022-02-14 오후 6 00 53" src="https://user-images.githubusercontent.com/66770613/153832488-cc01d33a-4437-437a-8dc9-8e27363867b8.png" width = 250px height = 500px>  
   
-- startActivtyForResult() 메소드가 deprecated되어서 새로운 방법을 찾아 도입했다.
+  <img width="953" alt="스크린샷 2022-02-14 오후 6 09 58" src="https://user-images.githubusercontent.com/66770613/153833863-d57f387b-4557-4f4d-9de4-020b87cd1ee7.png" width = 250px height = 500px>  
+
+
+
+
 
