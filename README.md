@@ -13,12 +13,12 @@
 - [x] MainActivity에서 Button에 대한 참조하기
   - [x] Button 클릭 이벤트에 대해 알림받아 처리하기
   - [x] Snackbar 이용하기
-- [ ] 새로운 화면 추가하고, 다음 버튼 클릭 시, 이전화면에서 이동하기
-  - [ ] 새로운 화면에 배경색상을 변경한다.
-  - [ ] AndroidManifest에 등록한다.
-- [ ] Activity Lifecycle의 모든 callback에 로그 출력하기 `Log.d("$activityName", "$callbackName")`
-- [ ] 새로운 화면에서 닫기 버튼 클릭시, 다시 이전화면으로 돌아오기
-  - [ ] 닫기 버튼 클릭 시, MainActivity에 사진을 불러왔습니다. 메시지 출력하기
+- [x] 새로운 화면 추가하고, 다음 버튼 클릭 시, 이전화면에서 이동하기
+  - [x] 새로운 화면에 배경색상을 변경한다.
+  - [x] AndroidManifest에 등록한다.
+- [x] Activity Lifecycle의 모든 callback에 로그 출력하기 `Log.d("$activityName", "$callbackName")`
+- [x] 새로운 화면에서 닫기 버튼 클릭시, 다시 이전화면으로 돌아오기
+  - [x] 닫기 버튼 클릭 시, MainActivity에 사진을 불러왔습니다. 메시지 출력하기
 
 
 ### Emulator 실행하기  
@@ -30,6 +30,7 @@
 
   <img width="809" alt="스크린샷 2022-02-14 오전 11 34 12" src="https://user-images.githubusercontent.com/66770613/153790416-eea631f8-abd4-44bc-a6d6-f9969fa4b4bb.png">  
 
+
 ### TextView 활용하기
 
   <img width="303" alt="스크린샷 2022-02-14 오후 12 37 40" src="https://user-images.githubusercontent.com/66770613/153796117-3864e913-09ba-4491-9a1a-0ce39300de7e.png" width = 250px height = 500px>  
@@ -40,3 +41,11 @@
   <img width="303" alt="스크린샷 2022-02-14 오후 1 19 25" src="https://user-images.githubusercontent.com/66770613/153799374-e5a577f9-192a-4b1e-9088-152052b02e63.png" width = 250px height = 500px>  
   
   
+### 다른 Activity로 이동하기
+
+  <img width="300" alt="스크린샷 2022-02-14 오후 6 01 10" src="https://user-images.githubusercontent.com/66770613/153832459-9d2e33de-3f2a-44c9-8d62-908b2fa006f3.png" width = 250px height = 500px >
+  
+  <img width="300" alt="스크린샷 2022-02-14 오후 6 00 53" src="https://user-images.githubusercontent.com/66770613/153832488-cc01d33a-4437-437a-8dc9-8e27363867b8.png" width = 250px height = 500px>
+  
+- startActivtyForResult() 메소드가 deprecated되어서 새로운 방법을 찾아 도입했다.
+
