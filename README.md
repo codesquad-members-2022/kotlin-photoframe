@@ -96,3 +96,31 @@ ex) git push --set-upstream origin photoframe-step1
 
 ## 실습 중 모든 질문은 슬랙 채널에서...
 
+# 미션1
+## 결과
+<img width="1261" alt="스크린샷 2022-02-14 오후 12 23 31" src="https://user-images.githubusercontent.com/79190824/153797452-6bdbf9c9-cf18-4f54-b8e7-851c220121dd.png">
+
+## Activity
+
+- Lifecycle은 무엇인가?
+- 사용자가 앱을 이용할때 일어나는 앱을 탐색 하거나 정지 등을 해서 변화가 일어날때 상태 변화를 알려주는 것
+
+- Lifecycle이 변경되었음은 어떻게 알 수 있는가?
+사용자의 반응에 따라 Activity가 첫 시작할때, 다시 시작할때, 화면에 나올때 포커스를 잃을때, 정지할때, 없어 질때 각각 onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy()가 호출되면서 Lifecycle의 변경을 알린다.
+
+# 미션2 텍스트 변경하고 색 크기 바꾸기
+## 결과
+
+<img width="472" alt="스크린샷 2022-02-14 오후 5 10 13" src="https://user-images.githubusercontent.com/79190824/153825219-a7cac8e9-d156-451c-99c1-763504bd0b65.png">
+
+## 추가 요구사항
+TextView의 주요 속성은 어떤게 있는지 학습한다.
+
+# 미션3 버튼
+## 결과
+- 전
+<img width="295" alt="button" src="https://user-images.githubusercontent.com/79190824/153844699-8b96a229-e93d-40db-b88c-5df84dfa363c.png">
+
+- 후
+<img width="295" alt="msg" src="https://user-images.githubusercontent.com/79190824/153844684-5d555448-d69d-46ba-972e-50bb2d7407e1.png">
+
