@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_h_15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15"/>
+
     <TextView
         android:id="@+id/tv1"
         android:layout_width="0dp"
@@ -20,6 +27,18 @@
         app:layout_constraintTop_toTopOf="parent"
         style="@style/style_tv1"
         android:maxLines="1"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_change_tv1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_h_15"
+        android:layout_marginHorizontal="30dp"
+        android:text="change"
+        android:backgroundTint="#2196F3"
+        />
 
 
 
