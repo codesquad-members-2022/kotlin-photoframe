@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d(TAG, "onCreate")
-
         val tvExplain: TextView = findViewById(R.id.tv_explain)
         tvExplain.text = "wooki의 사진 액자^^"
         tvExplain.setTextColor(Color.RED)
