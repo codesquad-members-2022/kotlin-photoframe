@@ -45,3 +45,43 @@
 
 ---
 
+### 다른 Activity로 이동하기
+
+- [x] MainActivity에서 이동할 두번째 Activity를 추가한다.
+  - [x] 두번째 Activity의 배경색상을 변경한다.
+  - [x] AndroidManifest에 등록한다.
+- [x] Activity Lifecycle의 모든 callback에 로그를 출력한다.
+  - [x] `Log.d("$activityName", "$callbackName")`
+- [x] MainActivity의 버튼 텍스트를 '다음'으로 변경하고, 클릭하면 두번째 Activity로 이동시킨다.
+- [x] 두번째 Activity에 '닫기' 버튼을 추가하고, 클릭 시 다시 MainActivity로 이동시킨다.
+  - [x] 이 때, MainActivity에 '사진을 불러왔습니다'라는 메시지를 띄운다.
+  
+#### Lifecycle 로그 확인
+
+- 사용한 Logcat 필터
+
+  - ![스크린샷 2022-02-14 오후 8 29 32](https://user-images.githubusercontent.com/29175138/153856349-8e46bd84-751b-414d-af1a-9e150fe02f91.png)
+
+```text
+2022-02-14 20:25:52.474 9407-9407/com.codesquad.kotlinphotoframe D/MainActivity: onCreate
+2022-02-14 20:25:52.498 9407-9407/com.codesquad.kotlinphotoframe D/MainActivity: onStart
+2022-02-14 20:25:52.504 9407-9407/com.codesquad.kotlinphotoframe D/MainActivity: onResume
+2022-02-14 20:25:59.647 9407-9407/com.codesquad.kotlinphotoframe D/MainActivity: onPause
+2022-02-14 20:25:59.835 9407-9407/com.codesquad.kotlinphotoframe D/PhotoActivity: onCreate
+2022-02-14 20:25:59.984 9407-9407/com.codesquad.kotlinphotoframe D/PhotoActivity: onStart
+2022-02-14 20:25:59.987 9407-9407/com.codesquad.kotlinphotoframe D/PhotoActivity: onResume
+2022-02-14 20:26:00.878 9407-9407/com.codesquad.kotlinphotoframe D/MainActivity: onStop
+2022-02-14 20:26:05.194 9407-9407/com.codesquad.kotlinphotoframe D/PhotoActivity: onPause
+2022-02-14 20:26:05.253 9407-9407/com.codesquad.kotlinphotoframe D/MainActivity: onRestart
+2022-02-14 20:26:05.255 9407-9407/com.codesquad.kotlinphotoframe D/MainActivity: onStart
+2022-02-14 20:26:05.274 9407-9407/com.codesquad.kotlinphotoframe D/MainActivity: onResume
+2022-02-14 20:26:06.276 9407-9407/com.codesquad.kotlinphotoframe D/PhotoActivity: onStop
+2022-02-14 20:26:06.290 9407-9407/com.codesquad.kotlinphotoframe D/PhotoActivity: onDestroy
+```
+
+- 실행화면
+  
+  - ![Screenshot_1644838744](https://user-images.githubusercontent.com/29175138/153857735-16194529-e792-4980-a6e4-febbc6a8afe5.png)
+  
+---
+
