@@ -37,4 +37,7 @@
    2. `textForFrame.setTextColor(Color.parseColor("#FF0000"))` >> `.setTextColor(Int)` : text의 색깔을 삽입 (여기서는 Color.parseColor("#FF0000")로 Red를 삽입함)
    3. `textForFrame.setBackgroundColor(Color.YELLOW)` >> `setBackgroundColor(Int)` : text 배경색에 색깔을 삽입 (.setBackround는 TextView.class가 아니라 View.class 속성)
    4. `textForFrame.setTextSize(5,8.0f)` >> `setTextSize(unit:Int, size:float)` : text 크기를 조절한다
-   5. [더알아보기](https://developer.android.com/reference/android/widget/TextView?hl=en#setHighlightColor(int))
+   5. [더알아보기](https://developer.android.com/reference/android/widget/TextView?hl=en#setHighlightColor(int))  
+     > <결과>
+      ![5](https://user-images.githubusercontent.com/95393311/153839811-9c977412-5f69-4eae-a3da-4039360d1e80.JPG)
+            
