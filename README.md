@@ -27,3 +27,21 @@
 
 ---
 
+### Button 구현하기
+
+- [x] activity_main.xml에 Button을 추가한다.
+- [x] MainActivity에서 Button에 대한 참조를 얻는다.
+- [x] Button을 클릭하면 '사진을 불러옵니다' 메시지를 띄운다.
+  - [x] Button 클릭 이벤트에 대한 알림을 받아 처리한다.
+  - [x] Snackbar를 활용한다.
+
+- 버튼클릭 전
+
+![버튼클릭 전](https://user-images.githubusercontent.com/29175138/153829065-2382f8bc-0f80-4205-b841-7c0ef75bc161.png)
+
+- 버튼클릭 후
+
+![버튼클릭 후](https://user-images.githubusercontent.com/29175138/153829035-8dc1b882-ca99-45b0-af45-1c6beab2d9c3.png)
+
+---
+
