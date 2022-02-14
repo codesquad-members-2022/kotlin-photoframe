@@ -13,6 +13,13 @@
 - [x] MainActivity에서 Button에 대한 참조하기
   - [x] Button 클릭 이벤트에 대해 알림받아 처리하기
   - [x] Snackbar 이용하기
+- [ ] 새로운 화면 추가하고, 다음 버튼 클릭 시, 이전화면에서 이동하기
+  - [ ] 새로운 화면에 배경색상을 변경한다.
+  - [ ] AndroidManifest에 등록한다.
+- [ ] Activity Lifecycle의 모든 callback에 로그 출력하기 `Log.d("$activityName", "$callbackName")`
+- [ ] 새로운 화면에서 닫기 버튼 클릭시, 다시 이전화면으로 돌아오기
+  - [ ] 닫기 버튼 클릭 시, MainActivity에 사진을 불러왔습니다. 메시지 출력하기
+
 
 ### Emulator 실행하기  
   
