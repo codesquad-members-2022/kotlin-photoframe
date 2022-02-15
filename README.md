@@ -1,4 +1,4 @@
-# step1
+# step 1
 ## Logcat 활용
 ![logcat](https://user-images.githubusercontent.com/65541248/153802186-2c8a79be-d645-48df-86cb-92d61f5c2b9a.png)
 
@@ -34,11 +34,11 @@ https://developer.android.com/guide/components/activities/activity-lifecycle
 Lifecycle 콜백을 잘 구현하여 앱에서 특별한 예외 상황에 대한 버그가 발생하지 않도록 예방할 수 있다.
 
 
-# step2
+# step 2
 <img src="https://user-images.githubusercontent.com/65541248/153802823-f10c6806-aec4-4b56-a50b-c231d4cc75e5.png" height="600"/>
 
 
-# step3
+# step 3
 
 <img src="https://user-images.githubusercontent.com/65541248/153875479-ded7ea63-77ea-47a5-b070-3a82b31acdb5.png" height="600"/>
 <img src="https://user-images.githubusercontent.com/65541248/153875301-13c40439-c188-431c-8c77-c0e1217171ca.png" height="600"/>
@@ -68,3 +68,33 @@ Toast 코드
 ```
 Toast.makeText(this,"hello world!",Toast.*LENGTH_LONG*).show()
 ```
+
+
+
+# Step 4
+
+<img src="https://user-images.githubusercontent.com/65541248/153882616-0a904517-bce2-4223-9774-f90666c3de8f.png" height="400"/>
+<img src="https://user-images.githubusercontent.com/65541248/153882625-bc9b62ef-1208-4bed-ad77-e562fb2d2644.png" height="400"/>
+<img src="https://user-images.githubusercontent.com/65541248/154008398-e350b5c6-5c51-4405-b672-74b120950d0e.png" height="400"/>
+
+
+
+
+## AppCompatActivity
+
+Activity가 가져야 하는 기능들이 AppCompatActivity에 들어있다.
+
+우리는 이를 상속받는것만으로 손쉽게 액티비티를 만들 수 있는 것
+우리는 여기다 필요한 것들을 추가해서 액티비티를 생성하면 된다.
+
+
+## Log 출력
+
+첫번째 화면
+![1](https://user-images.githubusercontent.com/65541248/154005739-06530c85-fc48-4124-94ef-0f9d3560a19b.png)
+
+두번째 화면
+![2](https://user-images.githubusercontent.com/65541248/154005759-f31512e2-4127-44e5-989b-4f6696461562.png)
+
+세번째 화면
+![3](https://user-images.githubusercontent.com/65541248/154005762-7956f957-82ee-4aef-95f2-90dcd704a3fb.png)
