@@ -37,22 +37,24 @@ class MainActivity : AppCompatActivity() {
         photoFrameTv.setTextSize(Dimension.DP, 16F)
     //    photoFrameTv.setTextSize(16F)
         photoFrameTv.textSize=16F
-//        val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
-//        /*
-//        3단계 Button 추가하기 + Button Event 처리
+        val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
+//        var const_layout= findViewById<ConstraintLayout>(R.id.const_layout)
+//       // 3단계 Button 추가하기 + Button Event 처리
 //        addPhotoBtn.setOnClickListener{
 //            var snackBar= Snackbar.make(const_layout,"사진을 불러옵니다", Snackbar.LENGTH_LONG)
 //            snackBar.show()
 //        }
-//         */
-//        addPhotoBtn.text = "다음"
-//        addPhotoBtn.setOnClickListener {
-//            var intent: Intent = Intent(this, targetActivity::class.java)
-//            startActivityForResult(intent, 3000)
-//        }
+
+        //4단계 activity간 이동
+        addPhotoBtn.text = "다음"
+        addPhotoBtn.setOnClickListener {
+            var intent: Intent = Intent(this, targetActivity::class.java)
+            startActivityForResult(intent, 3000)
+        }
         Log.d("$tag", "onCreate")
         Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 3000) {
