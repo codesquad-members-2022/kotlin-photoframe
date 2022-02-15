@@ -147,4 +147,102 @@ Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
 * 분할모드는 코드창과 디자인창을 동시에 표시
 
 ## findViewByID
+```Kotlin
+    @Override
+    public <T extends View> T findViewById(@IdRes int id) {
+        return getDelegate().findViewById(id);
+    }
+```
+* View를 상위 제한 타입으로 하는 제네릭 함수다 
+* View를 상속받는 타입을 id를 통해 가져올수 있다. 
+* 따라서 xml파일을 통해 UI를 구현할때 각 뷰(위젯)에 적절한 id를 부여하는 것이 중요하다. 
 
+* textView 가져오기 
+```Kotlin
+val photoFrameTv = findViewById<TextView>(R.id.tv_photoframe)
+```
+
+## TextView 속성
+### View
+* 뷰는 앱에서 우리가 눈으로 볼 수 있는 모든 것 + 사용자와 상호작용하는 구성요소 
+* 버튼,이미지,텍스트, 입력창 등..
+* 뷰를 위젯이라도고 부른다
+* 뷰의 종류에는 뷰 그룹도 있다. (뷰그룹역시 뷰다)
+* 뷰 그룹은 뷰지만 레이아웃 역할을 하면 여러가지 뷰를 담거나 or 다른 뷰 그룹을 담는 역할을 한다 
+![image](https://user-images.githubusercontent.com/58967292/154002340-10787649-c37d-4bc0-861f-22f22f2fed81.png)
+
+* 뷰 그룹도 뷰라는 사실
+![image](https://user-images.githubusercontent.com/58967292/154002468-85cc5d07-15d1-4fce-9e55-2b547cc54f84.png)
+
+### View 공통 속성
+### layout_width/height
+* layout_width:  뷰 너비
+* layout_height: 뷰 높이 
+* width와 height에 쓰이는 대표적인 값 
+ * match_parent: 해당 뷰를 담고 잇는 부모 레이아웃의 크기에 맞춤
+ * wrap_content:  해당 뷰안에 들어가있는 내용에 크기를 자동으로 맞춤
+ * 직접지정: xxxdp처럼 크기를 직접 지정 , layout_weight을 쓸경우 width와 height을 0dp로 선언
+
+### dp
+* Density-independent pixel의 줄임말
+* 직역: 밀도(해상도)에 독립적이다
+* 고상해도 기기의 경우 같은 면적에 픽셀이 촘좀하게 존재하며, 저사행도의 경우 느슨하게 존재한다
+* px 단위로 이미지를 표현할 경우,  해상도가 다른 안드로이드 기기에서 다르게 보인다
+* dp는 같은 크기로 보여주고만 만든 단위
+* dp는 해상도별 픽셀값을 자동으로 조정해줌 => 개발자는 해상도를 고려하지 않고 dp를 사용하여 개발하면 됨
+
+### 패딩과 마진
+![image](https://user-images.githubusercontent.com/58967292/154003546-552f3178-f189-4536-a768-6f6e2db8d98a.png)
+* Padding: 뷰안에 있는 내용과 뷰 외각사이의 여백
+* Margin: 부모 레이아웃과 뷰사이의 간격
+* layout_margin:  상하좌우
+* layout_marginTop: 위
+* layout_marginBottom: 아래
+* layout_marginStart: 시작점
+* layout_marginEnd:끝점
+* layout_marginLeft: 왼쪽
+* layout_marginHorizontal: 수평방향
+* layout_marginVertical: 수직방향
+
+* start/end 와 left/right 차이
+ * LTR와 RTL 언어가 존재하기 때문에 존재
+ * LTR과 RTL 미러링 기능을 지원하는 start-end를 쓰는것을 권장
+
+### TextView 속성
+![image](https://user-images.githubusercontent.com/58967292/154004855-771f4ce5-7168-407c-9446-970418a32583.png)
+* 안드로이드 공식문서에서 텍스트 뷰를 살펴보았다 
+* 엄청나게 많은 속성이 존재한다 . 따라서 자주 사용될 만할 속성만 살펴보았다. 
+
+* text, textColor, textSize, textStyle 
+* text: 텍스트 뷰에서 보여줄 글자를 지정,  직접 텍스트를 입력할수도 있고, string.xml에 선언할 문자열을 불러올수 도 있다(권장)
+* textColor: 텍스트 색깔을 지정,  RGB코드를 직접 입력할수도 있고, Color.xml에 정의된 컬러를 불러올수도 있다. 
+* textSize: 텍스트 크기를 지정,  숫자뒤 sp or dp붙인다.
+* textStyle: 텍스트 스타일 지정 (bold,italic...) => 둘 이상의 스타일을 적용하고 싶다면 | 를 사용해서 열거하면 된다 ( textStyle뿐만 여러개 value를 허용하는 속성의 경우도 마찬가지)
+
+### sp / dp
+* scale independent pixel의 줄임말
+* 안드로이드 설정 화면에서 사용자는 안드로이드 시스템 전체에서 보여지는 텍스트의 크기를 선택하여 설정할 수 있는데 SP는 해당 설정에 영향을 받는다.
+* sp를 사용하고  설정에서 텍스트크기를 키우면 UI에 보이는 글자크기도 같이 커짐
+* dp를 사용할경우 설정의 텍스트크기와 상관없이 일정 글자크기 유지
+
+## findViewByID로 가져온 TextView 속성변경
+* text 변경
+ * 가져온 textView.text로 직접 text 속성에 접근해서 변경가능
+ * textView.setText로 변경가능 => onCreate()에서 선언시 text속성에 직접 접근하는 방법으로 수정하라고 ide가 권함 
+
+* textColor 변경
+ * textView.setTextColor로 변경가능 
+ * setTextColor(Color.RED) 처럼 Color클래스에서 Color를 가져올수도있고
+ * setTextColor(Color.parseColor("#FF000000")); RGB 코드값으로 부터 컬러를 뽑아낼수도 있다
+ * setTextColor(Color.rgb(200,0,0)); 직접 RGB값 삽입으로 컬러 선택가능
+ * var color= ContextCompat.getColor(context, R.color.your_color)로 color.xml에 정의한 color를 가져와
+ * setTextColr(color)로 컬러 변경가능  
+
+* textSize 변경
+ * textView.setTextSize로 변경가능
+ * setTextSize(float size)으로 변경하면 scaled-pixel단위로 변경된다  = textView.textSize로 직접 접근해서 변경가능
+ * setTestSize(int unit, float size) => unit부분에 Dimension.SP or DP or PX 를 통해 단위 설정 가능 
+
+* backgroundColor 변경
+ * textView.setBackgroundColor(Color color)로 변경가능
+ * Color에 대한것은 textColor와 똑같이 동작
