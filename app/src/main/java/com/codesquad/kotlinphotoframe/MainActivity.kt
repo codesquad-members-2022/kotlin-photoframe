@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         val activityName = this.localClassName
         val callbackName = "onStart"
         Log.d("$activityName", "$callbackName")
+        Toast.makeText(applicationContext, "사진을 불러오는 중입니다.", Toast.LENGTH_SHORT).show()
 
     }
 
