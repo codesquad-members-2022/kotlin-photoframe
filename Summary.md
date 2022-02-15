@@ -34,4 +34,16 @@
 - [DefaultLifecycleObserver](https://developer.android.com/reference/androidx/lifecycle/DefaultLifecycleObserver))
 - [참고2](https://developer.android.com/topic/libraries/architecture/lifecycle)
 
+#### 👉 Text Editor
+- Text Editor에서 직접 사이즈나 색깔 텍스트 크기 등을 조절한다면??
+![7](https://user-images.githubusercontent.com/95393311/153999351-747702d7-9c05-449b-a70f-d9a90695eadc.JPG)
+- `value` 파일 아래의 xml 파일에서 `resource` tag에 코드가 자동으로 생성되는 점을 확인함 
+
 ### 👉 TextView의 기능
+- A user interface element that displays text to the user. 
+- 자세한 설명은 공식사이트로 대체
+  - [TextView](https://developer.android.com/reference/android/widget/TextView?hl=en#summary)
+  - 텍스트 입력 및 수정을 위한 인터페이스 [EditText](https://developer.android.com/reference/android/widget/EditText)
+  - TextView의 룩앤쀨을 커스텀마이징하기 위해서는? [Styles and Themes](https://developer.android.com/guide/topics/ui/look-and-feel/themes)
+
+

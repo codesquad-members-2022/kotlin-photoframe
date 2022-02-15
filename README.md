@@ -20,6 +20,11 @@
 ![4](https://user-images.githubusercontent.com/95393311/153789939-07b34a29-213d-4b5c-a2e1-a1fdb1113964.JPG)
    > <Log 코드 추가한 후>
 
+#### <추가> 🔖 Text Editor 활용하기
+- Text Editor에서 직접 사이즈나 색깔 텍스트 크기 등을 조절한다면??
+  ![7](https://user-images.githubusercontent.com/95393311/153999351-747702d7-9c05-449b-a70f-d9a90695eadc.JPG)
+- `value` 파일 아래의 xml 파일에서 `resource` tag에 코드가 자동으로 생성되는 점을 확인함
+
 #### 3. 🔖 TextView 활용하기
 1. TextView의 ID 설정하기
    1. activity_main.xml 파일로 가서 design 탭의 ID 항목에 직접 ID를 넣는다
@@ -32,12 +37,43 @@
     return getDelegate().findViewById(id);
     }
     ```
+   2. `findViewById`는 `AppCompatActivity` 클래스의 메서드
 3. TextView의 속성을 이용한다.
-   1. `textForFrame.text` >> `.text` : TextView의 text에 String 할당
-   2. `textForFrame.setTextColor(Color.parseColor("#FF0000"))` >> `.setTextColor(Int)` : text의 색깔을 삽입 (여기서는 Color.parseColor("#FF0000")로 Red를 삽입함)
-   3. `textForFrame.setBackgroundColor(Color.YELLOW)` >> `setBackgroundColor(Int)` : text 배경색에 색깔을 삽입 (.setBackround는 TextView.class가 아니라 View.class 속성)
-   4. `textForFrame.setTextSize(5,8.0f)` >> `setTextSize(unit:Int, size:float)` : text 크기를 조절한다
-   5. [더알아보기](https://developer.android.com/reference/android/widget/TextView?hl=en#setHighlightColor(int))  
+   1. `import android.widget.TextView` import 먼저
+   2. `textForFrame.text` >> `.text` : TextView의 text에 String 할당
+   3. `textForFrame.setTextColor(Color.parseColor("#FF0000"))` >> `.setTextColor(Int)` : text의 색깔을 삽입 (여기서는 Color.parseColor("#FF0000")로 Red를 삽입함)
+   4. `textForFrame.setBackgroundColor(Color.YELLOW)` >> `setBackgroundColor(Int)` : text 배경색에 색깔을 삽입 (.setBackroundColor는 TextView.class가 아니라 View.class 속성)
+   5. `textForFrame.setTextSize(5,8.0f)` >> `setTextSize(unit:Int, size:float)` : text 크기를 조절한다
+   6. [더알아보기](https://developer.android.com/reference/android/widget/TextView?hl=en#setHighlightColor(int))  
      > <결과>
       ![5](https://user-images.githubusercontent.com/95393311/153839811-9c977412-5f69-4eae-a3da-4039360d1e80.JPG)
-            
+
+
+#### 4. 🔖 Button 구현하기
+![8](https://user-images.githubusercontent.com/95393311/154019677-4f0d8946-e53c-4a34-a963-cd4fb55ac9b6.JPG)
+1. XML 파일에서 Design editor로 button 넣기
+   ![6](https://user-images.githubusercontent.com/95393311/153998191-130c0ec1-e342-4d85-9b7b-90b5e587ca8f.JPG)
+2. 코드로 button 참조하기
+   1. `import android.widget.Button` import 먼저
+   2. `Button` 클래스는 `TextView` 클래스를 상속받았기 때문에 `TextView`의 모든 기능을 활용할 수 있음
+   3. 따라서 텍스트를 할당하는 것도 동일하게 `.text` 활용함
+3. Button 클릭 이벤트에 대한 알림 수신하기
+   1. `.setOnClickListner{ }` 를 통해 `클릭`했을 때 블록을 수행한다
+4. Snack Bar와 Toast 구현하기
+   1. Snack Bar
+      1. `Snackbar.make()`를 통해 Snack Bar를 생성하고
+      2. `.setAction()` 을 통해 Snack Bar 안에서의 액션(버튼)을 추가하고
+      3. `show()`를 통해 Snack Bar를 보여줌
+   2. Toast
+      1. Toast도 유사하게 `makeText()`를 통해 Toast 메세지를 생성함
+   3. Snack Bar VS Toast
+      1. Snack Bar의 `make()`는 인자로 `View` 타입을 받지만 Toast는 `applicationContext`를 받는다
+      2. 앱이 포그라운드에 있다면 토스트 메시지 대신 스낵바를 사용하는 것이 좋습니다. 스낵바에는 사용자가 실행할 수 있는 옵션이 포함되어 있으며 이를 통해 더 나은 앱 환경을 제공할 수 있습니다.
+      3. 앱이 백그라운드에 있고 사용자가 어떤 조치를 취하게 하려면 토스트 메시지 대신 알림을 사용하세요.
+   4. 참고자료
+      1. [스낵바](https://material.io/components/snackbars/android#using-snackbars)
+      2. [Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts?hl=ko#kotlin)
+      3. [알림](https://developer.android.com/guide/topics/ui/notifiers/notifications?hl=ko)
+
+
+#### 5. 🔖 다른 Activity로 이동하기
