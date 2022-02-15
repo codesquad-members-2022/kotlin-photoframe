@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -24,10 +26,17 @@ class MainActivity : AppCompatActivity() {
         val photoFrameTv = findViewById<TextView>(R.id.tv_photoframe)
         val name ="Hede"
         photoFrameTv.text = "${name}의 사진액자"
+        //photoFrameTv.setText("abc")
+        photoFrameTv.setBackgroundColor(Color.parseColor("#FF000000"))
         photoFrameTv.setBackgroundColor(Color.LTGRAY)
         photoFrameTv.setTextColor(Color.BLUE)
+        photoFrameTv.setTextColor(Color.parseColor("#FF000000"))
+        var color= ContextCompat.getColor(this, R.color.your_color)
+        photoFrameTv.setTextColor(color)
         photoFrameTv.setTextSize(Dimension.SP, 18F)
-
+        photoFrameTv.setTextSize(Dimension.DP, 16F)
+    //    photoFrameTv.setTextSize(16F)
+        photoFrameTv.textSize=16F
 //        val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
 //        /*
 //        3단계 Button 추가하기 + Button Event 처리
@@ -44,7 +53,6 @@ class MainActivity : AppCompatActivity() {
         Log.d("$tag", "onCreate")
         Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 3000) {
@@ -90,4 +98,5 @@ class MainActivity : AppCompatActivity() {
         Log.d("${tag}", "onDestroy")
         //Toast.makeText(this, "onDestroy()호출", Toast.LENGTH_SHORT).show()
     }
+
 }
