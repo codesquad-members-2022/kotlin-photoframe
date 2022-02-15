@@ -306,6 +306,8 @@ val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
 ![image](https://user-images.githubusercontent.com/58967292/154017733-fe0ebe34-d212-4ca1-b290-d1c031814aab.png)
 
 ### 학습 목표
-* 인덴트 + Activity는 화면 이동을 어떻게 관리하는지
+*  Activity는 화면 이동을 어떻게 구현하였는가
+*  인덴트 
 *  AppCompatActivity
 *  Activity 전환 시 Lifecycle이 어떻게 변화하는지 
+
