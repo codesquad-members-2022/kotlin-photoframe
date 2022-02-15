@@ -40,6 +40,21 @@
         android:backgroundTint="#2196F3"
         />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_photo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv1"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        android:text="사진 추가"
+        android:backgroundTint="#8C55ED"
+        />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
