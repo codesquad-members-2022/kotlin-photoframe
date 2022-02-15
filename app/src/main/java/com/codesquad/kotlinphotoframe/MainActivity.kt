@@ -1,5 +1,6 @@
 package com.codesquad.kotlinphotoframe
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("MainActivity", "onCreate")
 
         var const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
 
@@ -23,12 +23,18 @@ class MainActivity : AppCompatActivity() {
         myTextView.setTextColor(Color.BLUE) // 텍스트 색깔이나 사이즈를 xml 이 아니라 틀린 코드에서 동적으로 처리하는 이유?
         myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30f)
 
-        var button = findViewById<Button>(R.id.button)
+        var button = findViewById<Button>(R.id.main_button)
         button.text = "사진 추가"
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
+
         button.setOnClickListener {
             val snackbar = Snackbar.make(const_layout, "사진을 불러옵니다.", Snackbar.LENGTH_LONG)
             snackbar.show()
+        }
+
+        button.setOnClickListener {
+            val intent = Intent(this, SubActivity::class.java)
+            startActivity(intent)
         }
     }
 }

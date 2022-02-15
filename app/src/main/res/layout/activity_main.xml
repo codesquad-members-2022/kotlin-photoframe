@@ -12,13 +12,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fontstyle"
+        tools:text= "Stark 의 사진액자"
+        tools:textSize="30sp"
+        tools:textColor="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/main_button"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
