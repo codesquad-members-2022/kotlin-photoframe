@@ -85,3 +85,13 @@
 ##### 👀 Log.d 넣어 callback 로그 출력하기
 1. 각 Activity에 `onStart()` `onResume()` `onPause()` `onStop()` `onDestory()` 함수 오버라이드하기
 2. 각 콜백함수에 `Log.d("$activity", "$callback")` 넣기
+##### 👀 두 번째 Activity로 이동
+1. `Intent(현재액티비티, 이동할액티비티)`를 생성하고 startActivity(intent타입)을 통해 이동할 수 있다
+##### 👀 두 번째 Activity에서 '닫기' 누르면 다시 첫 번째 액티비티로 이동한 후에 메세지 출력
+1. 닫기 버튼의 클릭 이벤트 수신에 `finish()` 메서드를 써서 두 번째 activity를 stop() 후 destroy()함
+2. 여기서 `registerForActivityResult()` 메서드를 활용함
+   1. 여기서 많이 헤맸는데 그 이유로 자꾸 `.setOnClickListner{}` 에서 등록한 후에 결과값을 가져오려다 보니 에러가 발생함
+   `MainActivity@379f7ff is attempting to register while current state is RESUMED. LifecycleOwners must call register before they are STARTED.`
+   2. 따라서, 액티비티결과값을 클릭 이벤트가 발생하기 전에 선언하여 문제를 해결(왜 이건 되는지 의문)
+      ![11](https://user-images.githubusercontent.com/95393311/154078597-734aae6b-868b-49b7-870a-6d513b1b1e02.JPG)
+
