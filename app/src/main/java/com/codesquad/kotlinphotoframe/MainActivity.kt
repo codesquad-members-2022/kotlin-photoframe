@@ -8,11 +8,12 @@ import android.widget.TextView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
         setContentView(R.layout.activity_photo_frame)
-        Log.d("MainActivity", "onCreate")
+        Log.d("Main", "onCreate")
 
         val t = findViewById<TextView>(R.id.photo_frame_header2)
-        t.text = "실습"
+        t.text = "My photoFrame"
+
     }
 }
