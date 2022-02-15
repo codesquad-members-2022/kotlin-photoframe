@@ -1,97 +1,55 @@
-# 진행 방법
+## 요구사항 
 
-- 포토프레임에 대한 요구사항을 파악한다.
-- 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-- 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-- 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
+- [x] Emulator를 만들고 앱을 실행하기 or Android 기기 활용하기
+- [x] Logcat 활용하기
+  - [x] MainActivity 클래스에서 onCreate 함수에서 `Log.d("MainActivity", "onCreate")` 실행하기
+- [x] activity_main.xml에 TextView 추가하기
+  - [x] Design editor 이용하기
+- [x] MainActivity에서 TextView에 대한 참조하기
+  - [x] findViewById 확인하기
+  - [x] onCreate 함수에서 Text 변경하기
+  - [x] 글자색, 배경색, 글자 크기 변경하기
+- [x] activity_main.xml에 버튼 추가하기
+- [x] MainActivity에서 Button에 대한 참조하기
+  - [x] Button 클릭 이벤트에 대해 알림받아 처리하기
+  - [x] Snackbar 이용하기
+- [x] 새로운 화면 추가하고, 다음 버튼 클릭 시, 이전화면에서 이동하기
+  - [x] 새로운 화면에 배경색상을 변경한다.
+  - [x] AndroidManifest에 등록한다.
+- [x] Activity Lifecycle의 모든 callback에 로그 출력하기 `Log.d("$activityName", "$callbackName")`
+- [x] 새로운 화면에서 닫기 버튼 클릭시, 다시 이전화면으로 돌아오기
+  - [x] 닫기 버튼 클릭 시, MainActivity에 사진을 불러왔습니다. 메시지 출력하기
 
-# 코드 리뷰 과정
-> 저장소 브랜치에 자신의 github 아이디에 해당하는 브랜치가 존재해야 한다.
->
-> 자신의 github 아이디에 해당하는 브랜치가 있는지 확인한다.
 
-1. 자신의 github 아이디에 해당하는 브랜치가 없는 경우 브랜치 생성 요청 채널을 통해 브랜치 생성을 요청한다.
-프로젝트를 자신의 계정으로 fork한다. 저장소 우측 상단의 fork 버튼을 활용한다.
+### Emulator 실행하기  
+  
+  <img width="385" alt="스크린샷 2022-02-14 오전 11 29 27" src="https://user-images.githubusercontent.com/66770613/153789962-3ebda869-9791-4e31-870f-93214080f924.png" width = 250px height = 500px>  
+  
+  
+### Logcat 활용하기
 
-2. fork한 프로젝트를 자신의 컴퓨터로 clone한다.
-```
-git clone https://github.com/{본인_아이디}/{저장소 아이디}
-ex) https://github.com/step4me/kotlin-photoframe
-```
+  <img width="809" alt="스크린샷 2022-02-14 오전 11 34 12" src="https://user-images.githubusercontent.com/66770613/153790416-eea631f8-abd4-44bc-a6d6-f9969fa4b4bb.png">  
 
-3. clone한 프로젝트 이동
-```
-cd {저장소 아이디}
-ex) cd kotlin-photoframe
-```
 
-4. 본인 아이디로 브랜치를 만들기 위한 checkout
-```
-git checkout -t origin/본인_아이디
-ex) git checkout -t origin/step4me
-```
+### TextView 활용하기
 
-5. 기능 구현을 위한 브랜치 생성 (연속번호를 붙여나간다)
-```
-git checkout -b 브랜치이름
-ex) git checkout -b photoframe-step1
-```
+  <img width="303" alt="스크린샷 2022-02-14 오후 12 37 40" src="https://user-images.githubusercontent.com/66770613/153796117-3864e913-09ba-4491-9a1a-0ce39300de7e.png" width = 250px height = 500px>  
+  
+  
+### Button 활용하기
 
-6. commit
-```
-git status //확인
-git rm 파일명 //삭제된 파일
-git add 파일명(or * 모두) // 추가/변경 파일
-git commit -m "메세지" // 커밋
-```
+  <img width="303" alt="스크린샷 2022-02-14 오후 1 19 25" src="https://user-images.githubusercontent.com/66770613/153799374-e5a577f9-192a-4b1e-9088-152052b02e63.png" width = 250px height = 500px>  
+  
+  
+### 다른 Activity로 이동하기
 
-7. 본인 원격 저장소에 올리기
-```
-git push --set-upstream origin 브랜치이름
-ex) git push --set-upstream origin photoframe-step1
-```
+  <img width="300" alt="스크린샷 2022-02-14 오후 6 01 10" src="https://user-images.githubusercontent.com/66770613/153832459-9d2e33de-3f2a-44c9-8d62-908b2fa006f3.png" width = 250px height = 500px >  
+  
+  <img width="300" alt="스크린샷 2022-02-14 오후 6 00 53" src="https://user-images.githubusercontent.com/66770613/153832488-cc01d33a-4437-437a-8dc9-8e27363867b8.png" width = 250px height = 500px>  
+  
+  <img width="953" alt="스크린샷 2022-02-14 오후 6 09 58" src="https://user-images.githubusercontent.com/66770613/153833863-d57f387b-4557-4f4d-9de4-020b87cd1ee7.png" width = 250px height = 500px>  
 
-8. pull request
-	- pull request는 github 서비스에서 진행할 수 있다.
-	- pull request는 original 저장소의 브랜치(자신의 github 아이디)와 앞 단계에서 생성한 브랜치 이름을 기준으로 한다.
 
-	```
-	ex) code-squad/kotlin-photoframe step4me 브랜치 기준 => step4me/kotlin-photoframe store-step1
-	```
-	
-9. code review 및 push
-	- pull request를 통해 피드백을 받는다.
-	- 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
 
-10. 기본(upstream) 브랜치 전환 및 base 저장소 추가하기(최초 시작하기 단계 한번만 하면 됨)
 
-	```
-	git checkout 본인_아이디
-	git remote add upstream base_저장소_url
 
-	ex) git checkout step4me
-	ex) git remote add upstream https://github.com/code-squad/kotlin-photoframe.git
-	```
-
-	- 위와 같이 base 저장소 추가한 후 remote 브랜치 목록을 보면 4개가 보여야 한다.
-
-	```
-	git remote -v
-	```
-
-11. 기본 base 저장소와 sync하기 (PR 보낸 내용을 자신의 기본 저장소와 합치기)
-
-	```
-	git fetch upstream
-	git rebase upstream/본인_아이디
-	ex) git rebase upstream/step4me
-	```
-
-12. 다음 미션을 해결할 경우 [5단계 브랜치 생성]부터 다시 진행
-
-## 동영상을 통한 코드 리뷰() 를 통해 참고 가능
-
-- [fork하여 코드 리뷰하기](https://www.youtube.com/watch?v=ZSZoaG0PqLg) 
-- [PR 보내고 다시 PR보낼 때 유의 사항](https://www.youtube.com/watch?v=CbLNbCUsh5c&feature=youtu.be)
-
-## 실습 중 모든 질문은 슬랙 채널에서...
