@@ -1,12 +1,20 @@
 package com.codesquad.kotlinphotoframe
 
+import android.Manifest
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +28,14 @@ class MainActivity : AppCompatActivity() {
         val back: LinearLayout = findViewById(R.id.back)
         back.setBackgroundColor(Color.parseColor("#ffffff"))
         val button: Button = findViewById(R.id.button)
+        val contextView = findViewById<View>(R.id.context)
+        if (intent.getStringExtra("msg") != null){
+            Snackbar.make(contextView, intent.getStringExtra("msg")!!, Snackbar.LENGTH_SHORT).show()
+        }
         button.setOnClickListener {
             Log.d("click", "ok")
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
+            val secondIntent = Intent(this, SecondActivity::class.java)
+            startActivity(secondIntent)
         }
     }
 
@@ -39,8 +51,6 @@ class MainActivity : AppCompatActivity() {
         val activityName = this.localClassName
         val callbackName = "onStart"
         Log.d("$activityName", "$callbackName")
-        Toast.makeText(applicationContext, "사진을 불러오는 중입니다.", Toast.LENGTH_SHORT).show()
-
     }
 
     override fun onResume() {
