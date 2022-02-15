@@ -23,7 +23,7 @@
 #### <추가> 🔖 Text Editor 활용하기
 - Text Editor에서 직접 사이즈나 색깔 텍스트 크기 등을 조절한다면??
   ![7](https://user-images.githubusercontent.com/95393311/153999351-747702d7-9c05-449b-a70f-d9a90695eadc.JPG)
-- `value` 파일 아래의 xml 파일에서 `resource` tag에 코드가 자동으로 생성되는 점을 확인함
+- `res`>`value` 파일 아래의 xml 파일에서 코드가 자동으로 생성되는 점을 확인함
 
 #### 3. 🔖 TextView 활용하기
 1. TextView의 ID 설정하기
@@ -67,7 +67,7 @@
    2. Toast
       1. Toast도 유사하게 `makeText()`를 통해 Toast 메세지를 생성함
    3. Snack Bar VS Toast
-      1. Snack Bar의 `make()`는 인자로 `View` 타입을 받지만 Toast는 `applicationContext`를 받는다
+      1. Snack Bar의 `make()`는 인자로 `View` 타입을 받지만 Toast는 `Context`를 받는다
       2. 앱이 포그라운드에 있다면 토스트 메시지 대신 스낵바를 사용하는 것이 좋습니다. 스낵바에는 사용자가 실행할 수 있는 옵션이 포함되어 있으며 이를 통해 더 나은 앱 환경을 제공할 수 있습니다.
       3. 앱이 백그라운드에 있고 사용자가 어떤 조치를 취하게 하려면 토스트 메시지 대신 알림을 사용하세요.
    4. 참고자료
@@ -77,3 +77,11 @@
 
 
 #### 5. 🔖 다른 Activity로 이동하기
+##### 👀 새 Activity 생성
+1. Activity 생성 및 layout 생성 (여기서는 직접 kt 파일과 xml파일을 생성하여 연결함)(다른 방법으로는 alt+insert를 통해 activity를 직접 생성)
+2. `AndroidManifest.xml`에 새로 만든 Activity 등록
+##### 👀 새 Activity 꾸미기
+1. main activity와 동일하게 배경색과 버튼 생성하고 설정
+##### 👀 Log.d 넣어 callback 로그 출력하기
+1. 각 Activity에 `onStart()` `onResume()` `onPause()` `onStop()` `onDestory()` 함수 오버라이드하기
+2. 각 콜백함수에 `Log.d("$activity", "$callback")` 넣기
