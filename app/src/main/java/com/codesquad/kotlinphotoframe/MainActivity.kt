@@ -15,30 +15,34 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-    var activityName = "MainActivity"
+    var tag = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //2단계 textView 구현하기
         val photoFrameTv = findViewById<TextView>(R.id.tv_photoframe)
-        val name = "Hede"
+        val name ="Hede"
         photoFrameTv.text = "${name}의 사진액자"
         photoFrameTv.setBackgroundColor(Color.LTGRAY)
         photoFrameTv.setTextColor(Color.BLUE)
         photoFrameTv.setTextSize(Dimension.SP, 18F)
-        val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
-        /*
-        addPhotoBtn.setOnClickListener{
-            var snackBar= Snackbar.make(const_layout,"사진을 불러옵니다", Snackbar.LENGTH_LONG)
-            snackBar.show()
-        }
-         */
-        addPhotoBtn.text = "다음"
-        addPhotoBtn.setOnClickListener {
-            var intent: Intent = Intent(this, targetActivity::class.java)
-            startActivityForResult(intent, 3000)
-        }
-        Log.d("${activityName}", "onCreate")
 
+//        val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
+//        /*
+//        3단계 Button 추가하기 + Button Event 처리
+//        addPhotoBtn.setOnClickListener{
+//            var snackBar= Snackbar.make(const_layout,"사진을 불러옵니다", Snackbar.LENGTH_LONG)
+//            snackBar.show()
+//        }
+//         */
+//        addPhotoBtn.text = "다음"
+//        addPhotoBtn.setOnClickListener {
+//            var intent: Intent = Intent(this, targetActivity::class.java)
+//            startActivityForResult(intent, 3000)
+//        }
+        Log.d("$tag", "onCreate")
+        Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -52,38 +56,38 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("${activityName}", "onStart")
+        Log.d("${tag}", "onStart")
         //Toast.makeText(this, "onStart()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.d("${activityName}", "reStart")
+        Log.d("${tag}", "reStart")
         //Toast.makeText(this, "onRestart()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("${activityName}", "onResume")
+        Log.d("${tag}", "onResume")
         //Toast.makeText(this, "onResume()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("${activityName}", "onStop")
+        Log.d("${tag}", "onStop")
         //Toast.makeText(this, "onStop()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("${activityName}", "onPause")
+        Log.d("${tag}", "onPause")
         //Toast.makeText(this, "onPause()호출", Toast.LENGTH_SHORT).show()
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("${activityName}", "onDestroy")
+        Log.d("${tag}", "onDestroy")
         //Toast.makeText(this, "onDestroy()호출", Toast.LENGTH_SHORT).show()
     }
 }

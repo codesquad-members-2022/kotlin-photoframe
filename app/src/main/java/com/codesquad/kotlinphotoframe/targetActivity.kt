@@ -11,14 +11,15 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 
 class targetActivity : AppCompatActivity() {
+    val tag = "targetActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
-        var prevBtn= findViewById<Button>(R.id.target_btn_close)
-        Log.d("targetActivitiy","onCreate")
-        prevBtn.setOnClickListener{
-            var intent= intent
-            intent.putExtra("message","사진을 불러왔습니다")
+        var prevBtn = findViewById<Button>(R.id.target_btn_close)
+        Log.d("targetActivitiy", "onCreate")
+        prevBtn.setOnClickListener {
+            var intent = intent
+            intent.putExtra("message", "사진을 불러왔습니다")
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
@@ -27,26 +28,22 @@ class targetActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("targetActivity","onStart")
+        Log.d("$tag", "onStart")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("targetActivity","onStop")
-        //Toast.makeText(this,"onStop()호출",Toast.LENGTH_SHORT).show()
+        Log.d("$tag", "onStop")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("targetActivity","onPause")
-        //Toast.makeText(this,"onPause()호출",Toast.LENGTH_SHORT).show()
+        Log.d("$tag", "onPause")
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("targetActivity","onDestroy")
-        //Toast.makeText(this,"onDestroy()호출",Toast.LENGTH_SHORT).show()
+        Log.d("$tag", "onDestroy")
     }
 
 
