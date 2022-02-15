@@ -4,6 +4,12 @@
 ![image](https://user-images.githubusercontent.com/58967292/153792063-08ed489b-7af4-4534-9085-0c638edf1d46.png)
 ### 하드웨어 기계에서 앱 실행
 ![image](https://user-images.githubusercontent.com/58967292/153981226-1d3bfe62-9b53-4607-9cfa-6bd704b71320.png)
+### 학습목표
+* 1 LogCat & Log 클래스
+* 2 Activity
+* 3 Activity 라이프 사이클
+* 4.라이프 사이클 확인 방법
+
 
 ## LogCat
 ### How to use
@@ -39,7 +45,7 @@ Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
 ## Activity 작동
 * UI는 XML 파일로, 동작은 .kt파일로 구성, 둘이 한 쌍을 이룸
 
-## Activity 생명주기
+## Activity 생명주기 + 확인방법
 ![image](https://user-images.githubusercontent.com/58967292/153981987-86468b48-206d-4d63-b347-28dbcf729cc1.png)
 
 * 사람이 태어나서 죽을떄까지 유아기,청소년기,노년기를 거치듯 액티비티도 생성부터 소멸까지 여러단계를 거친다
@@ -93,4 +99,52 @@ Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
 * onRestart()
   * 중단된 상태에 있던 액티비티가 사용자에 의해 재실행되는 경우 먼저 호출되는 콜백함수
   * onstart() 함수가 이어서 호출된다
+
+## 2단계 TextView  구현하기
+### 결과
+![image](https://user-images.githubusercontent.com/58967292/153997927-f31f26a5-1f27-45ab-8f3d-685a87e58dee.png)
+
+### 학습목표
+* 1 디자인 편집기
+* 2 findViewByID
+* 3 TextView 속성
+* 4.findViewByID로 가져온 TextView의 속성값 변경
+
+## Design Editor
+### 1 팔레트
+![image](https://user-images.githubusercontent.com/58967292/153998166-c5946841-7428-4726-8917-84b569ee5c90.png)
+* 레이아웃으로 드래그 앤 드롭 할 수 있는 다양한 뷰와 레이아웃 리스트를 보여줌
+* 드래그앤 드랍하면 XML 파일에도 자동으로 관련 코드가 생성됨
+
+### 2 컴포넌트 트리
+![image](https://user-images.githubusercontent.com/58967292/153999637-a4421db8-fbed-42a4-ab2e-b2d766e5af57.png)
+* 레이아웃에는 계층 구조가 존재하는데, 컴포넌트 트리는 그 구조를 보기 좋게 보여준다
+
+### 3 디자인 편집기
+![image](https://user-images.githubusercontent.com/58967292/153998492-422b0e20-5e2d-4191-bdc9-c0c8e97c4891.png)
+* 실질적으로 표현하고자 하는 레이아웃이 표현되는 곳(레이아웃 미리보기)
+* 팔레트에서 뷰or 레이아웃을 드래그앤 드랍하여 이곳에 놓으면 레이아웃에 뷰가 추가된 것이 보인다
+* 윗쪽의 툴바를 통해 미리보기 옵션을 조정할 수 있다.
+
+![image](https://user-images.githubusercontent.com/58967292/153998739-c5a3080c-41d4-4598-bc7f-dff133b4ea16.png)
+
+* 디자인&청사진: 편집기에서 레이아웃을 어떻게 표시할지 선택 => 사용자가 볼화면인 렌더링된 레이아웃을 보고싶다면 Design,  뷰의 윤곽선만 표시하고 싶다면 Blueprint, 둘다보고싶다면 Desing+BluePrint
+* 화면 방향 및 레이아웃 변형: 화면을 세로방향으로 보고싶다면 Portrait, 가로방향으로 보고싶다면 LandScape*
+* 데이/나이트 모드 선택: 데이/나이트 모드 별 레이아웃 확인 가능 
+* 기기 유형 및 크기: 여러 유형의 기기중 선택된 기기에 대한 화면의 크기, 밀도와 같은 구성을 선택
+* API버전: API 버전에 따라 레이아웃 형식이 달라진다. 해당 버전에 맞는 레이아웃을 선택할 때 사용
+* 앱 테마: 미리보기 화면에 적용할 UI 테마를 선택, 지원되는 레이아웃에서만 쓰여서 레이아웃 디자인시 자주 사용되지는 않음
+* 언어: UI 문자의 언어를 지정, LtoR, RtoL 언어가 존재하기 때문에(영어 한글은 LtoR) ,  Preview 기능을 통해  RtoL언어는 어떻게 표시되는지 확인 가능
+
+
+### 4 속성창
+![image](https://user-images.githubusercontent.com/58967292/153999851-b9bea4de-e884-45b8-ae76-3807f42671b9.png)
+* 선택한 뷰의 여러 속성을 제어할 수 있는 영역
+
+### 5 뷰모드
+![image](https://user-images.githubusercontent.com/58967292/153999899-656a18b6-4fc7-4125-84c5-d4e85204af34.png)
+* 레이아웃을 코드/디자인/분할 모드 중 하나로 표시함
+* 분할모드는 코드창과 디자인창을 동시에 표시
+
+## findViewByID
 
