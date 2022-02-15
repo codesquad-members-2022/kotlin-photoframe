@@ -8,10 +8,11 @@ import android.widget.TextView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_photo_frame)
         Log.d("MainActivity", "onCreate")
 
-        val t = findViewById<TextView>(R.id.main_start_text)
-        t.text = "실험1"
+        val t = findViewById<TextView>(R.id.photo_frame_header2)
+        t.text = "실습"
     }
 }
