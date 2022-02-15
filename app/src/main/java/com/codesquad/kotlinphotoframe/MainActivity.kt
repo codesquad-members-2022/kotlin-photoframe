@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -21,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        var const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
         //2단계 textView 구현하기
         val photoFrameTv = findViewById<TextView>(R.id.tv_photoframe)
         val name ="Hede"
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     //    photoFrameTv.setTextSize(16F)
         photoFrameTv.textSize=16F
         val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
-//        var const_layout= findViewById<ConstraintLayout>(R.id.const_layout)
+
 //       // 3단계 Button 추가하기 + Button Event 처리
 //        addPhotoBtn.setOnClickListener{
 //            var snackBar= Snackbar.make(const_layout,"사진을 불러옵니다", Snackbar.LENGTH_LONG)
@@ -47,21 +49,26 @@ class MainActivity : AppCompatActivity() {
 
         //4단계 activity간 이동
         addPhotoBtn.text = "다음"
+
+        var getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            if (it.resultCode == RESULT_OK) {
+
+                var message = it.data?.getStringExtra("message").toString()
+                Snackbar.make(const_layout, "${message}", Snackbar.LENGTH_LONG).show()
+            }
+        }
         addPhotoBtn.setOnClickListener {
             var intent: Intent = Intent(this, targetActivity::class.java)
-            startActivityForResult(intent, 3000)
+            getResult.launch(intent)
+
         }
         Log.d("$tag", "onCreate")
-        Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 3000) {
-            var const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
-            var message = data!!.getStringExtra("message")
-            Snackbar.make(const_layout, "${message}", Snackbar.LENGTH_LONG).show()
-        }
+
     }
 
     override fun onStart() {

@@ -16,16 +16,16 @@ class targetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
         var prevBtn = findViewById<Button>(R.id.target_btn_close)
-        Log.d("targetActivitiy", "onCreate")
+
         prevBtn.setOnClickListener {
             var intent = intent
             intent.putExtra("message", "사진을 불러왔습니다")
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
+        Log.d("${tag}", "onCreate")
 
     }
-
     override fun onStart() {
         super.onStart()
         Log.d("$tag", "onStart")
