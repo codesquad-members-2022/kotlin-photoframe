@@ -1,97 +1,69 @@
-# 진행 방법
+## 코드스쿼드 Android Class Step1
 
-- 포토프레임에 대한 요구사항을 파악한다.
-- 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-- 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-- 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
+### :one: 프로젝트 실행하기
+- 자동 생성된 MainActivity 클래스 onCreate 함수에서 Log.d("MainActivity", "onCreate") 코드를 추가하고 실행하면 Logcat 영역에 무엇이 출력되는지 확인하기
+<br>
 
-# 코드 리뷰 과정
-> 저장소 브랜치에 자신의 github 아이디에 해당하는 브랜치가 존재해야 한다.
->
-> 자신의 github 아이디에 해당하는 브랜치가 있는지 확인한다.
+![image](https://user-images.githubusercontent.com/69443895/153800037-b829be7e-6cb9-4e53-a642-33301fd2c1b4.png)
+<br>
 
-1. 자신의 github 아이디에 해당하는 브랜치가 없는 경우 브랜치 생성 요청 채널을 통해 브랜치 생성을 요청한다.
-프로젝트를 자신의 계정으로 fork한다. 저장소 우측 상단의 fork 버튼을 활용한다.
+![image](https://user-images.githubusercontent.com/69443895/153828163-8fdd3406-49ad-4290-8ae3-39cea440cd6d.png)
+- 앱을 실행시키고 overview 버튼을 눌러 앱에서 잠시 나간 상태에서 다시 앱으로 돌아온 후 종료하는 과정에서 호출되는 생명주기 콜백 함수의 순서를 로그캣 출력을 통해 알아보았다
+- 홈 버튼, 뒤로 가기 버튼을 제외한 나머지 버튼을 overview 버튼이라고 부르는 것 같다 -> 현업에서는 어떻게 부를까..?
+- https://android.stackexchange.com/questions/32697/what-is-the-offical-name-of-the-third-on-screen-button
 
-2. fork한 프로젝트를 자신의 컴퓨터로 clone한다.
-```
-git clone https://github.com/{본인_아이디}/{저장소 아이디}
-ex) https://github.com/step4me/kotlin-photoframe
-```
+<br>
 
-3. clone한 프로젝트 이동
-```
-cd {저장소 아이디}
-ex) cd kotlin-photoframe
-```
+### :two: TextView
+- 버튼을 눌러 텍스트뷰의 속성을 변경하도록 구현
+- setBackgroundColor & setBackgroundResource -> 둘 모두 인자를 사용해서 Drawable 객체 생성 후 이 객체로 setBackground를 호출한다
+- 위 두개의 함수 결과는 동일
 
-4. 본인 아이디로 브랜치를 만들기 위한 checkout
-```
-git checkout -t origin/본인_아이디
-ex) git checkout -t origin/step4me
-```
+![image](https://user-images.githubusercontent.com/69443895/153925935-7bb22801-5757-4c25-9da6-8d8e95a1f9b3.png) ![image](https://user-images.githubusercontent.com/69443895/153926021-e79e695f-5893-41d6-bd9c-29c7ab7b9881.png)
 
-5. 기능 구현을 위한 브랜치 생성 (연속번호를 붙여나간다)
-```
-git checkout -b 브랜치이름
-ex) git checkout -b photoframe-step1
-```
+- 버튼 클릭 시 텍스트 내용, 텍스트 색상, 텍스트 뷰 배경색을 변경
+- 다시 버튼 클릭 시 기존 상태로 변경
 
-6. commit
-```
-git status //확인
-git rm 파일명 //삭제된 파일
-git add 파일명(or * 모두) // 추가/변경 파일
-git commit -m "메세지" // 커밋
-```
+<br>
 
-7. 본인 원격 저장소에 올리기
-```
-git push --set-upstream origin 브랜치이름
-ex) git push --set-upstream origin photoframe-step1
-```
+### :three: Button
+- '사진 추가' 버튼 클릭 시 스낵바가 나타나게 구현
 
-8. pull request
-	- pull request는 github 서비스에서 진행할 수 있다.
-	- pull request는 original 저장소의 브랜치(자신의 github 아이디)와 앞 단계에서 생성한 브랜치 이름을 기준으로 한다.
+![image](https://user-images.githubusercontent.com/69443895/153988206-b6701df1-d1ac-4092-afba-3faa88e7ccc5.png) ![image](https://user-images.githubusercontent.com/69443895/153988137-f6df45f4-1b16-4ef2-9bd2-12d3a3f5e132.png)
 
-	```
-	ex) code-squad/kotlin-photoframe step4me 브랜치 기준 => step4me/kotlin-photoframe store-step1
-	```
-	
-9. code review 및 push
-	- pull request를 통해 피드백을 받는다.
-	- 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
+<br>
 
-10. 기본(upstream) 브랜치 전환 및 base 저장소 추가하기(최초 시작하기 단계 한번만 하면 됨)
+### :four: Activity 전환하기
+- MainActivity 에서 '다음' 버튼을 통해 SecondActivity로 이동 후 뒤로가기를 눌러 다시 MainActivity로 돌아오는 과정에서 각 액티비티의 life cycle 콜백함수에서 로그를 출력했다
 
-	```
-	git checkout 본인_아이디
-	git remote add upstream base_저장소_url
+![image](https://user-images.githubusercontent.com/69443895/154012788-2879a179-e724-4334-b7d6-d3531674822b.png)
 
-	ex) git checkout step4me
-	ex) git remote add upstream https://github.com/code-squad/kotlin-photoframe.git
-	```
+<br>
 
-	- 위와 같이 base 저장소 추가한 후 remote 브랜치 목록을 보면 4개가 보여야 한다.
+### :five: Activity 전환 후 결과 가져오기
+- startActivityForResult 는 현재 Deprecated되어 있는 상태다
+- 이유를 살펴보자면, 다음과 같다
+  + AndroidX Activity와 Fragment에 도입된 Activity Result API 사용을 적극 권장.
+  + 결과를 얻는 Activity를 실행하는 로직을 사용할 때, 메모리 부족으로 인해 프로세스와 Activity가 사라질 수 있다. (특히 카메라 같은 메모리를 많이 사용하는 작업은 소멸 확률이 굉장히 높다.)
+<br>
 
-	```
-	git remote -v
-	```
+- 이를 위해 registerForActivityResult 를 사용하도록 권장하고 있다
+- Activity Result API에서 제공하는 registerForActivityResult() API를 통해 결과 콜백을 등록할 수 있습니다  -공식문서-
+<br>
 
-11. 기본 base 저장소와 sync하기 (PR 보낸 내용을 자신의 기본 저장소와 합치기)
+- SecondActivity에서 '닫기' 버튼을 눌러 액티비티를 종료하는 과정에서 문자열 데이터도 같이 넘겨주도록 구현
+- 토스트 메시지를 사용했고 기존 토스트 메시지에서는 아이콘이 없었지만 Android 12 부터는 아이콘이 같이 출력되는 것 같다
+(앱이 Android 12(API 수준 31) 이상을 타겟팅한다면 토스트 메시지는 텍스트 두 줄로 제한되고 텍스트 옆에 애플리케이션 아이콘이 표시됩니다
+- 공식문서 -)
 
-	```
-	git fetch upstream
-	git rebase upstream/본인_아이디
-	ex) git rebase upstream/step4me
-	```
+![image](https://user-images.githubusercontent.com/69443895/154044524-49f69f96-7f19-4795-8d0f-ea56f15d7574.png) ![image](https://user-images.githubusercontent.com/69443895/154044644-67f121d8-f139-48d9-b121-d8c35af0d4c8.png)
 
-12. 다음 미션을 해결할 경우 [5단계 브랜치 생성]부터 다시 진행
+![image](https://user-images.githubusercontent.com/69443895/154044841-46965a36-59ab-47cb-8a74-8c5b3cfc6e2a.png)
 
-## 동영상을 통한 코드 리뷰() 를 통해 참고 가능
+<br>
 
-- [fork하여 코드 리뷰하기](https://www.youtube.com/watch?v=ZSZoaG0PqLg) 
-- [PR 보내고 다시 PR보낼 때 유의 사항](https://www.youtube.com/watch?v=CbLNbCUsh5c&feature=youtu.be)
+## 토스트 메시지 사용의 대안
+앱이 포그라운드에 있다면 토스트 메시지 대신 [스낵바](https://material.io/components/snackbars)를 사용하는 것이 좋습니다. 스낵바에는 사용자가 실행할 수 있는 옵션이 포함되어 있으며 이를 통해 더 나은 앱 환경을 제공할 수 있습니다.
+(https://developer.android.com/guide/topics/ui/notifiers/toasts?hl=ko)
 
-## 실습 중 모든 질문은 슬랙 채널에서...
+
