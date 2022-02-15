@@ -5,28 +5,23 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.Toast
 
-class MainActivity : AppCompatActivity() {
+class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        Log.d("MainActivity", "onCreate")
-        val text: TextView = findViewById(R.id.name)
-        val name = "Funny"
-        text.text = "${name}의 사진 액자"
-        text.setTextColor(Color.parseColor("#3d00e0"))
-        val back: LinearLayout = findViewById(R.id.back)
-        back.setBackgroundColor(Color.parseColor("#ffffff"))
+        setContentView(R.layout.activity_second)
+        val background: LinearLayout = findViewById(R.id.back)
+        background.setBackgroundColor(Color.parseColor("#9965f4"))
         val button: Button = findViewById(R.id.button)
         button.setOnClickListener {
-            Log.d("click", "ok")
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+
         }
     }
-
     override fun onRestart() {
         super.onRestart()
         val activityName = this.localClassName
@@ -39,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         val activityName = this.localClassName
         val callbackName = "onStart"
         Log.d("$activityName", "$callbackName")
-
     }
 
     override fun onResume() {
@@ -59,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         val activityName = this.localClassName
-        val callbackName = "onPause"
+        val callbackName = "onStop"
         Log.d("$activityName", "$callbackName")
     }
 }

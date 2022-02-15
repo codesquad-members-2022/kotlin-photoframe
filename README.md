@@ -124,3 +124,11 @@ TextView의 주요 속성은 어떤게 있는지 학습한다.
 - 후
 <img width="295" alt="msg" src="https://user-images.githubusercontent.com/79190824/153844684-5d555448-d69d-46ba-972e-50bb2d7407e1.png">
 
+## 추가학습
+- Button이 알림을 받을 수 있는 Event 종류를 학습한다.
+
+	- 입력 이벤트
+
+- 사용자에게 피드백을 줄 수 있는 방법에 대해 학습한다.
+
+	- Snackbar와 Toast의 용도를 비교하고 활용할 줄 안다.
