@@ -226,23 +226,86 @@ val photoFrameTv = findViewById<TextView>(R.id.tv_photoframe)
 * dp를 사용할경우 설정의 텍스트크기와 상관없이 일정 글자크기 유지
 
 ## findViewByID로 가져온 TextView 속성변경
-* text 변경
- * 가져온 textView.text로 직접 text 속성에 접근해서 변경가능
- * textView.setText로 변경가능 => onCreate()에서 선언시 text속성에 직접 접근하는 방법으로 수정하라고 ide가 권함 
+### text 변경
+* 가져온 textView.text로 직접 text 속성에 접근해서 변경가능
+* textView.setText로 변경가능 => onCreate()에서 선언시 text속성에 직접 접근하는 방법으로 수정하라고 ide가 권함 
 
-* textColor 변경
- * textView.setTextColor로 변경가능 
- * setTextColor(Color.RED) 처럼 Color클래스에서 Color를 가져올수도있고
- * setTextColor(Color.parseColor("#FF000000")); RGB 코드값으로 부터 컬러를 뽑아낼수도 있다
- * setTextColor(Color.rgb(200,0,0)); 직접 RGB값 삽입으로 컬러 선택가능
- * var color= ContextCompat.getColor(context, R.color.your_color)로 color.xml에 정의한 color를 가져와
- * setTextColr(color)로 컬러 변경가능  
+### TextColor 변경
+* textView.setTextColor로 변경가능 
+* setTextColor(Color.RED) 처럼 Color클래스에서 Color를 가져올수도있고
+* setTextColor(Color.parseColor("#FF000000")); RGB 코드값으로 부터 컬러를 뽑아낼수도 있다
+* setTextColor(Color.rgb(200,0,0)); 직접 RGB값 삽입으로 컬러 선택가능
+* var color= ContextCompat.getColor(context, R.color.your_color)로 color.xml에 정의한 color를 가져와
+* setTextColr(color)로 컬러 변경가능  
 
-* textSize 변경
- * textView.setTextSize로 변경가능
- * setTextSize(float size)으로 변경하면 scaled-pixel단위로 변경된다  = textView.textSize로 직접 접근해서 변경가능
- * setTestSize(int unit, float size) => unit부분에 Dimension.SP or DP or PX 를 통해 단위 설정 가능 
+### TextSize 변경
+* textView.setTextSize로 변경가능
+* setTextSize(float size)으로 변경하면 scaled-pixel단위로 변경된다  = textView.textSize로 직접 접근해서 변경가능
+* setTestSize(int unit, float size) => unit부분에 Dimension.SP or DP or PX 를 통해 단위 설정 가능 
 
-* backgroundColor 변경
- * textView.setBackgroundColor(Color color)로 변경가능
- * Color에 대한것은 textColor와 똑같이 동작
+### backgroundColor 변경
+* textView.setBackgroundColor(Color color)로 변경가능
+* Color에 대한것은 textColor와 똑같이 동작
+
+## 3 버튼 추가하기
+### 결과
+![image](https://user-images.githubusercontent.com/58967292/154012713-86a99221-4b2d-4670-8401-071b45431ec2.png)
+
+![image](https://user-images.githubusercontent.com/58967292/154012829-78373047-6090-4f3a-a753-6f6f78f9fc48.png)
+
+### 학습 목표
+* Button 이벤트 처리
+* SnackBar vs Toast 
+
+## Button 이벤트처리
+### 입력 이벤트
+* onClick(): 사용자가 (터치 모드에 있을 때) 항목을 터치하거나, 탐색 키 또는 트랙볼을 사용하여 해당 항목에 포커스를 맞추고 적절한 'Enter' 키를 누르거나, 트랙볼을 누르면 호출
+* onLongClick(): 사용자가 (터치 모드에 있을 때) 항목을 길게 터치하거나, 탐색 키 또는 트랙볼을 사용하여 해당 항목에 포커스를 맞추고 적절한 'Enter' 키를 길게 누르거나 트랙볼을 길게 누르면(1초간) 호출
+* onFocusChange(): 사용자가 탐색 키 또는 트랙볼을 사용하여 항목 쪽으로 이동하거나 항목에서 멀어지면 호출됩니다.
+* onKey(): 사용자가 항목에 포커스를 맞추고 있으면서 기기에 있는 하드웨어 키를 누르거나 키에서 손을 떼면 호출됩니다.: 
+* onTouch():  사용자가 터치 이벤트로서의 자격을 만족하는 작업을 수행하는 경우에 호출되며, 여기에는 누르기, 손 떼기와 화면에서 이루어지는 모든 움직임 동작(항목의 경계 내에서)이 포함됩니다.
+
+### 이벤트처리
+* 각 이벤트에 대해서 View에 eventListener를 등록해주어서 처리한다
+* 이번 미션의 경우 Button과 setOnClickListener를 사용한다
+
+```Kotlin
+val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
+ addPhotoBtn.setOnClickListener{
+   이벤트 처리
+ }
+ ```
+ 
+ ### SnackBar
+ ```Kotlin
+ public class Snackbar extends BaseTransientBottomBar<Snackbar>
+ ```
+ * 사용방법은 간단하다  
+ * SnackBar.make를 이용해 SnackBar를 생성
+ * static make(View view, CharSequence text, int duration)
+  * view: 뷰를 지정하여야 하며, Snackbar는 Snackbar를 화면에 보여줄 수 있도록 해당 view의 부모 view를 찾게 됩니다. 
+  * text: 문자열을 집어넣으면 됩니다. or resId = 정수값의 id 이니, strings.xml의 id
+  * duration: LENGTH_LONG, LENGTH_SHORT, LENGTH_INDEFINITE 세 종류 중 하나. LENGTH_INDEFINITE  무한으로 보여줘야 할 때 사용 + 8000처럼 직접 시간입력 가능 
+ * SnackBar.show를 이용해 레이아웃에 표시
+
+### SnackBar vs Toast
+* 둘 다 간단한 메시지를 출려하는데 사용되는 뷰
+* 차이점
+ * duration 지정부분에서 toast의 경우, LENGTH_INDEFINITE 불가
+ * toast와 달리 SnackBar는 setOnclick을 통해 사용자와 상호작용 가능 ( 이부분이 가장 큰 차이점이라 생각)
+ * toast보다 snackbar가 좀 더 custom하게 사용하는데 유리하다
+
+* 결론:  가능한 Toast보다는 SnackBar를 사용하라
+* 추가:  Dialog에 관해서도 학습해보자
+
+## 4단계 액티비티 전환
+### 결과
+![image](https://user-images.githubusercontent.com/58967292/154017351-e04b3317-e906-4132-9b46-402795cbc4f1.png)
+![image](https://user-images.githubusercontent.com/58967292/154017517-446b0aea-ac12-4c5e-9330-7fe509c6a798.png)
+![image](https://user-images.githubusercontent.com/58967292/154017550-af15b1cd-4ea2-451d-8cc4-d583c8cfc99f.png)
+![image](https://user-images.githubusercontent.com/58967292/154017733-fe0ebe34-d212-4ca1-b290-d1c031814aab.png)
+
+### 학습 목표
+* 인덴트 + Activity는 화면 이동을 어떻게 관리하는지
+*  AppCompatActivity
+*  Activity 전환 시 Lifecycle이 어떻게 변화하는지 
