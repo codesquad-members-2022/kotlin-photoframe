@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
         if (intent.getStringExtra("msg") != null){
             Snackbar.make(contextView, intent.getStringExtra("msg")!!, Snackbar.LENGTH_SHORT).show()
+            intent.removeExtra("msg")
         }
         button.setOnClickListener {
             Log.d("click", "ok")
