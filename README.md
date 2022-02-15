@@ -1,12 +1,36 @@
 # PhotoFrame Step1
-## 프로젝트 실행하기
+## 1단계 프로젝트 실행하기
 ### 안드로이드 애뮬레이터에서 실행
 ![image](https://user-images.githubusercontent.com/58967292/153792063-08ed489b-7af4-4534-9085-0c638edf1d46.png)
 ### 하드웨어 기계에서 앱 실행
 ![image](https://user-images.githubusercontent.com/58967292/153981226-1d3bfe62-9b53-4607-9cfa-6bd704b71320.png)
 
-### LogCat 활용하기
+## LogCat
+### How to use
+* Log 클래스를 이용하여 logcat에 표시되는 로그 메시지를 만들 수 있습니다
+* 일반적으로 Log클래스를 메서드를 이용하여 생성
+* Log 클래스에 정의 메서드를 우선순위가 높은것부터 낮은것부터 나열하면
+* ![image](https://user-images.githubusercontent.com/58967292/153996528-02a66c4d-7d6a-4310-986a-7c8291118d1b.png)
+* 메서드 호출 형태는 그림과 같이  Tag:String, Message:String 일수도 있고
+* Tag:String, Message:String tr:Throwable로 예외에 대한 기록을 할수도 있다. 
+* TIP: 파라미터로 사용되는 Tag를 액티비티 별로 따로 변수로 선언하면 좋다
+### LogCat 활용하기 : onCreate
+
+```Kotlin
+var tag= "MainActivity"
+Log.d("${tag}","onCreate")
+```
+
 ![step1_logcat](https://user-images.githubusercontent.com/58967292/153793055-f41b0568-eff4-4440-8f55-2e75d6ac078c.PNG)
+
+* onCreate 뿐만아니라 액티비 라이프 사이클에 대한 콜백함수 모두에 LogCat을 출력해볼 수 있다 => 자세한 결과 4단계 액티비티 전환에서 구현
+* LogCat이 아니라 Toast를 이용해 콜백함수 호출시 토스트 메시지가 출력되도록 구현해보았다.
+
+```Kotlin
+Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
+```
+![image](https://user-images.githubusercontent.com/58967292/153997253-f9b0770b-9e7b-4e57-9c96-b91c5cb812ad.png)
+
 
 ## Activity
 * 액티비티는 사용자에게 사용자 인터페이스를 제공하는 앱 구성요소이다
