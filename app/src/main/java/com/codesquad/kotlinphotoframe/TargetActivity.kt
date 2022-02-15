@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 
-class targetActivity : AppCompatActivity() {
-    val tag = "targetActivity"
+class TargetActivity : AppCompatActivity() {
+    val tag = "TargetActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
@@ -26,6 +26,7 @@ class targetActivity : AppCompatActivity() {
         Log.d("${tag}", "onCreate")
 
     }
+
     override fun onStart() {
         super.onStart()
         Log.d("$tag", "onStart")

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kotlinphotoframe">
         <activity
-            android:name=".targetActivity"
+            android:name=".TargetActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

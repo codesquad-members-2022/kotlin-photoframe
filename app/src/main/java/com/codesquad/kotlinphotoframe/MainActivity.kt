@@ -24,41 +24,45 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         var const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
-        //2단계 textView 구현하기
+
+        //2단계 textView 구현하기 + textView 속성 수정
         val photoFrameTv = findViewById<TextView>(R.id.tv_photoframe)
-        val name ="Hede"
+        val name = "Hede"
         photoFrameTv.text = "${name}의 사진액자"
-        //photoFrameTv.setText("abc")
-        photoFrameTv.setBackgroundColor(Color.parseColor("#FF000000"))
-        photoFrameTv.setBackgroundColor(Color.LTGRAY)
+        photoFrameTv.setText("abc")
+
         photoFrameTv.setTextColor(Color.BLUE)
         photoFrameTv.setTextColor(Color.parseColor("#FF000000"))
-        var color= ContextCompat.getColor(this, R.color.your_color)
+        var color = ContextCompat.getColor(this, R.color.your_color)
         photoFrameTv.setTextColor(color)
-        photoFrameTv.setTextSize(Dimension.SP, 18F)
+
+        photoFrameTv.setBackgroundColor(Color.parseColor("#FF000000"))
+        photoFrameTv.setBackgroundColor(Color.LTGRAY)
+
+        photoFrameTv.setTextSize(16F)
+        photoFrameTv.textSize = 16F
         photoFrameTv.setTextSize(Dimension.DP, 16F)
-    //    photoFrameTv.setTextSize(16F)
-        photoFrameTv.textSize=16F
+        photoFrameTv.setTextSize(Dimension.SP, 18F)
+
         val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
 
-//       // 3단계 Button 추가하기 + Button Event 처리
-//        addPhotoBtn.setOnClickListener{
-//            var snackBar= Snackbar.make(const_layout,"사진을 불러옵니다", Snackbar.LENGTH_LONG)
-//            snackBar.show()
-//        }
+        // 3단계 Button 추가하기 + Button Event 처리
+        addPhotoBtn.setOnClickListener {
+            var snackBar = Snackbar.make(const_layout, "사진을 불러옵니다", Snackbar.LENGTH_LONG)
+            snackBar.show()
+        }
 
         //4단계 activity간 이동
         addPhotoBtn.text = "다음"
-
-        var getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            if (it.resultCode == RESULT_OK) {
-
-                var message = it.data?.getStringExtra("message").toString()
-                Snackbar.make(const_layout, "${message}", Snackbar.LENGTH_LONG).show()
+        var getResult =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == RESULT_OK) {
+                    var message = it.data?.getStringExtra("message").toString()
+                    Snackbar.make(const_layout, "${message}", Snackbar.LENGTH_LONG).show()
+                }
             }
-        }
         addPhotoBtn.setOnClickListener {
-            var intent: Intent = Intent(this, targetActivity::class.java)
+            var intent: Intent = Intent(this, TargetActivity::class.java)
             getResult.launch(intent)
 
         }
@@ -66,10 +70,6 @@ class MainActivity : AppCompatActivity() {
         //Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-    }
 
     override fun onStart() {
         super.onStart()
