@@ -18,7 +18,7 @@
         android:id="@+id/tv1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintWidth_percent="0.4"
         app:layout_constraintDimensionRatio="2:1"
         android:text="Hello Android"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,6 +51,19 @@
         android:layout_marginTop="20dp"
         android:text="사진 추가"
         android:backgroundTint="#8C55ED"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_goto_second_activity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_photo"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        android:text="다음"
+        android:backgroundTint="#F4673A"
         />
 
 
