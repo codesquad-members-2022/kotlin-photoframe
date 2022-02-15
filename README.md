@@ -1,97 +1,100 @@
-# 진행 방법
+# step 1
+## Logcat 활용
+![logcat](https://user-images.githubusercontent.com/65541248/153802186-2c8a79be-d645-48df-86cb-92d61f5c2b9a.png)
 
-- 포토프레임에 대한 요구사항을 파악한다.
-- 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-- 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-- 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
-# 코드 리뷰 과정
-> 저장소 브랜치에 자신의 github 아이디에 해당하는 브랜치가 존재해야 한다.
->
-> 자신의 github 아이디에 해당하는 브랜치가 있는지 확인한다.
+## Lifecycle은 무엇인가?
 
-1. 자신의 github 아이디에 해당하는 브랜치가 없는 경우 브랜치 생성 요청 채널을 통해 브랜치 생성을 요청한다.
-프로젝트를 자신의 계정으로 fork한다. 저장소 우측 상단의 fork 버튼을 활용한다.
+lifecycle 관련 공식문서
+https://developer.android.com/guide/components/activities/activity-lifecycle
 
-2. fork한 프로젝트를 자신의 컴퓨터로 clone한다.
+![Lifecycle](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcs6PT5%2FbtqIDD8T93n%2FTxDj98W7xC0dq2H2qviLb1%2Fimg.png)
+
+---
+
+![Lifecycle2](https://t1.daumcdn.net/cfile/tistory/270A4848593E460E21)
+
+
+앱이 실행된 후 다른 액티비티 화면으로 전환되거나, 스마트폰 화면이 꺼지거나 혹은 앱이 종료될 때와 같이 상태 변화가 있을 때마다 Activity 클래스는 상태 변화(시스템이 활동을 생성, 중단 또는 다시 시작하거나, 활동이 있는 프로세스를 종료하는 등)를 알아차릴 수 있는 여러 콜백을 제공한다.
+
+* onCreate : 시스템이 먼저 활동을 생성할 때 실행, 필수적으로 구현해야 함. 이 메서드에서 활동의 전체 수명 주기 동안 한 번만 발생해야 하는 기본 애플리케이션의 시작 로직을 실행함.
+
+* onStart : 활동이 시작됨 상태에 들어갈 때 이 콜백을 호출하게 됨, (화면에 보여지기 시작할 때) onStart가 호출되면 활동이 사용자에게 표시 됨. 이 콜백이 완료되면 onResume 메서드를 호출 함.
+
+* onResume : 활동이 재개됨 상태에 들어가면 onResume() 콜백을 호출한다. 이 상태에 들어 갔을 때 앱이 사용자와 상호작용한다. 어떤 이벤트가 발생하여 앱에서 포커스가 떠날 때 까지 앱이 이 상태에 머무르게 된다.
+
+* onPause : 사용자가 활동을 떠나는 것을 나타내는 첫 번째 신호로 이 메소드를 호출하게 된다. (해당 활동이 항상 소멸되는 것은 아님)
+
+* onStop : 활동이 사용자에게 더 이상 표시되지 않으면 중단됨 상태에 들어가고, 시스템은 onStop 콜백을 호출 한다. 예를 들어 다른 액티비티의 실행으로 완전히 가려질 때 적용된다.
+
+* onDestory : 활동이 종료되는 경우, 시스템이 일시적으로 활동을 소멸시키는 경우에 활동이 완전히 소멸되기 전에 호출된다.
+
+사용자의 반응에 따라 onCreate, onStart, onResume, onPause, onStop, onDestroy 가 호출되면서 Lifecycle의 변경을 알려준다.
+
+Lifecycle 콜백을 잘 구현하여 앱에서 특별한 예외 상황에 대한 버그가 발생하지 않도록 예방할 수 있다.
+
+
+# step 2
+<img src="https://user-images.githubusercontent.com/65541248/153802823-f10c6806-aec4-4b56-a50b-c231d4cc75e5.png" height="600"/>
+
+
+# step 3
+
+<img src="https://user-images.githubusercontent.com/65541248/153875479-ded7ea63-77ea-47a5-b070-3a82b31acdb5.png" height="600"/>
+<img src="https://user-images.githubusercontent.com/65541248/153875301-13c40439-c188-431c-8c77-c0e1217171ca.png" height="600"/>
+
+
+--- 
+## Snack bar VS Toast
+
+
+스낵바와 토스트의 가장 큰 차이점은 사용자의 액션을 받아서 처리하느냐 안하느냐의 차이.
+토스트는 사용자에게 정보성으로 제공되는 메세지인 반면에 스낵바는 메세지를 주는 동시에 경고성 알림을 주고 사용자에게 확인버튼을 제공하여 클릭을 유도할 수 있다.
+
+<img src="https://user-images.githubusercontent.com/65541248/153869052-4b6e4469-e7a2-44ac-b6dc-50961f1cf2de.png" height="600"/>
+<img src="https://user-images.githubusercontent.com/65541248/153875064-aeb55388-2aad-4ae0-8d19-87b619472e2c.png" height="600"/>
+
+
+Snackbar 버튼 유도 코드
 ```
-git clone https://github.com/{본인_아이디}/{저장소 아이디}
-ex) https://github.com/step4me/kotlin-photoframe
+  Snackbar.make(view, "hello", Snackbar.LENGTH_INDEFINITE)
+            .setAction("Yes") {
+                val snackbar2 = Snackbar.make(view, "확인 스낵바 메시지 입니다.", Snackbar.LENGTH_LONG)
+                snackbar2.show()
+            }
+            .show();
+```
+Toast 코드
+```
+Toast.makeText(this,"hello world!",Toast.*LENGTH_LONG*).show()
 ```
 
-3. clone한 프로젝트 이동
-```
-cd {저장소 아이디}
-ex) cd kotlin-photoframe
-```
 
-4. 본인 아이디로 브랜치를 만들기 위한 checkout
-```
-git checkout -t origin/본인_아이디
-ex) git checkout -t origin/step4me
-```
 
-5. 기능 구현을 위한 브랜치 생성 (연속번호를 붙여나간다)
-```
-git checkout -b 브랜치이름
-ex) git checkout -b photoframe-step1
-```
+# Step 4
 
-6. commit
-```
-git status //확인
-git rm 파일명 //삭제된 파일
-git add 파일명(or * 모두) // 추가/변경 파일
-git commit -m "메세지" // 커밋
-```
+<img src="https://user-images.githubusercontent.com/65541248/153882616-0a904517-bce2-4223-9774-f90666c3de8f.png" height="400"/>
+<img src="https://user-images.githubusercontent.com/65541248/153882625-bc9b62ef-1208-4bed-ad77-e562fb2d2644.png" height="400"/>
+<img src="https://user-images.githubusercontent.com/65541248/154008398-e350b5c6-5c51-4405-b672-74b120950d0e.png" height="400"/>
 
-7. 본인 원격 저장소에 올리기
-```
-git push --set-upstream origin 브랜치이름
-ex) git push --set-upstream origin photoframe-step1
-```
 
-8. pull request
-	- pull request는 github 서비스에서 진행할 수 있다.
-	- pull request는 original 저장소의 브랜치(자신의 github 아이디)와 앞 단계에서 생성한 브랜치 이름을 기준으로 한다.
 
-	```
-	ex) code-squad/kotlin-photoframe step4me 브랜치 기준 => step4me/kotlin-photoframe store-step1
-	```
-	
-9. code review 및 push
-	- pull request를 통해 피드백을 받는다.
-	- 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
 
-10. 기본(upstream) 브랜치 전환 및 base 저장소 추가하기(최초 시작하기 단계 한번만 하면 됨)
+## AppCompatActivity
 
-	```
-	git checkout 본인_아이디
-	git remote add upstream base_저장소_url
+Activity가 가져야 하는 기능들이 AppCompatActivity에 들어있다.
 
-	ex) git checkout step4me
-	ex) git remote add upstream https://github.com/code-squad/kotlin-photoframe.git
-	```
+우리는 이를 상속받는것만으로 손쉽게 액티비티를 만들 수 있는 것
+우리는 여기다 필요한 것들을 추가해서 액티비티를 생성하면 된다.
 
-	- 위와 같이 base 저장소 추가한 후 remote 브랜치 목록을 보면 4개가 보여야 한다.
 
-	```
-	git remote -v
-	```
+## Log 출력
 
-11. 기본 base 저장소와 sync하기 (PR 보낸 내용을 자신의 기본 저장소와 합치기)
+첫번째 화면
+![1](https://user-images.githubusercontent.com/65541248/154005739-06530c85-fc48-4124-94ef-0f9d3560a19b.png)
 
-	```
-	git fetch upstream
-	git rebase upstream/본인_아이디
-	ex) git rebase upstream/step4me
-	```
+두번째 화면
+![2](https://user-images.githubusercontent.com/65541248/154005759-f31512e2-4127-44e5-989b-4f6696461562.png)
 
-12. 다음 미션을 해결할 경우 [5단계 브랜치 생성]부터 다시 진행
-
-## 동영상을 통한 코드 리뷰() 를 통해 참고 가능
-
-- [fork하여 코드 리뷰하기](https://www.youtube.com/watch?v=ZSZoaG0PqLg) 
-- [PR 보내고 다시 PR보낼 때 유의 사항](https://www.youtube.com/watch?v=CbLNbCUsh5c&feature=youtu.be)
-
-## 실습 중 모든 질문은 슬랙 채널에서...
+세번째 화면
+![3](https://user-images.githubusercontent.com/65541248/154005762-7956f957-82ee-4aef-95f2-90dcd704a3fb.png)
