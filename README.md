@@ -132,9 +132,11 @@
 
 - [x] Activity와 관련된 새로운 용어들에 대해 학습한다.
 - Toast 사용
+
 ![result](https://user-images.githubusercontent.com/79190824/153996794-c0b24ff3-5d71-45d4-9e71-7678df638a16.gif)
 
 - Snackbar 사용
+
 ![화면-기록-2022-02-15-오후-6 56 16](https://user-images.githubusercontent.com/79190824/154038029-2581e36d-7bd0-4033-8c69-717958c5e8b7.gif)
 
 - Lifecycle callback log
