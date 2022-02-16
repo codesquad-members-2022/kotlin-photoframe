@@ -69,6 +69,12 @@
 <img width="300" alt="스크린샷 2022-02-16 오후 7 45 10" src="https://user-images.githubusercontent.com/66770613/154248670-6792c889-0021-4cd8-96d2-67a976b0e276.png">  
 
 
+### Activity 연결하기 및 액자 꾸미기
+
+<img width="252" alt="스크린샷 2022-02-17 오전 12 03 27" src="https://user-images.githubusercontent.com/66770613/154292683-749bc843-1e83-4d6e-ad5e-8845dee81678.png">  
+
+<img width="252" alt="스크린샷 2022-02-17 오전 12 03 37" src="https://user-images.githubusercontent.com/66770613/154292717-523150fc-7a06-46a6-9df2-48a2e3d88778.png">  
+
 
 
 

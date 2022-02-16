@@ -4,17 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AE90D7"
     tools:context=".SecondActivity">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_close"
+    <ImageView
+        android:id="@+id/imageview_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/close"
+        android:src="@drawable/photoframe_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageview_frame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

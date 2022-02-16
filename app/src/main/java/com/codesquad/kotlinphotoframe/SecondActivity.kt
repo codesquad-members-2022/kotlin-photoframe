@@ -12,14 +12,6 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-
-        val closeButton: Button = findViewById(R.id.button_close)
-        closeButton.setOnClickListener {
-            val intent = Intent()
-            intent.putExtra("message", "사진을 불러왔습니다")
-            setResult(RESULT_OK, intent)
-            finish()
-        }
     }
 
     override fun onStart() {
