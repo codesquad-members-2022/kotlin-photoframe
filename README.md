@@ -194,5 +194,34 @@
   
 ---
 
-- **AppCompatActivity란 무엇인가**
-  - sdk가 발전하면서 하위 안드로이드를 지원하지 않는 메소드들이 있는데 이를 각 버전에 맞게 지원할 수 있도록 해주는 클래스이다.
+
+- **Button이 알림을 받을 수 있는 Event 종류를 학습한다.**
+  - Button 뿐 아니라 레이아웃을 구성하는데 필요한 View 객체로부터 이벤트 리스너를 `override` 해 구현할 수 있다.
+    - override 할 때는 `setOnXXXX` 형식으로 할 수 있다.
+  - View 클래스에서 제공하는 UI관련 이벤트 리스너는 아래와 같다.
+    1. `OnClickListener`
+      - 사용자가 해당 View를 클릭 또는 터치했을 때 발생하는 이벤트
+    2. `OnLongClickListener`
+      - 사용자가 해당 View를 1초간 클릭 또는 터치했을 때 발생하는 이벤트
+    3. `OnFocusChangeListener`
+      - 해당 View에 포커스가 발생한 경우 발생하는 이벤트
+    4. `OnKeyListener`
+      - 사용자가 해당 View에 포커스를 맞춘 상태에서 하드웨어 키를 누르거나 키에서 손을 떼면 발생하는 이벤트
+    5. `OnTouchListener`
+      - 사용자가 해당 View에 터치할 경우 발생하는 이벤트
+
+- **Snackbar와 Toast 용도 비교 및 활용**
+  - **Toast**
+    - 작은 팝업으로 작업에 관한 간단한 피드백을 제공
+    - 토스트 메시지가 표시된 후 일정시간 이후 자동으로 사라짐
+    - 단, API 31이상에서는 텍스트가 2줄로 제한되고 애플리케이션 아이콘이 함께 표현됨
+
+      ![Screenshot_1645009570](https://user-images.githubusercontent.com/29175138/154252156-4d1945a0-faaf-4257-9bf7-da5e690999ab.png)
+
+  - **Snackbar**
+    - Toast와 동일하게 화면 아래쪽에 메시지가 표시된 후 일정시간 이후에 자동으로 사라짐
+    - Toast와의 차이점은 Snackbar는 사용자가 실행할 수 있는 옵션이 포함되어 있다.
+    - 아래와 같이 활용할 수 있다.
+
+      ![Screenshot_1645009781](https://user-images.githubusercontent.com/29175138/154252755-b69f6bbf-0b5c-4b75-beed-ce5becd740da.png)
+

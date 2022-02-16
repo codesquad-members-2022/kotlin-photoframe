@@ -10,7 +10,6 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 
@@ -32,7 +31,9 @@ class MainActivity : AppCompatActivity() {
         val btnAddImage: Button = findViewById(R.id.btn_add_image)
         val layoutMain: View = findViewById(R.id.layout_main)
         val getStartResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            Snackbar.make(layoutMain, "사진을 불러왔습니다.", Snackbar.LENGTH_LONG).show()
+            if (it.resultCode == RESULT_OK) {
+                Snackbar.make(layoutMain, "사진을 불러왔습니다.", Snackbar.LENGTH_LONG).show()
+            }
         }
 
         btnAddImage.setOnClickListener {

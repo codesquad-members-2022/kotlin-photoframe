@@ -15,8 +15,13 @@ class PhotoActivity : AppCompatActivity() {
 
         val btnClose: Button = findViewById(R.id.btn_close)
         btnClose.setOnClickListener {
+            setResult(RESULT_OK)
             finish()
         }
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
     }
 
     override fun onStart() {
