@@ -1,5 +1,6 @@
 package com.codesquad.kotlinphotoframe
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,8 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 
 private const val TAG = "MainActivity"
@@ -28,10 +31,13 @@ class MainActivity : AppCompatActivity() {
 
         val btnAddImage: Button = findViewById(R.id.btn_add_image)
         val layoutMain: View = findViewById(R.id.layout_main)
+        val getStartResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            Snackbar.make(layoutMain, "사진을 불러왔습니다.", Snackbar.LENGTH_LONG).show()
+        }
+
         btnAddImage.setOnClickListener {
-            Snackbar.make(layoutMain, "사진을 불러옵니다.", Snackbar.LENGTH_SHORT).show()
             val intent = Intent(this, PhotoActivity::class.java)
-            startActivity(intent)
+            getStartResult.launch(intent)
         }
     }
 
