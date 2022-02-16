@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyOwnText1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/purple_700</item>
+    </style>
+
+
+</resources>
