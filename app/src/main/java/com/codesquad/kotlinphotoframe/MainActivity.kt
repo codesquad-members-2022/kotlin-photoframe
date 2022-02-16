@@ -1,5 +1,6 @@
 package com.codesquad.kotlinphotoframe
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,12 +17,19 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.add_photo_button)
 
-        button.setOnClickListener{
-            Snackbar.make(
-                findViewById(R.id.custom_layout),
-                "사진 불러오는중",
-                Snackbar.LENGTH_SHORT
-            ).show()
+        button.setOnClickListener {
+            startActivity(Intent(this, SecondActivity::class.java))
         }
+
+
+        /* 사진 snackbar 불러오기 기능능 */
+
+//       button.setOnClickListener{
+//            Snackbar.make(
+//                findViewById(R.id.custom_layout),
+//                "사진 불러오는중",
+//                Snackbar.LENGTH_SHORT
+//            ).show()
+//        }
     }
 }
