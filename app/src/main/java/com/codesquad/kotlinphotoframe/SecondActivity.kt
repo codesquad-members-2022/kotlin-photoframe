@@ -8,6 +8,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.snackbar.Snackbar
 
 class SecondActivity : AppCompatActivity() {
 
@@ -18,11 +20,13 @@ class SecondActivity : AppCompatActivity() {
 
         val selectButton: Button = findViewById(R.id.button_select)
         val selectImage: ImageView = findViewById(R.id.imageview_select)
+        val layout: ConstraintLayout = findViewById(R.id.constraintlayout_secondLayout)
         val getResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 if (it.resultCode == RESULT_OK) {
                     val selectedImageUri: Uri? = it.data?.data
                     selectImage.setImageURI(selectedImageUri)
+                    Snackbar.make(layout, "사진을 불러왔습니다", Snackbar.LENGTH_SHORT).show()
                 }
             }
 
