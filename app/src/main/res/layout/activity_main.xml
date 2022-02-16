@@ -7,18 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/main_image"
+        android:background="@color/gainboro" />
+
     <TextView
-        android:id="@+id/mainText"
+        android:id="@+id/main_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/fontstyle"
-        tools:text= "Stark 의 사진액자"
-        tools:textSize="30sp"
-        tools:textColor="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/main_image"
+        tools:text="Stark 의 사진액자"
+        tools:textColor="@android:color/holo_blue_dark"
+        tools:textSize="30sp" />
 
     <Button
         android:id="@+id/main_button"
@@ -30,6 +41,6 @@
         android:fontFamily="@font/fontstyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainText" />
+        app:layout_constraintTop_toBottomOf="@+id/main_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
