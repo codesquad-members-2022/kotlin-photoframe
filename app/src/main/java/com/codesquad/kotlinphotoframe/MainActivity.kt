@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         text1.text = "사진액자"
         text1.setBackgroundColor(Color.YELLOW)
         text1.setTextColor(Color.GREEN)
-        text1.textSize = 40.0F
+        text1.textSize = 41.0F
 
         button1.setOnClickListener{
             Snackbar.make(button1,"사진을 불러옵니다",5000).show()

@@ -39,5 +39,3 @@ android:layout_gravity="center"를 추가하면 된다고하는데 작동을 하
 ![레이아웃 정렬2](https://user-images.githubusercontent.com/91953080/154185412-8f30b7d6-468b-4413-8de2-1ce8c1f6da74.png)
 
 버튼은 textView를 수정하는 방법과 비슷하게 진행함
-
-새로 commit을함
