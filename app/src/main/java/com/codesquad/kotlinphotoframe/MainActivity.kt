@@ -1,13 +1,16 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.ViewGroup
+import android.util.Range
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -15,45 +18,42 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.scaleMatrix
 import com.google.android.material.snackbar.Snackbar
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-    var tag = "MainActivity"
+    val tag = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
-
-        //2단계 textView 구현하기 + textView 속성 수정
+        Log.d("$tag", "onCreate")
         val photoFrameTv = findViewById<TextView>(R.id.tv_photoframe)
         val name = "Hede"
         photoFrameTv.text = "${name}의 사진액자"
-        photoFrameTv.setText("abc")
-
-        photoFrameTv.setTextColor(Color.BLUE)
-        photoFrameTv.setTextColor(Color.parseColor("#FF000000"))
-        var color = ContextCompat.getColor(this, R.color.your_color)
-        photoFrameTv.setTextColor(color)
-
-        photoFrameTv.setBackgroundColor(Color.parseColor("#FF000000"))
-        photoFrameTv.setBackgroundColor(Color.LTGRAY)
-
-        photoFrameTv.setTextSize(16F)
-        photoFrameTv.textSize = 16F
-        photoFrameTv.setTextSize(Dimension.DP, 16F)
-        photoFrameTv.setTextSize(Dimension.SP, 18F)
-
         val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
+        val imageView = findViewById<ImageView>(R.id.iv_photoFrame_photoGallery)
+        addButtonEventForImageChange(addPhotoBtn, imageView)
+    }
 
-        // 3단계 Button 추가하기 + Button Event 처리
+
+    fun addButtonEventForImageChange(addPhotoBtn: Button, imageView: ImageView) {
         addPhotoBtn.setOnClickListener {
-            var snackBar = Snackbar.make(const_layout, "사진을 불러옵니다", Snackbar.LENGTH_LONG)
-            snackBar.show()
+            var range = (1..22)
+            val imgNum = range.random()
+            val bitmapImg = getImgFileAndTransFormToBitMap(imgNum) ?: return@setOnClickListener
+            imageView.setImageBitmap(bitmapImg)
+            imageView.scaleType = ImageView.ScaleType.FIT_XY
         }
+    }
 
-        //4단계 activity간 이동
+
+    fun changeActivityAndMakeSnackBar(addPhotoBtn: Button) {
         addPhotoBtn.text = "다음"
+        val const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
         var getResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 if (it.resultCode == RESULT_OK) {
@@ -64,48 +64,65 @@ class MainActivity : AppCompatActivity() {
         addPhotoBtn.setOnClickListener {
             var intent: Intent = Intent(this, TargetActivity::class.java)
             getResult.launch(intent)
-
         }
-        Log.d("$tag", "onCreate")
-        //Toast.makeText(this, "onCreate()호출", Toast.LENGTH_SHORT).show()
     }
 
+    fun addButtonEventAndMakeSnackBar(addPhotoBtn: Button) {
+        val const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
+        addPhotoBtn.setOnClickListener {
+            var snackBar = Snackbar.make(const_layout, "사진을 불러옵니다", Snackbar.LENGTH_LONG)
+            snackBar.show()
+        }
+    }
+
+    fun changeTextViewAttribute(photoFrameTv: TextView) {
+        photoFrameTv.setTextColor(Color.parseColor("#FF000000"))
+        photoFrameTv.setBackgroundColor(Color.parseColor("#FF000000"))
+        photoFrameTv.setTextSize(Dimension.SP, 18F)
+    }
+
+    fun getImgFileAndTransFormToBitMap(imgNum: Int): Bitmap? {
+        try {
+            var assetManager = this.assets
+
+            var imageFileName: String = ""
+            imageFileName = if (imgNum < 10) "0${imgNum}" else "$imgNum"
+            return BitmapFactory.decodeStream(assetManager.open("${imageFileName}.jpg"))
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return null
+    }
 
     override fun onStart() {
         super.onStart()
         Log.d("${tag}", "onStart")
-        //Toast.makeText(this, "onStart()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRestart() {
         super.onRestart()
         Log.d("${tag}", "reStart")
-        //Toast.makeText(this, "onRestart()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onResume() {
         super.onResume()
         Log.d("${tag}", "onResume")
-        //Toast.makeText(this, "onResume()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onStop() {
         super.onStop()
         Log.d("${tag}", "onStop")
-        //Toast.makeText(this, "onStop()호출", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPause() {
         super.onPause()
         Log.d("${tag}", "onPause")
-        //Toast.makeText(this, "onPause()호출", Toast.LENGTH_SHORT).show()
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d("${tag}", "onDestroy")
-        //Toast.makeText(this, "onDestroy()호출", Toast.LENGTH_SHORT).show()
     }
 
 }

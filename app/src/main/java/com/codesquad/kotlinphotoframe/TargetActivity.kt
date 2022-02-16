@@ -15,8 +15,7 @@ class TargetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
-        var prevBtn = findViewById<Button>(R.id.target_btn_close)
-
+        val prevBtn = findViewById<Button>(R.id.target_btn_close)
         prevBtn.setOnClickListener {
             var intent = intent
             intent.putExtra("message", "사진을 불러왔습니다")
