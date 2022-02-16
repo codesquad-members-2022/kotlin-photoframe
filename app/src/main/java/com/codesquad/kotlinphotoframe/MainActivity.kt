@@ -1,13 +1,15 @@
 package com.codesquad.kotlinphotoframe
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 
@@ -27,14 +29,16 @@ class MainActivity : AppCompatActivity() {
         button.text = "사진 추가"
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
 
-        button.setOnClickListener {
-            val snackbar = Snackbar.make(const_layout, "사진을 불러옵니다.", Snackbar.LENGTH_LONG)
-            snackbar.show()
+        val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val message = result.data?.getStringExtra("message").toString()
+                Snackbar.make(const_layout, message, Snackbar.LENGTH_LONG).show()
+            }
         }
 
         button.setOnClickListener {
             val intent = Intent(this, SubActivity::class.java)
-            startActivity(intent)
+            getResult.launch(intent)
         }
     }
 }
