@@ -45,5 +45,38 @@
   - [TextView](https://developer.android.com/reference/android/widget/TextView?hl=en#summary)
   - 텍스트 입력 및 수정을 위한 인터페이스 [EditText](https://developer.android.com/reference/android/widget/EditText)
   - TextView의 룩앤쀨을 커스텀마이징하기 위해서는? [Styles and Themes](https://developer.android.com/guide/topics/ui/look-and-feel/themes)
+  
+### 👉 Button 의 이벤트 종류
 
+### 👉 사용자에게 피드백 주는 방법
+- 사용자에게 피드백을 주는 방식에는 크게 스낵바, 토스트, 알림이 있다
+- 스낵바
+  - Snackbars provide lightweight feedback about an operation.
+  - Snackbars can contain an action
+  - 앱이 foreground 상태이면 특정 액션 옵션을 포함할 수 있는 스낵바를 추천
+- Toast
+  - 앱이 background 상태이며, 특정 액션을 취하지 않아도 될때에는 Toast를 추천
+- Notification
+  - 앱이 background 상태이고 사용자에게 특정 액션 옵션을 주고 싶다면 notification을 추천
+  1. [스낵바](https://material.io/components/snackbars/android#using-snackbars)
+  2. [Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts?hl=ko#kotlin)
+  3. [알림](https://developer.android.com/guide/topics/ui/notifiers/notifications?hl=ko)
+### 👉 AppCompatActivity 란?
+
+### 👉 App 전환 시 Lifecycle 변화
+```
+Coordinating activities
+When one activity starts another, they both experience lifecycle transitions. The first activity stops operating and enters the Paused or Stopped state, while the other activity is created. In case these activities share data saved to disc or elsewhere, it's important to understand that the first activity is not completely stopped before the second one is created. Rather, the process of starting the second one overlaps with the process of stopping the first one.
+
+The order of lifecycle callbacks is well defined, particularly when the two activities are in the same process (app) and one is starting the other. Here's the order of operations that occur when Activity A starts Activity B:
+
+1. Activity A's onPause() method executes.
+2. Activity B's onCreate(), onStart(), and onResume() methods execute in sequence. (Activity B now has user focus.)
+3. Then, if Activity A is no longer visible on screen, its onStop() method executes.
+
+This predictable sequence of lifecycle callbacks allows you to manage the transition of information from one activity to another.
+```
+- [공식문서](https://developer.android.com/guide/components/activities/activity-lifecycle.html#soafa) 에서 발췌한 글이며, 쉽게 얘기해 다른 액티비티가 만들어지기 전에 첫번째 액티비티가 완전히 정지되지 않는다는 것이다
+  ![12](https://user-images.githubusercontent.com/95393311/154180273-91c9168b-4803-4962-a347-84abca5e6daa.JPG)
+### 👉 Activity는 화면 이동을 어떻게 관리?
 
