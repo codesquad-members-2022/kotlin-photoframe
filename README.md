@@ -19,6 +19,15 @@
 - [x] Activity Lifecycle의 모든 callback에 로그 출력하기 `Log.d("$activityName", "$callbackName")`
 - [x] 새로운 화면에서 닫기 버튼 클릭시, 다시 이전화면으로 돌아오기
   - [x] 닫기 버튼 클릭 시, MainActivity에 사진을 불러왔습니다. 메시지 출력하기
+- [x] ImageView 240 x 240 크기로 배치하기
+- [x] assets 폴더에 이미지 넣기
+- [x] assets 폴더의 이미지 파일을 열어 Bitmap으로 변환해 ImageView에 표기하기
+  - [x] 다음 버튼 클릭시 다운로드 받은 이미지 01~22까지 랜덤으로 숫자를 선택해서 ImageView에 표시하기
+  - [x] 앱이 처음 실행되었을 때는 ImageView의 배경색만 보인다.
+  - [x] 이전 단계에 구현했던 화면 이동 기능 제거하기
+  - [x] 랜덤으로 숫자 생성하고, fileName을 포맷에 맞게 변경하기
+ - [x] 이미지 scaleType 속성으로 활용하기
+ - [x] ConstraintLayout 중앙 정렬하기
 
 
 ### Emulator 실행하기  
@@ -47,7 +56,16 @@
   
   <img width="300" alt="스크린샷 2022-02-14 오후 6 00 53" src="https://user-images.githubusercontent.com/66770613/153832488-cc01d33a-4437-437a-8dc9-8e27363867b8.png" width = 250px height = 500px>  
   
-  <img width="953" alt="스크린샷 2022-02-14 오후 6 09 58" src="https://user-images.githubusercontent.com/66770613/153833863-d57f387b-4557-4f4d-9de4-020b87cd1ee7.png" width = 250px height = 500px>  
+  <img width="953" alt="스크린샷 2022-02-14 오후 6 09 58" src="https://user-images.githubusercontent.com/66770613/153833863-d57f387b-4557-4f4d-9de4-020b87cd1ee7.png">  
+
+
+### xml에서 이미지 추가하기
+
+<img width="300" alt="스크린샷 2022-02-16 오후 7 43 44" src="https://user-images.githubusercontent.com/66770613/154248455-28340ac7-408a-4c69-b53a-b4bbb68a4f48.png">  
+
+<img width="300" alt="스크린샷 2022-02-16 오후 7 45 10" src="https://user-images.githubusercontent.com/66770613/154248670-6792c889-0021-4cd8-96d2-67a976b0e276.png">  
+
+
 
 
 

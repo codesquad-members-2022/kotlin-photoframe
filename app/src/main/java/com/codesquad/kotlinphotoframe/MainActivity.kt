@@ -1,18 +1,17 @@
 package com.codesquad.kotlinphotoframe
 
-import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.snackbar.Snackbar
+import java.io.BufferedInputStream
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
+    private val IMAGE_NUMBER = 22
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,19 +24,19 @@ class MainActivity : AppCompatActivity() {
 
         val buttonPictureAdd: Button = findViewById(R.id.button_picture_add)
         val layout: ConstraintLayout = findViewById(R.id.constraintlayout_layout)
-
-        val getResult =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if (it.resultCode == RESULT_OK) {
-                    val message = it.data?.getStringExtra("message").toString()
-                    Snackbar.make(layout, message, Snackbar.LENGTH_SHORT).show()
-                }
-            }
-
+        val photo: ImageView = findViewById(R.id.imageview_photo)
         buttonPictureAdd.setOnClickListener {
-            val intent = Intent(this@MainActivity, SecondActivity::class.java)
-            getResult.launch(intent)
+            changeImage(layout, photo, getRandomNumber(IMAGE_NUMBER))
         }
+    }
+
+    private fun changeImage(layout: ConstraintLayout, photo: ImageView, imageName: String) {
+        photo.setImageBitmap(BitmapFactory.decodeStream(BufferedInputStream(resources.assets.open("${imageName}.jpg"))))
+    }
+
+    private fun getRandomNumber(number: Int): String {
+        val randomNumber = (1..number).random().toString()
+        return if(randomNumber.length != 1) randomNumber else "0$randomNumber"
     }
 
     override fun onStart() {
