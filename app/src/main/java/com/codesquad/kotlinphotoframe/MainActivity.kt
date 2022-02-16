@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val myTextView = findViewById<TextView>(R.id.main_text) // UI 요소를 사용 시 보통 lateinit 을 사용해 객체를 선언하면 좋다.
+        val myTextView = findViewById<TextView>(R.id.main_text)
         myTextView.text = "Stark의 사진액자"
-        myTextView.setTextColor(Color.BLUE) // 텍스트 색깔이나 사이즈를 xml 이 아니라 틀린 코드에서 동적으로 처리하는 이유?
+        myTextView.setTextColor(Color.BLUE)
         myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30f)
 
         val button = findViewById<Button>(R.id.main_button)
@@ -32,11 +32,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when(v?.id){
+        when (v?.id) {
             R.id.main_button -> {
                 val imageView = findViewById<ImageView>(R.id.main_image)
-                val images = listOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
-                    "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22")
+                val images = listOf( // Int 로 숫자를 랜덤 생성할 시 01, 02 와 같이 앞에 0을 구현하기 힘들어서 String 리스트로 처리
+                    "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
+                    "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"
+                )
                 val randomIdx = Random.nextInt(images.size)
                 val image = images[randomIdx]
                 try {
