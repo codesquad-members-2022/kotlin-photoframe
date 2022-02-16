@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
+        val const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
 
-        var myTextView = findViewById<TextView>(R.id.mainText) // UI 요소를 사용 시 보통 lateinit 을 사용해 객체를 선언하면 좋다.
+        val myTextView = findViewById<TextView>(R.id.mainText) // UI 요소를 사용 시 보통 lateinit 을 사용해 객체를 선언하면 좋다.
         myTextView.text = "Stark의 사진액자"
         myTextView.setTextColor(Color.BLUE) // 텍스트 색깔이나 사이즈를 xml 이 아니라 틀린 코드에서 동적으로 처리하는 이유?
         myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30f)
 
-        var button = findViewById<Button>(R.id.main_button)
+        val button = findViewById<Button>(R.id.main_button)
         button.text = "사진 추가"
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
 

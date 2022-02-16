@@ -13,7 +13,7 @@ class SubActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sub)
 
-        var button = findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.sub_button)
+        val button = findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.sub_button)
         button.text = "닫기"
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
         button.setOnClickListener {
