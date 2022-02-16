@@ -5,6 +5,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,9 +15,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.snackbar.Snackbar
+import java.io.InputStream
+import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
+    override fun equals(str: Any?): Boolean {
+        return str == null
+    }
+    private lateinit var activityName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,33 +42,46 @@ class MainActivity : AppCompatActivity() {
                 else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
-        if (intent.getStringExtra("msg") != null){
-            Snackbar.make(contextView, intent.getStringExtra("msg")!!, Snackbar.LENGTH_SHORT).show()
+        val msg = intent.getStringExtra("msg")
+        if (msg != null){
+            Snackbar.make(contextView, msg, Snackbar.LENGTH_SHORT).show()
             intent.removeExtra("msg")
         }
         button.setOnClickListener {
-            Log.d("click", "ok")
             val secondIntent = Intent(this, SecondActivity::class.java)
             startActivity(secondIntent)
+            //imageLoad()
         }
     }
+    fun imageLoad(){
+        val fileName = makeFileName((1..22).random())
 
+        // step 1. asset 폴더에서 파일 열기
+        val image = resources.assets.open("$fileName.jpg")
+        val imageView: ImageView = findViewById(R.id.image_view)
+        //step 2. imageView에 표시
+        //imageView.setImageBitmap(bitmap)
+    }
+    fun makeFileName(fileName: Int) = when(fileName/10==0){
+        true ->  "0$fileName"
+        else -> fileName.toString()
+    }
     override fun onRestart() {
         super.onRestart()
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onRestart"
         Log.d("$activityName", "$callbackName")
     }
 
     override fun onStart() {
         super.onStart()
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onStart"
         Log.d("$activityName", "$callbackName")
     }
 
     override fun onResume() {
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onResume"
         Log.d("$activityName", "$callbackName")
         super.onResume()
@@ -68,14 +89,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onStop"
         Log.d("$activityName", "$callbackName")
     }
 
     override fun onPause() {
         super.onPause()
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onPause"
         Log.d("$activityName", "$callbackName")
     }

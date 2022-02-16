@@ -152,3 +152,50 @@
 - Lifecycle callback log
 
 <img width="823" alt="logcat" src="https://user-images.githubusercontent.com/79190824/153996529-31e0ab00-ce1b-4945-aaf1-5f21c966af1a.png">
+
+# 미션 5 코드로 ConstraintLayout에 View 배치하기
+## 학습 목표
+- [ ] 코드로 ConstraintLayout에 View를 배치할 수 있다.
+
+- [ ] ImageView를 추가하고 이미지를 표시할 수 있다.
+
+- [ ] 프로젝트의 assets 폴더에 리소스를 추가하고, 불러올 수 있다.
+
+## 기능요구사항
+- [ ] MainActivity의 디자인을 변경하고, 액자 앱의 동작을 구현한다.
+
+- [ ] 실행하고 새로운 화면을 캡처해서 README.md 파일에 포함한다.
+
+## 프로그래밍 요구사항
+- [ ] MainActivity에 ImageView를 240 x 240 크기로 배치한다.
+
+- [ ] ImageView에 보여줄 이미지 리소스를 다운로드 한다. 압축을 풀고, 파일들을 assets 폴더 하위에 추가한다.
+
+- [ ] assets 폴더의 이미지 파일 01.jpg를 열어 Bitmap으로 변환해 ImageView에 표시한다.
+
+	- [ ] 아래에 생략한 부분의 구현을 완료해주세요.
+```
+// step 1. asset 폴더에서 파일 열기
+resources.assets.open("fileName").....
+
+...
+// step 2. imageView에 표시
+imageView.setImageBitmap(bitmap)
+```
+
+- [ ] '다음' 버튼 클릭 시, 다운로드 받은 이미지 01~22까지 랜덤으로 숫자를 선택해서 ImageView에 표시한다.
+
+	- [ ] 앱이 처음 실행되었을 때는 ImageView의 배경색만 보인다.
+
+	- [ ] 이전 단계에서 구현했던 화면 이동 기능은 제거한다.
+
+	- [ ] 랜덤으로 숫자를 생성하고, fileName을 포맷에 맞게 변경한다.
+
+- [ ] ImageView의 scaleType 속성을 활용해 이미지를 표시하는 방법을 결정한다.
+
+- [ ] ImageView ~ Button까지 제약조건을 추가해 ConstraintLayout의 중앙에 정렬한다.
+
+## 추가학습거리
+- [ ] ConstraintLayout의 주요 기능을 학습한다.
+
+- [ ] ImageView의 주요 속성은 어떤게 있는지 학습한다.
