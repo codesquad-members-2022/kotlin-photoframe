@@ -1,11 +1,13 @@
 package com.codesquad.kotlinphotoframe
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.BufferedInputStream
 
 class MainActivity : AppCompatActivity() {
@@ -25,8 +27,14 @@ class MainActivity : AppCompatActivity() {
         val buttonPictureAdd: Button = findViewById(R.id.button_picture_add)
         val layout: ConstraintLayout = findViewById(R.id.constraintlayout_layout)
         val photo: ImageView = findViewById(R.id.imageview_photo)
+        val floatingButton: FloatingActionButton = findViewById(R.id.floatingbutton_next)
+
         buttonPictureAdd.setOnClickListener {
             changeImage(layout, photo, getRandomNumber(IMAGE_NUMBER))
+        }
+
+        floatingButton.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SecondActivity::class.java))
         }
     }
 
