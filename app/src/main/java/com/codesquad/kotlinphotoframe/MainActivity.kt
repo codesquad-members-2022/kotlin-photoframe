@@ -1,8 +1,6 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
-import android.graphics.Color
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,9 +15,9 @@ class MainActivity : AppCompatActivity() {
     var change = true
 
     private lateinit var tv1 : TextView
-    private lateinit var btn_change_tv1 : Button
-    private lateinit var btn_add_photo : Button
-    private lateinit var btn_goto_second_activity : Button
+    private lateinit var btnChangeTv1 : Button
+    private lateinit var btnAddPhoto : Button
+    private lateinit var btnGotoSecondActivity : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +35,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setTextViewChangeButton(){
-        btn_change_tv1 = findViewById(R.id.btn_change_tv1)
-        btn_change_tv1.setOnClickListener {
+        btnChangeTv1 = findViewById(R.id.btn_change_tv1)
+        btnChangeTv1.setOnClickListener {
             if(change){
                 tv1.apply {
                     text = "CHANGE CLICKED"
                     setTextColor(ContextCompat.getColor(context, R.color.myGreen))
                     setBackgroundResource(R.color.myGray)
                 }
-                btn_change_tv1.text = "UNDO"
+                btnChangeTv1.text = "UNDO"
             }
             else{
                 tv1.apply {
@@ -53,15 +51,15 @@ class MainActivity : AppCompatActivity() {
                     setTextColor(ContextCompat.getColor(context, R.color.black))
                     setBackgroundColor(ContextCompat.getColor(context, R.color.white))
                 }
-                btn_change_tv1.text = "CHANGE"
+                btnChangeTv1.text = "CHANGE"
             }
             change = !change
         }
     }
 
     fun setAddPhotoButton(){
-        btn_add_photo = findViewById(R.id.btn_add_photo)
-        btn_add_photo.setOnClickListener {
+        btnAddPhoto = findViewById(R.id.btn_add_photo)
+        btnAddPhoto.setOnClickListener {
             val snackBar = Snackbar.make(it, "사진을 불러옵니다",Snackbar.LENGTH_SHORT)
             snackBar.show()
         }
@@ -75,8 +73,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btn_goto_second_activity = findViewById(R.id.btn_goto_second_activity)
-        btn_goto_second_activity.setOnClickListener {
+        btnGotoSecondActivity = findViewById(R.id.btn_goto_second_activity)
+        btnGotoSecondActivity.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             getActivityResult.launch(intent)
         }
