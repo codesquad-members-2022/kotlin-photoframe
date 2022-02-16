@@ -18,17 +18,26 @@ class SecondActivity: AppCompatActivity() {
         setContentView(R.layout.activity_second)
         Log.d("SecondActivity", "onCreate")
 
-        //배경색 변경
-        val layout = findViewById<ConstraintLayout>(R.id.secondLayOut)
-        layout.setBackgroundColor(Color.parseColor("#FFE42B2B"))
 
-        //버튼 생성
+        val layout = findViewById<ConstraintLayout>(R.id.secondLayOut)
+        setLayoutColor(layout)
+
         val button = findViewById<Button>(R.id.button3)
+        setFirstButton(button)
+        clickButtonToFinish(button)
+    }
+
+    private fun setLayoutColor(layout:ConstraintLayout) {
+        layout.setBackgroundColor(Color.parseColor("#FFE42B2B"))
+    }
+
+    private fun setFirstButton(button:Button) {
         button.text = "닫기"
         button.setTextColor(Color.BLACK)
         button.setBackgroundColor(Color.YELLOW)
+    }
 
-        //버튼 클릭 시 이벤트 발생
+    private fun clickButtonToFinish(button: Button) {
         button.setOnClickListener {
             finish()
         }

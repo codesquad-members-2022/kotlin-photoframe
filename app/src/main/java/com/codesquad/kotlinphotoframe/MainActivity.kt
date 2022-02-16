@@ -1,17 +1,19 @@
 package com.codesquad.kotlinphotoframe
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 
@@ -22,22 +24,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.d("MainActivity", "onCreate")
 
-
-        //TextView 생성 후 코드 참조
         val textForFrame: TextView = findViewById(R.id.textForFrame)
         setTextForFrame(textForFrame)
 
-        // 첫번째 button 생성 후 코드 참조
-        val button: Button = findViewById(R.id.button)
-        setButtonFirst(button)
 
-        // 두번째 button 생성 후 클릭하면 다음 activity로 전환
-        val button2: Button = findViewById(R.id.button2)
-        val launcher = showTextAfterotherActivity(button2)
-        button2.setOnClickListener {
-            val intent= Intent(this, SecondActivity::class.java)
-            launcher.launch(intent)
-        }
+        val firstButton: Button = findViewById(R.id.button)
+        setFirstButtonToShowSnackBarAndToastMeg(firstButton)
+
+
+        val secondButton: Button = findViewById(R.id.button2)
+        setSecondButtonToMoveOtherActivity(secondButton)
+
     }
 
 
@@ -49,13 +46,21 @@ class MainActivity : AppCompatActivity() {
         textForFrame.setTextSize(5,8.0f)
     }
 
-    private fun setButtonFirst(button: Button) {
+    private fun setFirstButtonToShowSnackBarAndToastMeg(button: Button) {
         val textForbutton = "사진 추가"
         button.text = "$textForbutton"
         button.setOnClickListener {
             Snackbar.make(it, "사진을 불러옵니다", LENGTH_SHORT).setAction("Okay") {
                 Toast.makeText(this, "Toast 먹고싶다", Toast.LENGTH_SHORT).show()
             }.show()
+        }
+    }
+
+    private fun setSecondButtonToMoveOtherActivity(button: Button) {
+        val launcher = showTextAfterotherActivity(button)
+        button.setOnClickListener {
+            val intent= Intent(this, SecondActivity::class.java)
+            launcher.launch(intent)
         }
     }
 
@@ -91,4 +96,5 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "onDestroy")
     }
 }
+
 
