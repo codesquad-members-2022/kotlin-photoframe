@@ -61,6 +61,9 @@
 ### 동작 결과
 [동작 영상](https://user-images.githubusercontent.com/79504043/153856296-fe363a1d-8a1b-49f5-8688-aef93cd648c5.mp4)
 
+<br>
+<br/>
+
 
 ## Step 04
 
@@ -83,6 +86,11 @@
 
 ### 동작 결과
 [동작 영상](https://user-images.githubusercontent.com/79504043/154179634-7b0a3a46-d64e-4bff-a090-28db207eddbb.mp4)
+
+<br>
+<br/>
+
+---
 
 
 
