@@ -11,12 +11,13 @@
         android:id="@+id/main_image"
         android:layout_width="240dp"
         android:layout_height="240dp"
+        android:background="@color/gainboro"
+        android:contentDescription="@string/main_image"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/main_image"
-        android:background="@color/gainboro" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/main_text"
