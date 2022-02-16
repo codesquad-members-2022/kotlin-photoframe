@@ -1,10 +1,13 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 
 class SecondActivity : AppCompatActivity() {
 
@@ -12,6 +15,22 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+
+        val selectButton: Button = findViewById(R.id.button_select)
+        val selectImage: ImageView = findViewById(R.id.imageview_select)
+        val getResult =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == RESULT_OK) {
+                    val selectedImageUri: Uri? = it.data?.data
+                    selectImage.setImageURI(selectedImageUri)
+                }
+            }
+
+        selectButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                .apply { type = "image/*" }
+            getResult.launch(intent)
+        }
     }
 
     override fun onStart() {
