@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">kotlin-photoframe</string>
-    <string name="title">Hello World!</string>
     <string name="StartButton">Start</string>
 </resources>
