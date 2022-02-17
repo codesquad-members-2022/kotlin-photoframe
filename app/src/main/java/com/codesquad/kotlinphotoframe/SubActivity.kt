@@ -23,9 +23,10 @@ class SubActivity : AppCompatActivity() {
     val REQ_GALLERY = 1
     private lateinit var binding: ActivitySubBinding
 
-    private val getImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        binding.subImage.setImageURI(it.data?.data)
-    }
+    private val getImage =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            binding.subImage.setImageURI(it.data?.data)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,26 +42,23 @@ class SubActivity : AppCompatActivity() {
         val subBitmap: Bitmap = BitmapFactory.decodeStream(subInputStream)
         binding.subImage.setImageBitmap(subBitmap)
 
-        binding.subButton.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, REQ_GALLERY)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
-            when(requestCode){
-                REQ_GALLERY -> {
-                    try{
-                        val uri = data?.data
+        val getResult =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == RESULT_OK) {
+                    Snackbar.make(binding.subLayout, "사진을 불러왔습니다.", Snackbar.LENGTH_SHORT).show()
+                    try {
+                        val uri = it.data?.data
                         binding.subImage.setImageURI(uri)
-                    }catch (e:Exception){
+                    } catch (e: Exception) {
                         e.message
                     }
                 }
             }
+
+        binding.subButton.setOnClickListener {
+            intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            getResult.launch(intent)
         }
     }
 }
