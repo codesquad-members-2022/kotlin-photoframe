@@ -17,8 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.snackbar.Snackbar
-import java.io.InputStream
-import kotlin.random.Random
+
 
 fun String.Snackbar(contextView: View, intent: Intent) {
     Snackbar.make(contextView, this, Snackbar.LENGTH_SHORT).show()
