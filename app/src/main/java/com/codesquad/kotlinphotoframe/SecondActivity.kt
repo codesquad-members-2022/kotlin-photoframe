@@ -24,6 +24,7 @@ class SecondActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
         val picture = findViewById<ImageView>(R.id.my_photo_image_load)
         val frameView = findViewById<ImageView>(R.id.my_photo_frame_second_activity)
+        val fab = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab_second_activity)
         val button: Button = findViewById(R.id.add_photo_button)
         val frameFile = resources.assets.open("photo_frame/photoframe-border.png")
         val frameImage = BitmapFactory.decodeStream(frameFile)
@@ -39,6 +40,10 @@ class SecondActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             startForResult.launch("image/*")
+        }
+
+        fab.setOnClickListener {
+            finish()
         }
     }
 

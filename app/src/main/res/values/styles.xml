@@ -8,7 +8,7 @@
 
     <style name="MyOwnButton" parent="Widget.MaterialComponents.Button">
         <item name="cornerRadius">30dp</item>
-
+        <item name="backgroundTint">@color/primary</item>
     </style>
 
 </resources>
