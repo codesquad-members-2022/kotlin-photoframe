@@ -6,6 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".SubActivity">
 
+    <ImageView
+        android:id="@+id/sub_image"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:background="@color/gainboro"
+        android:contentDescription="@string/sub_image"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/sub_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/fontstyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sub_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

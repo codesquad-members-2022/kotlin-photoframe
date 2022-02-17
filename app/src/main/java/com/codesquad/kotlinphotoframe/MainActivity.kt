@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import java.lang.Exception
 import kotlin.random.Random
+import android.content.Intent
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
         button.setOnClickListener(this)
 
+        val buttonGoSubActivity = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.button_go_sub_activity)
+        buttonGoSubActivity.setOnClickListener {
+            val intent = Intent(this, SubActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onClick(v: View?) {
