@@ -1,21 +1,17 @@
 package com.codesquad.kotlinphotoframe
 
 import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.snackbar.Snackbar
 
 class TargetActivity : AppCompatActivity() {
     val tag = "TargetActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
-        val prevBtn = findViewById<Button>(R.id.target_btn_close)
+        val prevBtn = findViewById<Button>(R.id.target_btn_select)
         prevBtn.setOnClickListener {
             var intent = intent
             intent.putExtra("message", "사진을 불러왔습니다")
