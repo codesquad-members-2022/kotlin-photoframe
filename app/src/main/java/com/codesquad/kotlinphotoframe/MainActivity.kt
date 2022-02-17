@@ -16,7 +16,6 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
         setContentView(R.layout.activity_photo_frame)
         Log.d(TAG, "onCreate")
 
@@ -40,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 
             val rawFile = resources.assets
             val sourceImage = rawFile?.open("pictures/$randomID.jpg")
-
             sourceImage?.run {
                 val bitmapImage = BitmapFactory.decodeStream(this)
                 imageView.setImageBitmap(bitmapImage)
@@ -51,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                     Snackbar.LENGTH_LONG
                 ).show()
             }
-
             sourceImage?.close()
         }
     }
