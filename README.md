@@ -21,7 +21,7 @@
 - [x] 자동 생성된 MainActivity 클래스 onCreate 함수에서 Log.d("MainActivity", "onCreate") 코드를 추가하고 실행하면 Logcat 영역에 무엇이 출력되는지 확인한다.
 
 ## 추가학습거리
-- [ ] Activity에 대해 학습한다.
+- [x] Activity에 대해 학습한다.
 	- Lifecycle은 무엇인가?
 	- Activity는 main함수로 실해되는 다른 함수들과 다르게 onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy()로 이루어진 Lifecycle의 콜백으로 실행과 종료가 결정되고 사용자가 다른 활동을 할때 등 어떤 상태로 있어야 되는지를 결정한다. Activity는 Lifecycle로 인해서 만들어지고 쉬고 사라진다. 
 	- onCreate(): Activity의 생성을 의미한다 Activity가 시작되기전에 onCreate()을 통해서 생성이 이루어져야 실행이 가능한 상태가 된다. 뷰를 구성하고 결합하는 과정을 하고 onStart()를 콜백한다
@@ -155,25 +155,25 @@
 
 # 미션 5 코드로 ConstraintLayout에 View 배치하기
 ## 학습 목표
-- [ ] 코드로 ConstraintLayout에 View를 배치할 수 있다.
+- [x] 코드로 ConstraintLayout에 View를 배치할 수 있다.
 
-- [ ] ImageView를 추가하고 이미지를 표시할 수 있다.
+- [x] ImageView를 추가하고 이미지를 표시할 수 있다.
 
-- [ ] 프로젝트의 assets 폴더에 리소스를 추가하고, 불러올 수 있다.
+- [x] 프로젝트의 assets 폴더에 리소스를 추가하고, 불러올 수 있다.
 
 ## 기능요구사항
-- [ ] MainActivity의 디자인을 변경하고, 액자 앱의 동작을 구현한다.
+- [x] MainActivity의 디자인을 변경하고, 액자 앱의 동작을 구현한다.
 
-- [ ] 실행하고 새로운 화면을 캡처해서 README.md 파일에 포함한다.
+- [x] 실행하고 새로운 화면을 캡처해서 README.md 파일에 포함한다.
 
 ## 프로그래밍 요구사항
-- [ ] MainActivity에 ImageView를 240 x 240 크기로 배치한다.
+- [x] MainActivity에 ImageView를 240 x 240 크기로 배치한다.
 
-- [ ] ImageView에 보여줄 이미지 리소스를 다운로드 한다. 압축을 풀고, 파일들을 assets 폴더 하위에 추가한다.
+- [x] ImageView에 보여줄 이미지 리소스를 다운로드 한다. 압축을 풀고, 파일들을 assets 폴더 하위에 추가한다.
 
-- [ ] assets 폴더의 이미지 파일 01.jpg를 열어 Bitmap으로 변환해 ImageView에 표시한다.
+- [x] assets 폴더의 이미지 파일 01.jpg를 열어 Bitmap으로 변환해 ImageView에 표시한다.
 
-	- [ ] 아래에 생략한 부분의 구현을 완료해주세요.
+- [x] 아래에 생략한 부분의 구현을 완료해주세요.
 ```
 // step 1. asset 폴더에서 파일 열기
 resources.assets.open("fileName").....
@@ -183,19 +183,23 @@ resources.assets.open("fileName").....
 imageView.setImageBitmap(bitmap)
 ```
 
-- [ ] '다음' 버튼 클릭 시, 다운로드 받은 이미지 01~22까지 랜덤으로 숫자를 선택해서 ImageView에 표시한다.
+- [x] '다음' 버튼 클릭 시, 다운로드 받은 이미지 01~22까지 랜덤으로 숫자를 선택해서 ImageView에 표시한다.
 
-	- [ ] 앱이 처음 실행되었을 때는 ImageView의 배경색만 보인다.
+	- [x] 앱이 처음 실행되었을 때는 ImageView의 배경색만 보인다.
 
-	- [ ] 이전 단계에서 구현했던 화면 이동 기능은 제거한다.
+	- [x] 이전 단계에서 구현했던 화면 이동 기능은 제거한다.
 
-	- [ ] 랜덤으로 숫자를 생성하고, fileName을 포맷에 맞게 변경한다.
+	- [x] 랜덤으로 숫자를 생성하고, fileName을 포맷에 맞게 변경한다.
 
-- [ ] ImageView의 scaleType 속성을 활용해 이미지를 표시하는 방법을 결정한다.
+- [x] ImageView의 scaleType 속성을 활용해 이미지를 표시하는 방법을 결정한다.
 
-- [ ] ImageView ~ Button까지 제약조건을 추가해 ConstraintLayout의 중앙에 정렬한다.
+- [x] ImageView ~ Button까지 제약조건을 추가해 ConstraintLayout의 중앙에 정렬한다.
 
 ## 추가학습거리
 - [ ] ConstraintLayout의 주요 기능을 학습한다.
 
 - [ ] ImageView의 주요 속성은 어떤게 있는지 학습한다.
+
+## 결과
+<img width="823" alt="logcat" src="https://user-images.githubusercontent.com/79190824/154385191-77c837af-fa7e-4c21-b4a5-a40110388e8a.gif">
+
