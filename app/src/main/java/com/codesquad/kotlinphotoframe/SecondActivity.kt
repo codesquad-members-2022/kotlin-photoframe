@@ -13,6 +13,8 @@ import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.snackbar.Snackbar
 
 private const val TAG = "SecondActivity"
 
@@ -22,6 +24,7 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         Log.d(TAG, "onCreate")
+        val layout = findViewById<ConstraintLayout>(R.id.custom_layout_second_activity)
         val picture = findViewById<ImageView>(R.id.my_photo_image_load)
         val frameView = findViewById<ImageView>(R.id.my_photo_frame_second_activity)
         val fab = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab_second_activity)
@@ -36,6 +39,11 @@ class SecondActivity : AppCompatActivity() {
                 val bitmap =
                     ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, it))
                 picture.setImageBitmap(bitmap)
+                Snackbar.make(
+                    layout,
+                    "사진을 불러왔습니다",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
 
         button.setOnClickListener {
