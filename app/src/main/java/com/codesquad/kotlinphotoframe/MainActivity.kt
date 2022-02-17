@@ -20,11 +20,15 @@ import com.google.android.material.snackbar.Snackbar
 import java.io.InputStream
 import kotlin.random.Random
 
+fun String.Snackbar(contextView: View, intent: Intent) {
+    Snackbar.make(contextView, this, Snackbar.LENGTH_SHORT).show()
+}
 
 class MainActivity : AppCompatActivity() {
     override fun equals(str: Any?): Boolean {
         return str == null
     }
+
     private lateinit var activityName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,37 +43,39 @@ class MainActivity : AppCompatActivity() {
         val switch: SwitchMaterial = findViewById(R.id.darkMode)
         switch.text = "dark"
         switch.setOnCheckedChangeListener { buttonView, isChecked ->
-            when(isChecked){
+            when (isChecked) {
                 true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
         val msg = intent.getStringExtra("msg")
-        if (msg != null){
-            Snackbar.make(contextView, msg, Snackbar.LENGTH_SHORT).show()
-            intent.removeExtra("msg")
-        }
+        msg?.Snackbar(contextView, intent)
+        intent.removeExtra("msg")
         val imageView: ImageView = findViewById(R.id.image_view)
+        imageView.setBackgroundColor(Color.GRAY)
         button.setOnClickListener {
 //            val secondIntent = Intent(this, SecondActivity::class.java)
 //            startActivity(secondIntent)
             imageLoad(imageView)
         }
     }
-    fun imageLoad(imageView: ImageView){
+
+    fun imageLoad(imageView: ImageView) {
         val fileName = makeFileName((1..22).random())
 
-        // step 1. asset 폴더에서 파일 열기
+        //step 1. asset 폴더에서 파일 열기
         val image = resources.assets.open("$fileName.jpg")
         val bitmap = BitmapFactory.decodeStream(image)
 
         //step 2. imageView에 표시
         imageView.setImageBitmap(bitmap)
     }
-    fun makeFileName(fileName: Int) = when(fileName/10==0){
-        true ->  "0$fileName"
+
+    fun makeFileName(fileName: Int) = when (fileName / 10 == 0) {
+        true -> "0$fileName"
         else -> fileName.toString()
     }
+
     override fun onRestart() {
         super.onRestart()
         activityName = this.localClassName
