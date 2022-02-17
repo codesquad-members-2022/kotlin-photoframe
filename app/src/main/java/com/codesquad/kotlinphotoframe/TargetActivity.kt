@@ -23,7 +23,6 @@ class TargetActivity : AppCompatActivity() {
             finish()
         }
         Log.d("${tag}", "onCreate")
-
     }
 
     override fun onStart() {
@@ -45,6 +44,5 @@ class TargetActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d("$tag", "onDestroy")
     }
-
 
 }
