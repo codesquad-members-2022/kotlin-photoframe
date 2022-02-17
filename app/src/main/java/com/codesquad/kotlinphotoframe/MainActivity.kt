@@ -18,32 +18,26 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var textForFrame: TextView
+    private lateinit var firstButton: Button
+    private lateinit var secondButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("MainActivity", "onCreate")
-
-        val textForFrame: TextView = findViewById(R.id.textForFrame)
+        textForFrame = findViewById(R.id.textForFrame)
+        secondButton = findViewById(R.id.button2)
         setTextForFrame(textForFrame)
 
-
-        val firstButton: Button = findViewById(R.id.button)
-        setFirstButtonToShowSnackBarAndToastMeg(firstButton)
-
-
-        val secondButton: Button = findViewById(R.id.button2)
-        setSecondButtonToMoveOtherActivity(secondButton)
-
     }
-
 
     private fun setTextForFrame(textForFrame: TextView) {
         val name = "Linus"
         textForFrame.text = "${name}의 사진액자"
         textForFrame.setTextColor(Color.parseColor("#FF0000"))
         textForFrame.setBackgroundColor(Color.YELLOW)
-        textForFrame.setTextSize(5,8.0f)
+        textForFrame.setTextSize(3, 10.0f)
     }
 
     private fun setFirstButtonToShowSnackBarAndToastMeg(button: Button) {
@@ -59,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     private fun setSecondButtonToMoveOtherActivity(button: Button) {
         val launcher = showTextAfterotherActivity(button)
         button.setOnClickListener {
-            val intent= Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, SecondActivity::class.java)
             launcher.launch(intent)
         }
     }
@@ -69,7 +63,6 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "사진을 불러왔습니다", LENGTH_SHORT).show()
         }
     }
-
 
     override fun onStart() {
         super.onStart()

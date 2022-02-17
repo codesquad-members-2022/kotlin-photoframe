@@ -97,5 +97,11 @@
 
 
 
-#### 6. 🔖 코드로 ConstraintLayout에 View 배치하기
-
+#### 6. 🔖 XML 코드로 ConstraintLayout에 View 배치하기
+1. [x] XML 코드 MainActivity에 ImageView를 240 x 240 크기로 배치한다.
+   1. 알고있는 xml 코드로 직접 imageview와 dp 사이즈를 설정
+   2. 잘 모르는 속성이 있다면 design editor로 추가한 후에 어떤 코드가 추가되는지 확인하고 지우고 다시 코드로 작성해서 추가
+2. [x] ImageView ~ Button까지 제약조건을 추가해 ConstraintLayout의 중앙에 정렬한다.
+   1. 각 속성에서 오른쪽과 왼쪽에 제약 조건을 추가하고 bias를 0.5씩 주었습니다.
+   2. 3개의 view를 체인화하고 체인 스타일을 `packed`로 했습니다.
+   3. 그리고 textview 위 아래로 여백을 주어 보기 좋도록 배치하였습니다.
