@@ -20,8 +20,15 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
 
         val layout = findViewById<ConstraintLayout>(R.id.custom_layout)
-        val button: Button = findViewById(R.id.next_photo_button)
+        val button = findViewById<Button>(R.id.next_photo_button)
         val imageView = findViewById<ImageView>(R.id.my_photo_image)
+        val frameView = findViewById<ImageView>(R.id.my_photo_frame)
+        val floatingButton = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab)
+
+        val frameFile = resources.assets.open("photo_frame/photoframe-border.png")
+        val frameImage = BitmapFactory.decodeStream(frameFile)
+        frameView.setImageBitmap(frameImage)
+        frameFile.close()
 
         button.setOnClickListener {
             Snackbar.make(
@@ -50,6 +57,10 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
             sourceImage?.close()
+        }
+
+        floatingButton.setOnClickListener {
+            startActivity(Intent(this, SecondActivity::class.java))
         }
     }
 

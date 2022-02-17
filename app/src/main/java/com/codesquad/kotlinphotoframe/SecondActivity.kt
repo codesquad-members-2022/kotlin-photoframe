@@ -1,24 +1,44 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
 private const val TAG = "SecondActivity"
 
-class SecondActivity : AppCompatActivity(){
+class SecondActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         Log.d(TAG, "onCreate")
-
+        val picture = findViewById<ImageView>(R.id.my_photo_image_load)
+        val frameView = findViewById<ImageView>(R.id.my_photo_frame_second_activity)
         val button: Button = findViewById(R.id.add_photo_button)
+        val frameFile = resources.assets.open("photo_frame/photoframe-border.png")
+        val frameImage = BitmapFactory.decodeStream(frameFile)
+        frameView.setImageBitmap(frameImage)
+        frameFile.close()
+
+        val startForResult =
+            registerForActivityResult(ActivityResultContracts.GetContent()) {
+                val bitmap =
+                    ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, it))
+                picture.setImageBitmap(bitmap)
+            }
 
         button.setOnClickListener {
-            //startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            startForResult.launch("image/*")
         }
     }
 
