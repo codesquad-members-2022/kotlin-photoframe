@@ -31,9 +31,12 @@ class SecondActivity : AppCompatActivity() {
             }
 
         selectButton.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                .apply { type = "image/*" }
-            getResult.launch(intent)
+            val intent = Intent()
+            .apply {
+                action = Intent.ACTION_GET_CONTENT
+                type = "image/*"
+            }
+            getResult.launch(Intent.createChooser(intent, "앨범 가져오기"))
         }
     }
 
