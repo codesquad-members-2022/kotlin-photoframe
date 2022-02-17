@@ -4,6 +4,8 @@ import android.Manifest
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.media.Image
@@ -47,20 +49,22 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(contextView, msg, Snackbar.LENGTH_SHORT).show()
             intent.removeExtra("msg")
         }
+        val imageView: ImageView = findViewById(R.id.image_view)
         button.setOnClickListener {
-            val secondIntent = Intent(this, SecondActivity::class.java)
-            startActivity(secondIntent)
-            //imageLoad()
+//            val secondIntent = Intent(this, SecondActivity::class.java)
+//            startActivity(secondIntent)
+            imageLoad(imageView)
         }
     }
-    fun imageLoad(){
+    fun imageLoad(imageView: ImageView){
         val fileName = makeFileName((1..22).random())
 
         // step 1. asset 폴더에서 파일 열기
         val image = resources.assets.open("$fileName.jpg")
-        val imageView: ImageView = findViewById(R.id.image_view)
+        val bitmap = BitmapFactory.decodeStream(image)
+
         //step 2. imageView에 표시
-        //imageView.setImageBitmap(bitmap)
+        imageView.setImageBitmap(bitmap)
     }
     fun makeFileName(fileName: Int) = when(fileName/10==0){
         true ->  "0$fileName"
