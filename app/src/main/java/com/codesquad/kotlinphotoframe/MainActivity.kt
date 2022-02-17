@@ -1,7 +1,9 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textForFrame: TextView
     private lateinit var firstButton: Button
     private lateinit var secondButton: Button
+    private lateinit var imageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +31,19 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "onCreate")
         textForFrame = findViewById(R.id.textForFrame)
         secondButton = findViewById(R.id.button2)
+        imageView = findViewById(R.id.imageView)
         setTextForFrame(textForFrame)
-
+        clickBtnToShowImage(secondButton)
     }
 
+    private fun clickBtnToShowImage(btn:Button) {
+        btn.setOnClickListener {
+            val filename = Array<String>(22) {i -> String.format("%02d", i+1) + ".jpg"}.random()
+            val bitmap = BitmapFactory.decodeStream(resources.assets.open(filename))
+            imageView.setImageBitmap(bitmap)
+            imageView.scaleType = ImageView.ScaleType.FIT_XY
+        }
+    }
     private fun setTextForFrame(textForFrame: TextView) {
         val name = "Linus"
         textForFrame.text = "${name}의 사진액자"

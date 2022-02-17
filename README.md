@@ -105,3 +105,17 @@
    1. 각 속성에서 오른쪽과 왼쪽에 제약 조건을 추가하고 bias를 0.5씩 주었습니다.
    2. 3개의 view를 체인화하고 체인 스타일을 `packed`로 했습니다.
    3. 그리고 textview 위 아래로 여백을 주어 보기 좋도록 배치하였습니다.
+3. [x] assets 폴더의 이미지 파일 01.jpg를 열어 Bitmap으로 변환해 ImageView에 표시한다.
+   1. main 폴더 및에 assets 파일 폴더를 생성하고 다운받은 이미지를 넣었습니다.
+   2. jpg, png 파일 등은 압축되어져 있는 파일이지만 bitmap 압축되지 않은 파일이다. 따라서 bitmap으로 변환하기 위해서는 이런 파일들을 decode해야합니다.
+   3. decode하기 위해서는 [BitmapFactor](https://developer.android.com/reference/android/graphics/BitmapFactory?hl=en#BitmapFactory()) 클래스를 활용했습니다.  
+      `val bitmap = BitmapFactory.decodeStream(resources.assets.open(filename))`
+4. [x] '다음' 버튼 클릭 시, 다운로드 받은 이미지 01~22까지 랜덤으로 숫자를 선택해서 ImageView에 표시한다.
+   1. `배열.random()`를 통해 배열의 요소를 랜덤하게 반환하도록 했습니다.
+   2. 미리 사이즈가 정해져있기 때문에 Array(22)를 사용했습니다.
+   3. `val filename = Array<String>(22) {i -> String.format("%02d", i+1) + ".jpg"}.random()`
+   4. 이미지는 imageView 메서드를 활용했습니다. `imageView.setImageBitmap(bitmap)`
+5. [x] ImageView의 scaleType 속성을 활용해 이미지를 표시하는 방법을 결정한다.
+   1. scaleType은 넣어둔 imageView에 꽉차도록 `FIT_XY` 를 선택했습니다.
+   2. `imageView.scaleType = ImageView.ScaleType.FIT_XY`
+   3. 더 많은 scaleType은 [여기](https://developer.android.com/reference/kotlin/android/widget/ImageView.ScaleType)를 참고하시기 바랍니다.
