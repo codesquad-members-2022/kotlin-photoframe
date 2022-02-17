@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 
@@ -28,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
         val imageView = findViewById<ImageView>(R.id.iv_photoFrame_photoGallery)
         addButtonEventForImageChange(addPhotoBtn, imageView)
+        val moveBtn= findViewById<FloatingActionButton>(R.id.floating_btn_photo_frame)
+        registerFloatingButtonEventListenerWithActivityChange(moveBtn)
+
     }
 
     fun addButtonEventForImageChange(addPhotoBtn: Button, imageView: ImageView) {
@@ -39,6 +43,13 @@ class MainActivity : AppCompatActivity() {
             imageView.scaleType = ImageView.ScaleType.FIT_XY
         }
     }
+    fun registerFloatingButtonEventListenerWithActivityChange(addPhotoBtn: FloatingActionButton) {
+        addPhotoBtn.setOnClickListener {
+            val intent: Intent = Intent(this, TargetActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
 
     fun registerButtonEventListenerWithActivityChange(addPhotoBtn: Button) {
         addPhotoBtn.text = "다음"
