@@ -7,34 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
 
+    <View
+        android:id="@+id/view_frame"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/photoframe_border"
+        app:layout_constraintBottom_toTopOf="@id/btn_select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
     <ImageView
-        android:id="@+id/imageview_frame"
+        android:id="@+id/iv_select"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:background="#FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/view_frame"
+        app:layout_constraintEnd_toEndOf="@id/view_frame"
+        app:layout_constraintStart_toStartOf="@id/view_frame"
+        app:layout_constraintTop_toTopOf="@id/view_frame" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/photoframe_border"
+        android:layout_marginTop="20dp"
+        android:text="@string/select"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageview_select"
-        android:layout_width="275dp"
-        android:layout_height="275dp"
-        android:background="#FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@id/imageview_frame"
-        app:layout_constraintEnd_toEndOf="@id/imageview_frame"
-        app:layout_constraintStart_toStartOf="@id/imageview_frame"
-        app:layout_constraintTop_toTopOf="@id/imageview_frame" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_select"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/select"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageview_frame" />
+        app:layout_constraintTop_toBottomOf="@id/view_frame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,13 +21,13 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
 
         val name = "Stitch"
-        val textView: TextView = findViewById(R.id.textview_name)
+        val textView: TextView = findViewById(R.id.tv_name)
         textView.text = "${name}의 사진 액자"
 
-        val buttonPictureAdd: Button = findViewById(R.id.button_picture_add)
+        val buttonPictureAdd: Button = findViewById(R.id.btn_picture_add)
         val layout: ConstraintLayout = findViewById(R.id.constraintlayout_layout)
-        val photo: ImageView = findViewById(R.id.imageview_photo)
-        val floatingButton: FloatingActionButton = findViewById(R.id.floatingbutton_next)
+        val photo: ImageView = findViewById(R.id.iv_photo)
+        val floatingButton: FloatingActionButton = findViewById(R.id.fab_next)
 
         buttonPictureAdd.setOnClickListener {
             changeImage(layout, photo, getRandomNumber(IMAGE_NUMBER))

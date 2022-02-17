@@ -8,52 +8,51 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageview_photo"
+        android:id="@+id/iv_photo"
         android:layout_width="240dp"
         android:layout_height="240dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="20dp"
         android:background="#BCB3B3"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/textview_name"
+        app:layout_constraintBottom_toTopOf="@+id/tv_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/textview_name"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="25dp"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button_picture_add"
+        app:layout_constraintBottom_toTopOf="@+id/btn_picture_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageview_photo" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_photo" />
 
     <Button
-        android:id="@+id/button_picture_add"
+        android:id="@+id/btn_picture_add"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:padding="12dp"
         android:text="@string/next"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageview_photo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingbutton_next"
+        android:id="@+id/fab_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/arrow"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

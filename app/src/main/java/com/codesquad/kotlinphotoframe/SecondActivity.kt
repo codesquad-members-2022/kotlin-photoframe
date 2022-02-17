@@ -18,8 +18,8 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        val selectButton: Button = findViewById(R.id.button_select)
-        val selectImage: ImageView = findViewById(R.id.imageview_select)
+        val selectButton: Button = findViewById(R.id.btn_select)
+        val selectImage: ImageView = findViewById(R.id.iv_select)
         val layout: ConstraintLayout = findViewById(R.id.constraintlayout_secondLayout)
         val getResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
