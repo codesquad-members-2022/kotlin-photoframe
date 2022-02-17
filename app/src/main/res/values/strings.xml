@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">kotlin-photoframe</string>
-    <string name="ttt">123</string>
-    <string name="title">123</string>
+    <string name="StartButton">다음</string>
+    <string name="닫기">닫기</string>
+    <string name="next">다음</string>
+    <string name="Start">시작</string>
 </resources>
