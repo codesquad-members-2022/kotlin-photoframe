@@ -1,7 +1,8 @@
 package com.codesquad.kotlinphotoframe
 
-import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,9 +10,11 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
+import java.io.IOException
 
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
@@ -39,6 +42,17 @@ class MainActivity : AppCompatActivity() {
         btnAddImage.setOnClickListener {
             val intent = Intent(this, PhotoActivity::class.java)
             getStartResult.launch(intent)
+        }
+    }
+
+    private fun getBitmapFromAssetsDirectory(filename: String): Bitmap? {
+        try {
+            val assetMgr = resources.assets
+            val inputStream = assetMgr.open(filename)
+            return BitmapFactory.decodeStream(inputStream)
+        } catch (e: IOException) {
+            Log.e(TAG, e.toString())
+            return null
         }
     }
 
