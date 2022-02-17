@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/btn_goto_second_activity"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
-        android:text="다음"
+        android:text="사진 액자"
         android:backgroundTint="#8BC34A"
         />
 
