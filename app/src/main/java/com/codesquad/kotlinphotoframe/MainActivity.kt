@@ -39,12 +39,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             val rawFile = resources.assets
+            val sourceImage = rawFile?.open("pictures/$randomID.jpg")
 
-            rawFile.run {
-                val sourceImage = this?.open("$randomID.jpg")
-                val bitmapImage = BitmapFactory.decodeStream(sourceImage)
+            sourceImage?.run {
+                val bitmapImage = BitmapFactory.decodeStream(this)
                 imageView.setImageBitmap(bitmapImage)
-                this?.close()
             } ?: run {
                 Snackbar.make(
                     layout,
@@ -52,6 +51,8 @@ class MainActivity : AppCompatActivity() {
                     Snackbar.LENGTH_LONG
                 ).show()
             }
+
+            sourceImage?.close()
         }
     }
 
