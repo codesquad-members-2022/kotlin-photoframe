@@ -30,19 +30,6 @@ class MainActivity : AppCompatActivity() {
         tvExplain.setTextColor(Color.RED)
         tvExplain.setBackgroundColor(Color.YELLOW)
         tvExplain.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24F)
-
-        val btnAddImage: Button = findViewById(R.id.btn_add_image)
-        val layoutMain: View = findViewById(R.id.layout_main)
-        val getStartResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == RESULT_OK) {
-                Snackbar.make(layoutMain, "사진을 불러왔습니다.", Snackbar.LENGTH_LONG).show()
-            }
-        }
-
-        btnAddImage.setOnClickListener {
-            val intent = Intent(this, PhotoActivity::class.java)
-            getStartResult.launch(intent)
-        }
     }
 
     private fun getBitmapFromAssetsDirectory(filename: String): Bitmap? {
