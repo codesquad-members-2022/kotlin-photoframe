@@ -96,8 +96,9 @@
       ![11](https://user-images.githubusercontent.com/95393311/154078597-734aae6b-868b-49b7-870a-6d513b1b1e02.JPG)
 
 
+# 👉 두번째 미션
 
-#### 6. 🔖 XML 코드로 ConstraintLayout에 View 배치하기
+#### 1. 🔖 XML 코드로 ConstraintLayout에 View 배치하기
 1. [x] XML 코드 MainActivity에 ImageView를 240 x 240 크기로 배치한다.
    1. 알고있는 xml 코드로 직접 imageview와 dp 사이즈를 설정
    2. 잘 모르는 속성이 있다면 design editor로 추가한 후에 어떤 코드가 추가되는지 확인하고 지우고 다시 코드로 작성해서 추가
@@ -119,3 +120,18 @@
    1. scaleType은 넣어둔 imageView에 꽉차도록 `FIT_XY` 를 선택했습니다.
    2. `imageView.scaleType = ImageView.ScaleType.FIT_XY`
    3. 더 많은 scaleType은 [여기](https://developer.android.com/reference/kotlin/android/widget/ImageView.ScaleType)를 참고하시기 바랍니다.
+
+
+#### 2. 갤러리에서 사진 선택하기
+##### 1. Activity 연결하기
+1. [x] MainActivity 화면 오른쪽 하단에 아래와 같은 버튼을 추가하고, 이전 단계에서 만들었던 두번째 Activity로 이동시킨다. 
+   1. [x] FloatingActionButton을 사용한다. 
+      - 공식사이트가 굉장히 친절해서 간단하게 구현할 수 있었습니다.
+      - [Add a Floating Action Button](https://developer.android.com/guide/topics/ui/floating-action-button)
+      - [Buttons: floating action button](https://material.io/components/buttons-floating-action-button)
+   2. [x] Vector Asset에서 버튼에 사용할 arrow 리소스를 생성한다.
+      1. 역시나 공식사이트가 유용했습니다.
+         - [Create app icons with Image Asset Studio](https://developer.android.com/studio/write/image-asset-studio?hl=ko)
+
+
+
