@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -13,9 +14,11 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.PermissionChecker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
+import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
     val tag = "MainActivity"
@@ -29,8 +32,9 @@ class MainActivity : AppCompatActivity() {
         val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
         val imageView = findViewById<ImageView>(R.id.iv_photoFrame_photoGallery)
         addButtonEventForImageChange(addPhotoBtn, imageView)
-        val moveBtn= findViewById<FloatingActionButton>(R.id.floating_btn_photo_frame)
+        val moveBtn = findViewById<FloatingActionButton>(R.id.floating_btn_photo_frame)
         registerFloatingButtonEventListenerWithActivityChange(moveBtn)
+
 
     }
 
@@ -43,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             imageView.scaleType = ImageView.ScaleType.FIT_XY
         }
     }
+
     fun registerFloatingButtonEventListenerWithActivityChange(addPhotoBtn: FloatingActionButton) {
         addPhotoBtn.setOnClickListener {
             val intent: Intent = Intent(this, TargetActivity::class.java)
