@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp" android:layout_marginBottom="20dp"
         android:visibility="visible" app:layout_constraintBottom_toTopOf="@+id/second_btn"
         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/image_view"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/first_image_view"
     />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_for_frame" app:layout_constraintVertical_bias="0.5"
     />
     <ImageView
-        android:id="@+id/image_view"
+        android:id="@+id/first_image_view"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:background="#C1BEBE" app:layout_constraintBottom_toTopOf="@+id/text_for_frame"

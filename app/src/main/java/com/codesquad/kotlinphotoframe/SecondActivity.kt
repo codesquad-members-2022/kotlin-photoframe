@@ -1,38 +1,43 @@
 package com.codesquad.kotlinphotoframe
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import 	android.content.Intent
 import android.graphics.Color
 import android.util.Log
-import android.widget.Toast
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
 
 
 class SecondActivity: AppCompatActivity() {
+    private lateinit var layout: ConstraintLayout
+    private lateinit var firstBtn: Button
+    private lateinit var firstImageView: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         Log.d("SecondActivity", "onCreate")
-
-
-        val layout = findViewById<ConstraintLayout>(R.id.secondLayOut)
+        layout = findViewById(R.id.second_activity_first_layout)
+        firstBtn = findViewById(R.id.second_activity_btn)
+        firstImageView = findViewById(R.id.second_activity_imageview)
         setLayoutColor(layout)
+        putImageToImageView(firstImageView)
+        setFirstButtonForTextAndColor(firstBtn)
+    }
 
-        val button = findViewById<Button>(R.id.button3)
-        setFirstButton(button)
-        clickButtonToFinish(button)
+    private fun putImageToImageView(imageView: ImageView) {
+        imageView.setImageDrawable(getDrawable(R.drawable.frame))
     }
 
     private fun setLayoutColor(layout:ConstraintLayout) {
-        layout.setBackgroundColor(Color.parseColor("#FFE42B2B"))
+        layout.setBackgroundColor(Color.parseColor("#FFD3FAF9"))
     }
 
-    private fun setFirstButton(button:Button) {
-        button.text = "닫기"
+    private fun setFirstButtonForTextAndColor(button:Button) {
+        button.text = "선택"
+        button.textSize = 20f
         button.setTextColor(Color.BLACK)
         button.setBackgroundColor(Color.YELLOW)
     }
@@ -40,6 +45,12 @@ class SecondActivity: AppCompatActivity() {
     private fun clickButtonToFinish(button: Button) {
         button.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun clickBtnToSelectPhoto(button: Button) {
+        button.setOnClickListener {
+
         }
     }
 

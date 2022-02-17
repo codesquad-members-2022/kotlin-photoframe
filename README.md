@@ -122,8 +122,8 @@
    3. 더 많은 scaleType은 [여기](https://developer.android.com/reference/kotlin/android/widget/ImageView.ScaleType)를 참고하시기 바랍니다.
 
 
-#### 2. 갤러리에서 사진 선택하기
-##### 1. Activity 연결하기
+#### 2. 🔖  갤러리에서 사진 선택하기
+##### 🤡  1. Activity 연결하기
 1. [x] MainActivity 화면 오른쪽 하단에 아래와 같은 버튼을 추가하고, 이전 단계에서 만들었던 두번째 Activity로 이동시킨다. 
    1. [x] FloatingActionButton을 사용한다. 
       - 공식사이트가 굉장히 친절해서 간단하게 구현할 수 있었습니다.
@@ -132,6 +132,14 @@
    2. [x] Vector Asset에서 버튼에 사용할 arrow 리소스를 생성한다.
       1. 역시나 공식사이트가 유용했습니다.
          - [Create app icons with Image Asset Studio](https://developer.android.com/studio/write/image-asset-studio?hl=ko)
-
-
+##### 🤡  2. 액자 꾸미기
+1. [x] 액자 리소스는 액자 이미지를 다운로드하고, 프로젝트에 추가한다. 
+   1. png 리소스를 어느 폴더에 추가할지 찾아보고 선택한다. 
+      - png리소스는 bitmap이다. bitmap 리소스는 drawable 리소스에 속한다. 따라서 png 리소스는 drawable 폴더에 추가해야 합니다.  
+      - [Bitmap](https://developer.android.com/guide/topics/resources/drawable-resource#Bitmap)
+   2. Android Studio에서 허용하는 file명으로 변경한다.
+      - `'-' is not a valid file-based resource name character: File-based resource names must contain only lowercase a-z, 0-9, or underscore`
+      - 위의 원칙에 따라 `frame`으로 변경했습니다.
+   3. 두번째 Activity의 화면 디자인을 아래와 같이 구현한다. 
+      - 커스텀 마이징한 디자인으로 구현했습니다.
 

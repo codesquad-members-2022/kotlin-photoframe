@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textForFrame: TextView
     private lateinit var firstFab: FloatingActionButton
     private lateinit var secondButton: Button
-    private lateinit var imageView: ImageView
+    private lateinit var firstImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "onCreate")
         textForFrame = findViewById(R.id.text_for_frame)
         secondButton = findViewById(R.id.second_btn)
-        imageView = findViewById(R.id.image_view)
+        firstImageView = findViewById(R.id.first_image_view)
         firstFab = findViewById(R.id.fab)
         setTextForFrame(textForFrame)
         clickBtnToShowImage(secondButton)
@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
         btn.setOnClickListener {
             val filename = Array<String>(22) { i -> String.format("%02d", i + 1) + ".jpg" }.random()
             val bitmap = BitmapFactory.decodeStream(resources.assets.open(filename))
-            imageView.setImageBitmap(bitmap)
-            imageView.scaleType = ImageView.ScaleType.FIT_XY
+            firstImageView.setImageBitmap(bitmap)
+            firstImageView.scaleType = ImageView.ScaleType.FIT_XY
         }
     }
 
