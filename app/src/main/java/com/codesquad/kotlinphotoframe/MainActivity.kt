@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import kotlin.random.Random
@@ -41,6 +42,12 @@ class MainActivity : AppCompatActivity() {
             if (ivPicture.setImageBitmap(getBitmapFromAssetsDirectory(fileName)) == null) {
                 Toast.makeText(this, "이미지를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        val btnNextActivity: FloatingActionButton = findViewById(R.id.btn_next_activity)
+        val intentNextActivity = Intent(this, PhotoActivity::class.java)
+        btnNextActivity.setOnClickListener {
+            startActivity(intentNextActivity)
         }
     }
 
