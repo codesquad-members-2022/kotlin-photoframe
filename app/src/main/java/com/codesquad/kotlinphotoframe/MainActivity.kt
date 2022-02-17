@@ -12,9 +12,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
+import kotlin.random.Random
 
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
@@ -30,6 +32,16 @@ class MainActivity : AppCompatActivity() {
         tvExplain.setTextColor(Color.RED)
         tvExplain.setBackgroundColor(Color.YELLOW)
         tvExplain.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24F)
+
+        val btnNext: Button = findViewById(R.id.btn_next_picture)
+        val ivPicture: ImageView = findViewById(R.id.iv_picture)
+        btnNext.setOnClickListener {
+            val randomIndex = Random.nextInt(1, 23)
+            val fileName = String.format("%02d.jpg", randomIndex)
+            if (ivPicture.setImageBitmap(getBitmapFromAssetsDirectory(fileName)) == null) {
+                Toast.makeText(this, "이미지를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun getBitmapFromAssetsDirectory(filename: String): Bitmap? {
