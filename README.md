@@ -225,3 +225,10 @@
 
       ![Screenshot_1645009781](https://user-images.githubusercontent.com/29175138/154252755-b69f6bbf-0b5c-4b75-beed-ce5becd740da.png)
 
+- **AppCompatActivity란 무엇인가**
+  - sdk가 발전하면서 하위 안드로이드를 지원하지 않는 메소드들이 있는데 이를 각 버전에 맞게 지원할 수 있도록 해주는 클래스이다.
+  - 이전 버전과의 호환성을 유지하기 위해 `AppCompatActivity`를 사용한다.
+  - `AppCompatActivity`의 상속 구조는 아래와 같다.
+
+    ![AppCompatActivity 상속 구조](https://user-images.githubusercontent.com/29175138/154197122-9fcb3254-1aa7-48aa-8f0b-23f998595fd0.png)
+
