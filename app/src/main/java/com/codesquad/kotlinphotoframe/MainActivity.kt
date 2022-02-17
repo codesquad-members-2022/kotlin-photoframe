@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.main_button -> {
-                val imageView = findViewById<ImageView>(R.id.main_image)
                 val images =
                     listOf( // Int 로 숫자를 랜덤 생성할 시 01, 02 와 같이 앞에 0을 구현하기 힘들어서 String 리스트로 처리
                         "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     val assetManager = resources.assets
                     val inputStream = assetManager.open("Demo Images/$image.jpg")
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
-                    imageView.setImageBitmap(bitmap)
+                    binding.mainImage.setImageBitmap(bitmap)
                 } catch (e: Exception) {
                     e.message
                 }
