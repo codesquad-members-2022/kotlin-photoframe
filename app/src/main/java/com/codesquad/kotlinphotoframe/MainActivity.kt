@@ -1,11 +1,14 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 
 private const val TAG = "MainActivity"
@@ -17,12 +20,39 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_photo_frame)
         Log.d(TAG, "onCreate")
 
-        val button: Button = findViewById(R.id.add_photo_button)
+        val layout = findViewById<ConstraintLayout>(R.id.custom_layout)
+        val button: Button = findViewById(R.id.next_photo_button)
+        val imageView = findViewById<ImageView>(R.id.my_photo_image)
 
         button.setOnClickListener {
-            startActivity(Intent(this, SecondActivity::class.java))
-        }
+            Snackbar.make(
+                layout,
+                "사진을 불러왔습니다",
+                Snackbar.LENGTH_LONG
+            ).show()
 
+            val randomNum = (1..22).random()
+            val randomID = if (randomNum < 10) {
+                "0$randomNum"
+            } else {
+                randomNum.toString()
+            }
+
+            val rawFile = resources.assets
+
+            rawFile.run {
+                val sourceImage = this?.open("$randomID.jpg")
+                val bitmapImage = BitmapFactory.decodeStream(sourceImage)
+                imageView.setImageBitmap(bitmapImage)
+                this?.close()
+            } ?: run {
+                Snackbar.make(
+                    layout,
+                    "사진이 존재하지 않습니다",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     override fun onRestart() {
