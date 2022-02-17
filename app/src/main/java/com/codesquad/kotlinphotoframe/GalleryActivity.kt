@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.codesquad.kotlinphotoframe.databinding.ActivityGalleryBinding
+import com.google.android.material.snackbar.Snackbar
 
 const val REQUEST_IMAGE_GET = 100
 
@@ -29,8 +30,11 @@ class GalleryActivity : AppCompatActivity() {
 
     fun setOpenGalleryBtn1(){
         var getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            Log.d("AppTest", "data : ${it.data}")
-            binding.ivPhoto.setImageURI(it.data?.data)
+            if(it.resultCode == RESULT_OK){
+                Log.d("AppTest", "data : ${it.data}")
+                binding.ivPhoto.setImageURI(it.data?.data)
+                Snackbar.make(binding.root, "사진을 불러왔습니다", Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         binding.btnOpenGallery.setOnClickListener {
@@ -60,6 +64,7 @@ class GalleryActivity : AppCompatActivity() {
             val fullPhotoUri: Uri? = data?.data
             Log.d("AppTest", "photo uri : $fullPhotoUri")
             binding.ivPhoto.setImageURI(fullPhotoUri)
+            Snackbar.make(binding.root, "사진을 불러왔습니다", Snackbar.LENGTH_SHORT).show()
         }
     }
 }
