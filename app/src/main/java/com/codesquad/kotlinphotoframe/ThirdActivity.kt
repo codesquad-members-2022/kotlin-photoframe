@@ -1,8 +1,10 @@
 package com.codesquad.kotlinphotoframe
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.codesquad.kotlinphotoframe.databinding.ActivityThirdBinding
 
@@ -17,6 +19,7 @@ class ThirdActivity : AppCompatActivity() {
         setContentView(view)
 
         setNextBtn()
+        setFloatingActionBtn()
     }
 
     fun setNextBtn(){
@@ -37,5 +40,13 @@ class ThirdActivity : AppCompatActivity() {
     fun getRandomNumber(): String{
         val num = (1..22).random()
         return if(num <= 9) "0$num" else num.toString()
+    }
+
+    fun setFloatingActionBtn(){
+        val getActivityResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}
+        binding.floatingActionButton.setOnClickListener {
+            val intent = Intent(this, GalleryActivity::class.java)
+            getActivityResult.launch(intent)
+        }
     }
 }
