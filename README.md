@@ -117,4 +117,29 @@
 
 - 그 외 scale type (참고링크 : https://mainia.tistory.com/2426)
 
+<br>
+
+![image](https://user-images.githubusercontent.com/69443895/154553244-953a14bd-d54f-4297-97cd-36da4d633f38.png)  ![image](https://user-images.githubusercontent.com/69443895/154553313-21041a2c-94a1-4a17-bc6b-5d8200b86800.png)
+
+- assets 폴더에서 jpg 파이을 가져와서 이미지뷰에 표시
+
+<br>
+
+
+### :seven: 갤러리에서 사진 선택하기
+- Intent 활용
+- startActivityForResult 방식과 registerForActivityResult 방식 두 가지로 구현
+- scale type은 default 사용
+
+![image](https://user-images.githubusercontent.com/69443895/154554109-7d54081a-41d3-4ad6-a311-5a317c81f906.png)  ![image](https://user-images.githubusercontent.com/69443895/154554172-4582020a-9a1d-4940-9885-84499d9f8f83.png)
+
+![image](https://user-images.githubusercontent.com/69443895/154554271-1560cd66-d4d6-4e82-ad3f-e689185c27cd.png)  ![image](https://user-images.githubusercontent.com/69443895/154554399-eac15948-6f3c-4ffd-8f9c-a96026ec92b8.png)
+
+
+
+
+
+
+
+
 
