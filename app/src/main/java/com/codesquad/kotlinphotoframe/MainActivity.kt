@@ -23,15 +23,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SecondActivity::class.java))
         }
 
-        /* 사진 snackbar 불러오기 기능 */
-
-//       button.setOnClickListener{
-//            Snackbar.make(
-//                findViewById(R.id.custom_layout),
-//                "사진 불러오는중",
-//                Snackbar.LENGTH_SHORT
-//            ).show()
-//        }
     }
 
     override fun onRestart() {
