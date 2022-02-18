@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:id="@+id/target_const_layout"
     tools:context=".TargetActivity">
 
     <ImageView
@@ -15,19 +16,17 @@
         android:src="@drawable/photo_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/target_iv_photo"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="220dp"
+        android:layout_height="240dp"
         android:layout_marginTop="180dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/target_btn_select"
@@ -36,6 +35,5 @@
         android:text="선택"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/target_iv_photo_border"
-        tools:layout_editor_absoluteX="158dp" />
+        app:layout_constraintTop_toBottomOf="@id/target_iv_photo_border" />
 </androidx.constraintlayout.widget.ConstraintLayout>

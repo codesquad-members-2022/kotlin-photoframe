@@ -21,24 +21,21 @@ import java.io.IOException
 import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
-    val tag = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("$tag", "onCreate")
         val photoFrameTv = findViewById<TextView>(R.id.tv_photoframe)
         val name = "Hede"
-        photoFrameTv.text = "${name}의 사진액자"
         val addPhotoBtn = findViewById<Button>(R.id.btn_photoframe)
         val imageView = findViewById<ImageView>(R.id.iv_photoFrame_photoGallery)
-        addButtonEventForImageChange(addPhotoBtn, imageView)
         val moveBtn = findViewById<FloatingActionButton>(R.id.floating_btn_photo_frame)
-        registerFloatingButtonEventListenerWithActivityChange(moveBtn)
-
-
+        setTextViewAttribute(photoFrameTv, name)
+        moveToPhotoView(moveBtn)
+        changeRandomImage(addPhotoBtn, imageView)
+        moveToPhotoView(moveBtn)
     }
 
-    fun addButtonEventForImageChange(addPhotoBtn: Button, imageView: ImageView) {
+    fun changeRandomImage(addPhotoBtn: Button, imageView: ImageView) {
         addPhotoBtn.setOnClickListener {
             val range = (1..22)
             val imgNum = range.random()
@@ -48,15 +45,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun registerFloatingButtonEventListenerWithActivityChange(addPhotoBtn: FloatingActionButton) {
+    fun moveToPhotoView(addPhotoBtn: FloatingActionButton) {
         addPhotoBtn.setOnClickListener {
             val intent: Intent = Intent(this, TargetActivity::class.java)
             startActivity(intent)
         }
     }
 
+    fun getBitMapImage(imgNum: Int): Bitmap? {
+        try {
+            val assetManager = this.assets
+            val imageFileName: String = if (imgNum < 10) "0${imgNum}" else "$imgNum"
+            return BitmapFactory.decodeStream(assetManager.open("${imageFileName}.jpg"))
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return null
+    }
 
-    fun registerButtonEventListenerWithActivityChange(addPhotoBtn: Button) {
+    fun getPhotoAddResult(addPhotoBtn: Button) {
         addPhotoBtn.text = "다음"
         val getResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -75,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun registerButtonEventListenerWithSnackBar(addPhotoBtn: Button) {
+    fun printPhotoLoadMessage(addPhotoBtn: Button) {
         addPhotoBtn.setOnClickListener {
             val snackBar = Snackbar.make(
                 findViewById<ConstraintLayout>(R.id.const_layout),
@@ -86,51 +93,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setTextViewAttribute(photoFrameTv: TextView) {
-        photoFrameTv.setTextColor(Color.parseColor("#FF000000"))
-        photoFrameTv.setBackgroundColor(Color.parseColor("#FF000000"))
-        photoFrameTv.setTextSize(Dimension.SP, 18F)
+    fun setTextViewAttribute(photoFrameTv: TextView, name: String) {
+        photoFrameTv.text = "${name}의 사진첩"
+        photoFrameTv.setTextColor(Color.BLACK)
+        photoFrameTv.setTextSize(Dimension.SP, 20F)
     }
 
-    fun getBitMapImage(imgNum: Int): Bitmap? {
-        try {
-            val assetManager = this.assets
-            val imageFileName: String = if (imgNum < 10) "0${imgNum}" else "$imgNum"
-            return BitmapFactory.decodeStream(assetManager.open("${imageFileName}.jpg"))
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return null
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("${tag}", "onStart")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d("${tag}", "reStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("${tag}", "onResume")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("${tag}", "onStop")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("${tag}", "onPause")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("${tag}", "onDestroy")
-    }
 
 }
