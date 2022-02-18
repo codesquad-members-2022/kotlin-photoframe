@@ -1,97 +1,96 @@
-# 진행 방법
+## Step 01
 
-- 포토프레임에 대한 요구사항을 파악한다.
-- 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-- 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-- 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
+### 프로그래밍 요구사항
 
-# 코드 리뷰 과정
-> 저장소 브랜치에 자신의 github 아이디에 해당하는 브랜치가 존재해야 한다.
->
-> 자신의 github 아이디에 해당하는 브랜치가 있는지 확인한다.
 
-1. 자신의 github 아이디에 해당하는 브랜치가 없는 경우 브랜치 생성 요청 채널을 통해 브랜치 생성을 요청한다.
-프로젝트를 자신의 계정으로 fork한다. 저장소 우측 상단의 fork 버튼을 활용한다.
+- [x] Logcat 활용하기
+- [x] 자동 생성된 MainActivity 클래스 onCreate 함수에서 Log.d("MainActivity", "onCreate") 코드를 추가하고 실행하면 Logcat 영역에 무엇이 출력되는지 확인한다.
 
-2. fork한 프로젝트를 자신의 컴퓨터로 clone한다.
-```
-git clone https://github.com/{본인_아이디}/{저장소 아이디}
-ex) https://github.com/step4me/kotlin-photoframe
-```
+### 동작 결과
+<img width="800" alt="스크린샷 2022-02-14 오후 2 59 47" src="https://user-images.githubusercontent.com/79504043/153829455-071f1155-f6d6-4a8e-9f7c-2d9b621a60e3.png">
 
-3. clone한 프로젝트 이동
-```
-cd {저장소 아이디}
-ex) cd kotlin-photoframe
-```
+<br>
+<br/>
 
-4. 본인 아이디로 브랜치를 만들기 위한 checkout
-```
-git checkout -t origin/본인_아이디
-ex) git checkout -t origin/step4me
-```
+---
 
-5. 기능 구현을 위한 브랜치 생성 (연속번호를 붙여나간다)
-```
-git checkout -b 브랜치이름
-ex) git checkout -b photoframe-step1
-```
+## Step 02
 
-6. commit
-```
-git status //확인
-git rm 파일명 //삭제된 파일
-git add 파일명(or * 모두) // 추가/변경 파일
-git commit -m "메세지" // 커밋
-```
+### 프로그래밍 요구사항
 
-7. 본인 원격 저장소에 올리기
-```
-git push --set-upstream origin 브랜치이름
-ex) git push --set-upstream origin photoframe-step1
-```
 
-8. pull request
-	- pull request는 github 서비스에서 진행할 수 있다.
-	- pull request는 original 저장소의 브랜치(자신의 github 아이디)와 앞 단계에서 생성한 브랜치 이름을 기준으로 한다.
+- [x] activity_main.xml에 TextView를 추가한다.
+- [ ] Design editor의 기능을 모두 활용해본다.
+- [x] MainActivity에서 TextView에 대한 참조를 얻어 text를 변경한다.
+  - [x] findViewById를 활용한다.
+  - [x] onCreate 함수에서 text를 변경한다.
+  - [x] TextView의 글자색, 배경색, 글자 크기를 변경해본다.
 
-	```
-	ex) code-squad/kotlin-photoframe step4me 브랜치 기준 => step4me/kotlin-photoframe store-step1
-	```
-	
-9. code review 및 push
-	- pull request를 통해 피드백을 받는다.
-	- 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
+### 추가학습거리
+- [x] TextView의 주요 속성은 어떤게 있는지 학습한다.
+  - [x] 원하는 글꼴을 받아서 적용해본다.
+  - [x] 글자의 두께(weieht)를 원하는 두께로 변경해본다.
 
-10. 기본(upstream) 브랜치 전환 및 base 저장소 추가하기(최초 시작하기 단계 한번만 하면 됨)
 
-	```
-	git checkout 본인_아이디
-	git remote add upstream base_저장소_url
+### 동작 결과
 
-	ex) git checkout step4me
-	ex) git remote add upstream https://github.com/code-squad/kotlin-photoframe.git
-	```
+<img width="500" alt="스크린샷 2022-02-14 오후 2 59 47" src="https://user-images.githubusercontent.com/79504043/153830133-f6809636-5fd8-4f55-9df5-70308839ce8c.png">
 
-	- 위와 같이 base 저장소 추가한 후 remote 브랜치 목록을 보면 4개가 보여야 한다.
 
-	```
-	git remote -v
-	```
+<br>
+<br/>
 
-11. 기본 base 저장소와 sync하기 (PR 보낸 내용을 자신의 기본 저장소와 합치기)
+---
 
-	```
-	git fetch upstream
-	git rebase upstream/본인_아이디
-	ex) git rebase upstream/step4me
-	```
+## Step 03
 
-12. 다음 미션을 해결할 경우 [5단계 브랜치 생성]부터 다시 진행
+### 프로그래밍 요구사항
 
-## 동영상을 통한 코드 리뷰() 를 통해 참고 가능
+- [x] activity_main.xml에 Button을 추가한다.
+- [x] MainActivity에서 Button에 대한 참조를 얻는다.
+- [x] Button을 클릭하면 '사진을 불러옵니다' 메시지를 띄운다.
+  - [x] Button 클릭 이벤트에 대한 알림을 받아 처리한다.
+  - [x] Snackbar를 활용한다.
 
-- [fork하여 코드 리뷰하기](https://www.youtube.com/watch?v=ZSZoaG0PqLg) 
-- [PR 보내고 다시 PR보낼 때 유의 사항](https://www.youtube.com/watch?v=CbLNbCUsh5c&feature=youtu.be)
+### 추가학습거리
 
-## 실습 중 모든 질문은 슬랙 채널에서...
+- [x] Button이 알림을 받을 수 있는 Event 종류를 학습한다.
+- [x] 사용자에게 피드백을 줄 수 있는 방법에 대해 학습한다.
+  - [x] Snackbar와 Toast의 용도를 비교하고 활용할 줄 안다.
+
+### 동작 결과
+[동작 영상](https://user-images.githubusercontent.com/79504043/153856296-fe363a1d-8a1b-49f5-8688-aef93cd648c5.mp4)
+
+<br>
+<br/>
+
+
+## Step 04
+
+### 프로그래밍 요구사항
+
+- [x] MainActivity에서 이동할 두번째 Activity를 추가한다.
+  - [x] 두번째 Activity의 배경색상을 변경한다.
+  - [x] AndroidManifest에 등록한다.
+- [x] Activity Lifecycle의 모든 callback에 로그를 출력한다.
+- [x] MainActivity의 버튼 텍스트를 '다음'으로 변경하고, 클릭하면 두번째 Activity로 이동시킨다.
+- [x] 두번째 Activity에 '닫기' 버튼을 추가하고, 클릭 시 다시 MainActivity로 이동시킨다.
+  - [x] 이 때, MainActivity에 '사진을 불러왔습니다'라는 메시지를 띄운다.
+
+### 추가학습거리
+
+- [x] Activity를 생성할 때 상속받는 AppCompatActivity가 무엇인지 학습한다.
+- [x] Activity 전환 시 Lifecycle이 어떻게 변화하는지 학습한다.
+- [x] Activity는 화면 이동을 어떻게 관리하는지 학습한다.
+- [x] Activity와 관련된 새로운 용어들에 대해 학습한다.
+
+### 동작 결과
+[동작 영상](https://user-images.githubusercontent.com/79504043/154179634-7b0a3a46-d64e-4bff-a090-28db207eddbb.mp4)
+
+<br>
+<br/>
+
+---
+
+
+
