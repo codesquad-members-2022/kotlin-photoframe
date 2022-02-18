@@ -11,19 +11,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 
 class MainActivity : AppCompatActivity() {
-    fun String.Snackbar(contextView: View, intent: Intent) {
-        Snackbar.make(contextView, this, Snackbar.LENGTH_SHORT).show()
-    }
-    private lateinit var activityName: String
+    private val activityName = this.localClassName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("MainActivity", "onCreate")
+        Log.d("$activityName", "onCreate")
         val text: TextView = findViewById(R.id.name)
         val name = "Funny"
         text.text = "${name}의 사진 액자"
@@ -75,36 +72,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        activityName = this.localClassName
-        val callbackName = "onRestart"
-        Log.d("$activityName", "$callbackName")
+        Log.d("$activityName", "onRestart")
     }
 
     override fun onStart() {
         super.onStart()
-        activityName = this.localClassName
-        val callbackName = "onStart"
-        Log.d("$activityName", "$callbackName")
+        Log.d("$activityName", "onStart")
     }
 
     override fun onResume() {
-        activityName = this.localClassName
-        val callbackName = "onResume"
-        Log.d("$activityName", "$callbackName")
+        Log.d("$activityName", "onResume")
         super.onResume()
     }
 
     override fun onStop() {
         super.onStop()
-        activityName = this.localClassName
-        val callbackName = "onStop"
-        Log.d("$activityName", "$callbackName")
+        Log.d("$activityName", "onStop")
     }
 
     override fun onPause() {
         super.onPause()
-        activityName = this.localClassName
-        val callbackName = "onPause"
-        Log.d("$activityName", "$callbackName")
+        Log.d("$activityName", "onPause")
     }
 }
