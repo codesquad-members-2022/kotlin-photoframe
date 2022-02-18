@@ -120,7 +120,7 @@
    1. scaleType은 넣어둔 imageView에 꽉차도록 `FIT_XY` 를 선택했습니다.
    2. `imageView.scaleType = ImageView.ScaleType.FIT_XY`
    3. 더 많은 scaleType은 [여기](https://developer.android.com/reference/kotlin/android/widget/ImageView.ScaleType)를 참고하시기 바랍니다.
-
+![결과11](https://user-images.githubusercontent.com/95393311/154611829-d0a81254-910e-4eb2-a00a-04be694a1466.gif)
 
 #### 2. 🔖  갤러리에서 사진 선택하기
 ##### 🤡  1. Activity 연결하기
@@ -149,3 +149,7 @@
 - 암시적 인텐트를 사용했으며, 액션에는 `ACTION_PICK`과 `타입 "image/*"`을 활용하여 갤러리로부터 사진을 가져왔습니다.
 - [공통인텐트](https://developer.android.com/guide/components/intents-common#ImageCapture))
 - 끝으로 `registerForActivityResult`를 활용하여 스낵바 출력과 가져온 이미지를 이미지뷰에 삽입하는 기능을 구현했습니다.
+  ![20](https://user-images.githubusercontent.com/95393311/154612140-87507abf-9bab-4a6f-b718-189d82f41317.JPG)
+  ![21](https://user-images.githubusercontent.com/95393311/154612145-9cf435f7-c52d-4fc3-8dde-0815206ad0c7.JPG)
+  ![22](https://user-images.githubusercontent.com/95393311/154612152-4e16bbd4-f10c-47a6-a151-1bf836cf6fe9.JPG)
+  ![23](https://user-images.githubusercontent.com/95393311/154612159-8e6bddc3-f338-432e-b777-062910a314cd.JPG)
