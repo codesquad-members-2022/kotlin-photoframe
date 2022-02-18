@@ -33,7 +33,7 @@ class SecondActivity : AppCompatActivity() {
 
         val permissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-                if(isGranted) {
+                if (isGranted) {
                     val intent = Intent()
                         .apply {
                             action = Intent.ACTION_PICK
@@ -45,7 +45,6 @@ class SecondActivity : AppCompatActivity() {
 
         selectButton.setOnClickListener {
             permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-
         }
     }
 
