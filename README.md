@@ -38,9 +38,9 @@ android:layout_gravity="center"를 추가하면 된다고하는데 작동을 하
 디자인에서 우클릭>Center 항목에서 방법을 찾았다.
 
 ![레이아웃 정렬2](https://user-images.githubusercontent.com/91953080/154185412-8f30b7d6-468b-4413-8de2-1ce8c1f6da74.png)
-
 버튼은 textView를 수정하는 방법과 비슷하게 진행함
 
+버튼은 textView를 수정하는 방법과 비슷하게 진행함
 # Step4 라이프싸이클 별 로그챗 및 두번쨰 Activity 구현
 
 패키지에서 우클릭>new를 통해서 새로운 액티비티를 만들었음
