@@ -16,11 +16,10 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 
 
 class MainActivity : AppCompatActivity() {
-    private val activityName = this.localClassName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("$activityName", "onCreate")
+        Log.d("${this.localClassName}", "onCreate")
         val text: TextView = findViewById(R.id.name)
         val name = "Funny"
         text.text = "${name}의 사진 액자"
@@ -59,39 +58,36 @@ class MainActivity : AppCompatActivity() {
     private fun imageLoad(button: Button, imageView: ImageView) {
         button.setOnClickListener {
             val fileName = makeFileName((1..22).random())
-            val image = resources.assets.open("$fileName.jpg")
+            val image = resources.assets.open(fileName)
             val bitmap = BitmapFactory.decodeStream(image)
             imageView.setImageBitmap(bitmap)
         }
     }
 
-    private fun makeFileName(fileName: Int) = when (fileName / 10 == 0) {
-        true -> "0$fileName"
-        else -> fileName.toString()
-    }
+    private fun makeFileName(fileName: Int) = String.format("%02d", fileName) + ".jpg"
 
     override fun onRestart() {
         super.onRestart()
-        Log.d("$activityName", "onRestart")
+        Log.d("${this.localClassName}", "onRestart")
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d("$activityName", "onStart")
+        Log.d("${this.localClassName}", "onStart")
     }
 
     override fun onResume() {
-        Log.d("$activityName", "onResume")
+        Log.d("${this.localClassName}", "onResume")
         super.onResume()
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("$activityName", "onStop")
+        Log.d("${this.localClassName}", "onStop")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("$activityName", "onPause")
+        Log.d("${this.localClassName}", "onPause")
     }
 }

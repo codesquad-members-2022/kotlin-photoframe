@@ -14,14 +14,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class SecondActivity : AppCompatActivity() {
-    private val activityName = this.localClassName
     var bitmap: Bitmap? = null
     private lateinit var msg: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         val view: View = findViewById(R.id.back)
-        Log.d("$activityName", "onCreate")
+        Log.d("${this.localClassName}", "onCreate")
 //        val background: LinearLayout = findViewById(R.id.back)
 //        background.setBackgroundColor(Color.parseColor("#9965f4"))
         val imageView: ImageView = findViewById(R.id.image)
@@ -51,26 +50,26 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        Log.d("$activityName", "onRestart")
+        Log.d("${this.localClassName}", "onRestart")
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d("$activityName", "onStart")
+        Log.d("${this.localClassName}", "onStart")
     }
 
     override fun onResume() {
-        Log.d("$activityName", "onResume")
+        Log.d("${this.localClassName}", "onResume")
         super.onResume()
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("$activityName", "onStop")
+        Log.d("${this.localClassName}", "onStop")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("$activityName", "onPause")
+        Log.d("${this.localClassName}", "onPause")
     }
 }
