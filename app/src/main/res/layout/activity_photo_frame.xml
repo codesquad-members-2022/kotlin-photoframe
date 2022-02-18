@@ -2,41 +2,55 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/custom_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/custom_layout">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/photo_frame_toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/my_photo_image"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="100dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/photo_frame_header2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="32dp"
-        android:text="My Photo Frame"
-        style="@style/MyOwnText1"
+    <ImageView
+        android:id="@+id/my_photo_frame"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/photo_frame_toolbar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/add_photo_button"
-        style="@style/Widget.MaterialComponents.Button"
+        android:id="@+id/next_photo_button"
+        style="@style/MyOwnButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="30dp"
+        android:text="다음"
+        android:textColor="@color/onPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_photo_image" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="사진추가"
-        app:layout_constraintTop_toBottomOf="@id/photo_frame_header2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/primary"
+        android:contentDescription="사진 불러오기"
+        android:src="@drawable/next_ic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

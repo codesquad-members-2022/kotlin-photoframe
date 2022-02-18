@@ -1,23 +1,56 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.snackbar.Snackbar
 
 private const val TAG = "SecondActivity"
 
-class SecondActivity : AppCompatActivity(){
+class SecondActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         Log.d(TAG, "onCreate")
-
+        val layout = findViewById<ConstraintLayout>(R.id.custom_layout_second_activity)
+        val picture = findViewById<ImageView>(R.id.my_photo_image_load)
+        val frameView = findViewById<ImageView>(R.id.my_photo_frame_second_activity)
+        val fab = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab_second_activity)
         val button: Button = findViewById(R.id.add_photo_button)
+        val frameFile = resources.assets.open("photo_frame/photoframe-border.png")
+        val frameImage = BitmapFactory.decodeStream(frameFile)
+        frameView.setImageBitmap(frameImage)
+        frameFile.close()
+
+        val startForResult =
+            registerForActivityResult(ActivityResultContracts.GetContent()) {
+                val bitmap =
+                    ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, it))
+                picture.setImageBitmap(bitmap)
+                Snackbar.make(
+                    layout,
+                    "사진을 불러왔습니다",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
 
         button.setOnClickListener {
-            //startActivity(Intent(this, MainActivity::class.java))
+            startForResult.launch("image/*")
+        }
+
+        fab.setOnClickListener {
             finish()
         }
     }

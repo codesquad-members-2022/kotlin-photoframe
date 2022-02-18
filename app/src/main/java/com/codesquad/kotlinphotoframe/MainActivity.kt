@@ -1,11 +1,14 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 
 private const val TAG = "MainActivity"
@@ -13,25 +16,52 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
         setContentView(R.layout.activity_photo_frame)
         Log.d(TAG, "onCreate")
 
-        val button: Button = findViewById(R.id.add_photo_button)
+        val layout = findViewById<ConstraintLayout>(R.id.custom_layout)
+        val button = findViewById<Button>(R.id.next_photo_button)
+        val imageView = findViewById<ImageView>(R.id.my_photo_image)
+        val frameView = findViewById<ImageView>(R.id.my_photo_frame)
+        val floatingButton = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab)
+
+        val frameFile = resources.assets.open("photo_frame/photoframe-border.png")
+        val frameImage = BitmapFactory.decodeStream(frameFile)
+        frameView.setImageBitmap(frameImage)
+        frameFile.close()
 
         button.setOnClickListener {
-            startActivity(Intent(this, SecondActivity::class.java))
+            Snackbar.make(
+                layout,
+                "사진을 불러왔습니다",
+                Snackbar.LENGTH_LONG
+            ).show()
+
+            val randomNum = (1..22).random()
+            val randomID = if (randomNum < 10) {
+                "0$randomNum"
+            } else {
+                randomNum.toString()
+            }
+
+            val rawFile = resources.assets
+            val sourceImage = rawFile?.open("pictures/$randomID.jpg")
+            sourceImage?.run {
+                val bitmapImage = BitmapFactory.decodeStream(this)
+                imageView.setImageBitmap(bitmapImage)
+            } ?: run {
+                Snackbar.make(
+                    layout,
+                    "사진이 존재하지 않습니다",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+            sourceImage?.close()
         }
 
-        /* 사진 snackbar 불러오기 기능 */
-
-//       button.setOnClickListener{
-//            Snackbar.make(
-//                findViewById(R.id.custom_layout),
-//                "사진 불러오는중",
-//                Snackbar.LENGTH_SHORT
-//            ).show()
-//        }
+        floatingButton.setOnClickListener {
+            startActivity(Intent(this, SecondActivity::class.java))
+        }
     }
 
     override fun onRestart() {
