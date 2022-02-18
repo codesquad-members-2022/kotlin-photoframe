@@ -4,18 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".targetActivity"
-    android:background="@color/purple_200"
-    >
+    android:background="@color/white"
+    android:id="@+id/target_const_layout"
+    tools:context=".TargetActivity">
+
+    <ImageView
+        android:id="@+id/target_iv_photo_border"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/photo_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/target_iv_photo"
+        android:layout_width="220dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="180dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/target_btn_close"
+        android:id="@+id/target_btn_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="닫기"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="선택"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="158dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/target_iv_photo_border" />
 </androidx.constraintlayout.widget.ConstraintLayout>
