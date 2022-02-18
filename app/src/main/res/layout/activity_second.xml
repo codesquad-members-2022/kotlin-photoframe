@@ -14,15 +14,29 @@
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/second_activity_imageview" app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@id/second_activity_first_imageview"
+        app:layout_constraintVertical_bias="0.5"
         tools:ignore="SpeakableTextPresentCheck"/>
 
     <ImageView
-        android:layout_width="300dp" android:layout_height="300dp"
-        android:id="@+id/second_activity_imageview"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@id/second_activity_btn"
-        app:layout_constraintVertical_chainStyle="packed" android:layout_marginBottom="40dp"
-    />
+        android:id="@+id/second_activity_first_imageview" android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="40dp" app:layout_constraintBottom_toTopOf="@id/second_activity_btn"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" tools:srcCompat="@drawable/frame"/>
+
+    <ImageView
+        android:id="@+id/second_activity_second_imageview"
+        android:layout_width="0dp" android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/second_activity_first_imageview"
+        app:layout_constraintEnd_toEndOf="@+id/second_activity_first_imageview"
+        app:layout_constraintStart_toStartOf="@+id/second_activity_first_imageview"
+        app:layout_constraintTop_toTopOf="@+id/second_activity_first_imageview"
+        android:scaleType="fitXY"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

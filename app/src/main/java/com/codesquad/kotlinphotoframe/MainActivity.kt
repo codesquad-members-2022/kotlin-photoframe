@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showTextAfterOtherActivity(view: View): ActivityResultLauncher<Intent> {
+    private fun registerIntentToShowTextAfterOtherActivity(view: View): ActivityResultLauncher<Intent> {
         return registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             Snackbar.make(view, "사진을 불러왔습니다", LENGTH_SHORT).show()
         }
