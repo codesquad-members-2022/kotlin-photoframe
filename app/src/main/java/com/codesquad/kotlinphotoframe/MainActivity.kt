@@ -11,9 +11,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
+
+
 class MainActivity : AppCompatActivity() {
+    fun String.Snackbar(contextView: View, intent: Intent) {
+        Snackbar.make(contextView, this, Snackbar.LENGTH_SHORT).show()
+    }
     private lateinit var activityName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
