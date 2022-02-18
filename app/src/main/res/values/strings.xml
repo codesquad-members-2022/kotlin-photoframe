@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">kotlin-photoframe</string>
-    <string name="StartButton">Start</string>
+    <string name="StartButton">다음</string>
+    <string name="닫기">닫기</string>
+    <string name="next">다음</string>
+    <string name="Start">시작</string>
 </resources>
