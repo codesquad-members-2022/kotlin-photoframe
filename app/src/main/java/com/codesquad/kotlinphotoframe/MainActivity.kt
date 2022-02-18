@@ -12,19 +12,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
-
-
-fun String.Snackbar(contextView: View) {
-    Snackbar.make(contextView, this, Snackbar.LENGTH_SHORT).show()
-}
-
 class MainActivity : AppCompatActivity() {
-    override fun equals(str: Any?): Boolean {
-        return str == null
-    }
-
     private lateinit var activityName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
