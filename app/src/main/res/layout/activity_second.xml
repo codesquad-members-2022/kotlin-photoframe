@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="@id/cast"
         app:layout_constraintEnd_toEndOf="@id/cast"
         app:layout_constraintStart_toStartOf="@id/cast"
-        app:layout_constraintTop_toTopOf="@id/back" />
+        app:layout_constraintTop_toTopOf="@id/cast" />
 
     <Button
         android:id="@+id/button"
