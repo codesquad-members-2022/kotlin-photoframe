@@ -203,3 +203,15 @@ imageView.setImageBitmap(bitmap)
 ## 결과
 <img width="823" alt="logcat" src="https://user-images.githubusercontent.com/79190824/154385191-77c837af-fa7e-4c21-b4a5-a40110388e8a.gif">
 
+# 갤러리 연동
+- [x] 액자 이미지 추가
+- [x] 갤러리 연동
+- [x] 사진 선택
+- [x] 사진 배치와 겹치기
+- [x] FloatingActionButton 사용
+- [x] 버튼 아이콘
+- [x] 완료 메세지
+
+## 결과
+<img width="823" alt="logcat" src="https://user-images.githubusercontent.com/79190824/154619370-1d298119-3c98-40e6-be41-0b55de602b46.gif">
+
