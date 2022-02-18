@@ -1,33 +1,24 @@
 package com.codesquad.kotlinphotoframe
 
-import android.Manifest
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.switchmaterial.SwitchMaterial
 
-
-fun String.Snackbar(contextView: View, intent: Intent) {
-    Snackbar.make(contextView, this, Snackbar.LENGTH_SHORT).show()
-}
 
 class MainActivity : AppCompatActivity() {
-    override fun equals(str: Any?): Boolean {
-        return str == null
+    fun String.Snackbar(contextView: View, intent: Intent) {
+        Snackbar.make(contextView, this, Snackbar.LENGTH_SHORT).show()
     }
-
     private lateinit var activityName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
