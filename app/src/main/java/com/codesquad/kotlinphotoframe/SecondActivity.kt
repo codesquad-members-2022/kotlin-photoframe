@@ -1,29 +1,19 @@
 package com.codesquad.kotlinphotoframe
 
-import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.ImageDecoder
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
-import android.view.View
 import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.ActivityResultRegistry
-import androidx.activity.result.contract.ActivityResultContract
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityOptionsCompat
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
 
 class SecondActivity : AppCompatActivity() {
-    lateinit var activityName: String
+    private lateinit var activityName: String
+    var bitmap: Bitmap? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
@@ -32,16 +22,30 @@ class SecondActivity : AppCompatActivity() {
         Log.d("$activityName", "$callbackName")
 //        val background: LinearLayout = findViewById(R.id.back)
 //        background.setBackgroundColor(Color.parseColor("#9965f4"))
+        val imageView: ImageView = findViewById(R.id.image)
+        imageView.contentDescription = "faf"
         val button: Button = findViewById(R.id.button)
+        button.text = "선택"
+        val getContent = imageCtrl(imageView)
         button.setOnClickListener {
 //            val contextView = findViewById<View>(R.id.context)
-//            Snackbar.make(contextView,"사진을 불러오는 중입니다.", Snackbar.LENGTH_SHORT).show()
 //            Toast.makeText(applicationContext,"사진을 불러오는 중입니다.",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("msg", "사진을 가져오는 중")
-            startActivity(intent)
+//            val intent = Intent(this, MainActivity::class.java)
+//            intent.putExtra("msg", "사진을 가져오는 중"
+//            startActivity(intent)
+            getContent.launch("image/*")
+            }
         }
+
+    private fun imageCtrl(imageView: ImageView) = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, it))
+        } else {
+            MediaStore.Images.Media.getBitmap(contentResolver, it)
+        }
+        imageView?.setImageBitmap(bitmap)
     }
+
     override fun onRestart() {
         super.onRestart()
         activityName = this.localClassName

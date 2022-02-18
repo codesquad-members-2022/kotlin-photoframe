@@ -1,23 +1,19 @@
 package com.codesquad.kotlinphotoframe
 
-import android.Manifest
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 
 fun String.Snackbar(contextView: View) {
@@ -78,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun makeFileName(fileName: Int) = when (fileName / 10 == 0) {
+    private fun makeFileName(fileName: Int) = when (fileName / 10 == 0) {
         true -> "0$fileName"
         else -> fileName.toString()
     }
