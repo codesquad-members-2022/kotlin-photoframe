@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 class SecondActivity : AppCompatActivity() {
     private lateinit var activityName: String
     var bitmap: Bitmap? = null
+    private lateinit var msg: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
@@ -29,7 +30,7 @@ class SecondActivity : AppCompatActivity() {
         imageView.contentDescription = "faf"
         val button: Button = findViewById(R.id.button)
         button.text = "선택"
-        val getContent = imageCtrl(imageView)
+        val getContent = imageCtrl(imageView, view)
         button.setOnClickListener {
 //            val contextView = findViewById<View>(R.id.context)
 //            Toast.makeText(applicationContext,"사진을 불러오는 중입니다.",Toast.LENGTH_SHORT).show()
@@ -40,14 +41,15 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    private fun imageCtrl(imageView: ImageView) = registerForActivityResult(ActivityResultContracts.GetContent()) {
+    private fun imageCtrl(imageView: ImageView, view: View) = registerForActivityResult(ActivityResultContracts.GetContent()) {
         bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, it))
         } else {
             MediaStore.Images.Media.getBitmap(contentResolver, it)
         }
         imageView?.setImageBitmap(bitmap)
-        Toast.makeText(applicationContext,"사진을 불러왔습니다.", Toast.LENGTH_SHORT).show()
+        msg = "사진을 불러왔습니다."
+        msg?.Snackbar(view)
     }
 
     override fun onRestart() {
