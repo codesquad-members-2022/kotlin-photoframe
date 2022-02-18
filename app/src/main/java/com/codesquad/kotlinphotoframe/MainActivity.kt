@@ -14,12 +14,14 @@ import android.content.Intent
 import com.codesquad.kotlinphotoframe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    // binding 객체를 담을 변수
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        // binding 객체를 추출
         binding = ActivityMainBinding.inflate(layoutInflater)
+        // 화면을 세팅
         setContentView(binding.root)
 
         binding.mainText.text = "Stark의 사진액자"
