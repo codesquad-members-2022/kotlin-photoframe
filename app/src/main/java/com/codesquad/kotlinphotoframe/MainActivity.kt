@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnChangeTv1 : Button
     private lateinit var btnAddPhoto : Button
     private lateinit var btnGotoSecondActivity : Button
+    private lateinit var btnGotoThirdActivity : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setTextViewChangeButton()
         setAddPhotoButton()
         setGotoSecondActivityButton()
-
+        setGotoThirdActivityButton()
     }
 
     fun setTextViewChangeButton(){
@@ -76,6 +77,16 @@ class MainActivity : AppCompatActivity() {
         btnGotoSecondActivity = findViewById(R.id.btn_goto_second_activity)
         btnGotoSecondActivity.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
+            getActivityResult.launch(intent)
+        }
+    }
+
+    fun setGotoThirdActivityButton(){
+        val getActivityResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        }
+        btnGotoThirdActivity = findViewById(R.id.btn_goto_third_activity)
+        btnGotoThirdActivity.setOnClickListener {
+            val intent = Intent(this, ThirdActivity::class.java)
             getActivityResult.launch(intent)
         }
     }

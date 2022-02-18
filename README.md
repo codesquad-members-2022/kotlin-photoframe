@@ -66,4 +66,80 @@
 앱이 포그라운드에 있다면 토스트 메시지 대신 [스낵바](https://material.io/components/snackbars)를 사용하는 것이 좋습니다. 스낵바에는 사용자가 실행할 수 있는 옵션이 포함되어 있으며 이를 통해 더 나은 앱 환경을 제공할 수 있습니다.
 (https://developer.android.com/guide/topics/ui/notifiers/toasts?hl=ko)
 
+<br>
+
+### :six: xml 코드로 ConstraintLayout에 View 배치하기
+
+#### < assets 폴더? (vs res폴더) >
+- res
+  + 레이아웃, 아이콘 등이 위치하며 R클래스로 편리하게 접근할 수 있다
+  + 즉, 컴파일러가 데이터 처리를 위한 각종 동작을 한다
+  + 파일 이름이 소문자, 숫자, 마침표, 언더바 로만 구성된다
+  + https://developer.android.com/guide/topics/resources/available-resources?hl=ko
+<br>
+
+- assets
+  + 모든 유형의 파일을 포함할 수 있고 파일 이름 제약이 거의 없다
+  + apk 파일을 열어보면 보인다. 즉, 사전처리 하지 않고 apk에 포함 시킨다
+  + 여러 이름으로 여러개의 폴더를 만들수 있다
+  + AssetManager로 접근할 수 있다
+  + 디렉토리 내의 모든 데이터를 원시 파일로 관리하기 때문에, 그것을 읽기 위해서는 바이트 스트림으로 파일을 읽기위해 에셋 매니저(AssetManager)를 사용해야 한다
+  + 파일시스템의 파일처럼 다루어짐(리소스ID 없음)
+  + assets에 추가된 파일은 읽기 전용
+  + res에서 지원하지 않거나 이런 저런 이유로 직접 컨트롤 해아하는 데이터는 assets를 사용한다
+  + html, json, sql 등의 파일을 읽어오기 위해 assets 폴더를 생성한다 
+
+<br>
+
+#### < assets 폴더 생성 및 관련 내용 >
+- 참고링크 - 
+- https://ddolcat.tistory.com/593
+- https://dxkor2.tistory.com/196
+<br>
+
+
+#### < setImageBitmap  VS  setImageDrawable >
+- assets 폴더에서 이미지 파일의 stream을 가져와서 비트맵 혹은 드로어블 형태로 이미지뷰에 이미지를 할당할 수 있었다
+- 두 가지 방법의 차이를 찾다가 setImageBitmap 내부에서 setImageDrawable을 호출하는 것을 알 수 있었다
+
+![image](https://user-images.githubusercontent.com/69443895/154514627-c3b9f073-1f07-444e-adc7-3c060307d78e.png)
+
+![image](https://user-images.githubusercontent.com/69443895/154515032-5085f4df-8c85-42ee-ac34-f908913666fa.png)
+- 두 가지 방법 모두 동일한 결과를 보였다
+
+<br>
+
+
+#### < ImageView 기본 scale type은 ? >
+![image](https://user-images.githubusercontent.com/69443895/154517444-9ec0e2ee-248b-447f-906c-7ba17ca91c88.png)
+- https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-mainline-12.0.0_r58/core/java/android/widget/ImageView.java
+- ImageView 클래스를 살펴본 결과 default로 scale type은 fit center 로 지정하는 것 같다
+
+- 그 외 scale type (참고링크 : https://mainia.tistory.com/2426)
+
+<br>
+
+![image](https://user-images.githubusercontent.com/69443895/154553244-953a14bd-d54f-4297-97cd-36da4d633f38.png)  ![image](https://user-images.githubusercontent.com/69443895/154553313-21041a2c-94a1-4a17-bc6b-5d8200b86800.png)
+
+- assets 폴더에서 jpg 파이을 가져와서 이미지뷰에 표시
+
+<br>
+
+
+### :seven: 갤러리에서 사진 선택하기
+- Intent 활용
+- startActivityForResult 방식과 registerForActivityResult 방식 두 가지로 구현
+- scale type은 default 사용
+
+![image](https://user-images.githubusercontent.com/69443895/154554109-7d54081a-41d3-4ad6-a311-5a317c81f906.png)  ![image](https://user-images.githubusercontent.com/69443895/154554172-4582020a-9a1d-4940-9885-84499d9f8f83.png)
+
+![image](https://user-images.githubusercontent.com/69443895/154554271-1560cd66-d4d6-4e82-ad3f-e689185c27cd.png)  ![image](https://user-images.githubusercontent.com/69443895/154554399-eac15948-6f3c-4ffd-8f9c-a96026ec92b8.png)
+
+
+
+
+
+
+
+
 

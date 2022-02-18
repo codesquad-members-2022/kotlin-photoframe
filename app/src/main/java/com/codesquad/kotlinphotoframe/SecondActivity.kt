@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.codesquad.kotlinphotoframe.databinding.ActivitySecondBinding
 
-class SecondActivity: AppCompatActivity() {
+class SecondActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivitySecondBinding
 
