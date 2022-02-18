@@ -53,6 +53,7 @@ class SubActivity : AppCompatActivity() {
             intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             getResult.launch(intent)
+
         }
     }
 }

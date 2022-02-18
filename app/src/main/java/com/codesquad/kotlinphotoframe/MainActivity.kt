@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.buttonGoSubActivity.setOnClickListener {
             val intent = Intent(this, SubActivity::class.java)
             startActivity(intent)
+
         }
     }
 
