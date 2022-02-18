@@ -149,6 +149,7 @@
 - 암시적 인텐트를 사용했으며, 액션에는 `ACTION_PICK`과 `타입 "image/*"`을 활용하여 갤러리로부터 사진을 가져왔습니다.
 - [공통인텐트](https://developer.android.com/guide/components/intents-common#ImageCapture))
 - 끝으로 `registerForActivityResult`를 활용하여 스낵바 출력과 가져온 이미지를 이미지뷰에 삽입하는 기능을 구현했습니다.
+<결과>
   ![20](https://user-images.githubusercontent.com/95393311/154612140-87507abf-9bab-4a6f-b718-189d82f41317.JPG)
   ![21](https://user-images.githubusercontent.com/95393311/154612145-9cf435f7-c52d-4fc3-8dde-0815206ad0c7.JPG)
   ![22](https://user-images.githubusercontent.com/95393311/154612152-4e16bbd4-f10c-47a6-a151-1bf836cf6fe9.JPG)
