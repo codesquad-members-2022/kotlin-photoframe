@@ -1,18 +1,19 @@
 package com.codesquad.kotlinphotoframe
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.BufferedInputStream
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
+    private val IMAGE_NUMBER = 22
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,24 +21,30 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
 
         val name = "Stitch"
-        val textView: TextView = findViewById(R.id.textview_name)
+        val textView: TextView = findViewById(R.id.tv_name)
         textView.text = "${name}의 사진 액자"
 
-        val buttonPictureAdd: Button = findViewById(R.id.button_picture_add)
+        val buttonPictureAdd: Button = findViewById(R.id.btn_picture_add)
         val layout: ConstraintLayout = findViewById(R.id.constraintlayout_layout)
-
-        val getResult =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if (it.resultCode == RESULT_OK) {
-                    val message = it.data?.getStringExtra("message").toString()
-                    Snackbar.make(layout, message, Snackbar.LENGTH_SHORT).show()
-                }
-            }
+        val photo: ImageView = findViewById(R.id.iv_photo)
+        val floatingButton: FloatingActionButton = findViewById(R.id.fab_next)
 
         buttonPictureAdd.setOnClickListener {
-            val intent = Intent(this@MainActivity, SecondActivity::class.java)
-            getResult.launch(intent)
+            changeImage(layout, photo, getRandomNumber(IMAGE_NUMBER))
         }
+
+        floatingButton.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SecondActivity::class.java))
+        }
+    }
+
+    private fun changeImage(layout: ConstraintLayout, photo: ImageView, imageName: String) {
+        photo.setImageBitmap(BitmapFactory.decodeStream(BufferedInputStream(resources.assets.open("${imageName}.jpg"))))
+    }
+
+    private fun getRandomNumber(number: Int): String {
+        val randomNumber = (1..number).random().toString()
+        return if(randomNumber.length != 1) randomNumber else "0$randomNumber"
     }
 
     override fun onStart() {

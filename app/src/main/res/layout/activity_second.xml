@@ -2,19 +2,42 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintlayout_secondLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AE90D7"
     tools:context=".SecondActivity">
 
+    <View
+        android:id="@+id/view_frame"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/photoframe_border"
+        app:layout_constraintBottom_toTopOf="@id/btn_select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageView
+        android:id="@+id/iv_select"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:background="#FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/view_frame"
+        app:layout_constraintEnd_toEndOf="@id/view_frame"
+        app:layout_constraintStart_toStartOf="@id/view_frame"
+        app:layout_constraintTop_toTopOf="@id/view_frame" />
+
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_close"
+        android:id="@+id/btn_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/close"
+        android:layout_marginTop="20dp"
+        android:text="@string/select"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/view_frame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
