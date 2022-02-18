@@ -27,6 +27,7 @@ onCreate함수에 코드를 추가후 CTRL+F 로 onCreate를 검색해서 찾음
 findViewByid를 활용해 activity_main.xml의 id를 참조해서 onCreate함수에서 text,글자색,글자 크기를 변경했다.
 
 그 이후 텍스트를 가운데 정렬하려했는데 레이아웃 내에서 가운데 정렬하는방법은 activity_main.xml 의 코드에
+
 android:textAlignment="center"를 추가하면 됐지만
 레이아웃 자체를 앱화면의 가운데에 정렬하는방법은
 android:layout_gravity="center"를 추가하면 된다고하는데 작동을 하지않았다.
@@ -73,4 +74,3 @@ Top -> TopOf parent로 해주는것으로 텍스트뷰와 레이아웃사이의 
 ![제약조건](https://user-images.githubusercontent.com/91953080/154624056-d943ed47-ce41-44ed-bb76-df6ca6512515.png)
 
 마찬가지 방법으로 Start,End도 똑같이 parent와 이어주는것으로 양옆기준 가운데 정렬이 되도록 만듦
-
