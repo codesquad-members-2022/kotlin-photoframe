@@ -1,15 +1,18 @@
 package com.codesquad.kotlinphotoframe
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import java.io.BufferedInputStream
 
@@ -25,12 +28,18 @@ class MainActivity : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.imageView)
         mainText.text = "${name}의 사진 액자"
 
-        val button1 = findViewById<TextView>(R.id.button1)
+        val button1 = findViewById<Button>(R.id.button1)
         button1.setOnClickListener{
             Snackbar.make(it, "사진을 불러옵니다.", Snackbar.LENGTH_LONG)
                 .show();
             changeButtonText()
             imageView.setImageBitmap(BitmapFactory.decodeStream(BufferedInputStream(resources.assets.open("${getRandomNumber()}.jpg"))))
+        }
+
+        val arrowButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        arrowButton.setOnClickListener {
+            val intent = Intent(this, MainActivity2::class.java)
+            startActivity(intent)
         }
     }
 

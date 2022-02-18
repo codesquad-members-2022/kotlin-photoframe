@@ -99,8 +99,6 @@ Activity가 가져야 하는 기능들이 AppCompatActivity에 들어있다.
 세번째 화면
 ![3](https://user-images.githubusercontent.com/65541248/154005762-7956f957-82ee-4aef-95f2-90dcd704a3fb.png)
 
-
----
 # step5
 <img src="https://user-images.githubusercontent.com/65541248/154447419-57f4dcc2-7cb3-4460-a0cc-4402d31b44bb.png" height="400"/>
 
@@ -108,3 +106,11 @@ Activity가 가져야 하는 기능들이 AppCompatActivity에 들어있다.
 ### ConstraintLayout이란?
 ConstraintLayout은 복잡한 레이아웃을 정의하는 새방식
 복잡한 UI에서도 중첩된 레이아웃을 최소화 할 수 있고, 위치를 배치하는 방법에 있어서 기존 layout은 한계가 많아서 ConstraintLayout을 사용 함
+
+# step 6
+
+<img src="https://user-images.githubusercontent.com/65541248/154645938-aba13ccc-5366-49e6-907a-7a4cba8b2ce1.png" height="400"/>
+<img src="https://user-images.githubusercontent.com/65541248/154645973-28722a96-f82d-4bef-bcdc-d5e9a493368e.png" height="400"/>
+
+<img src="https://user-images.githubusercontent.com/65541248/154645979-bc40e1b0-5240-4819-8a81-68a50279ded2.png" height="400"/>
+<img src="https://user-images.githubusercontent.com/65541248/154645991-e500c512-3a70-4754-8747-c5fa3deba2d3.png" height="400"/>
