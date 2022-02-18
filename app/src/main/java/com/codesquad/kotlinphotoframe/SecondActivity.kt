@@ -23,19 +23,20 @@ import androidx.lifecycle.MutableLiveData
 import com.google.android.material.snackbar.Snackbar
 
 class SecondActivity : AppCompatActivity() {
+    lateinit var activityName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onCreate"
         Log.d("$activityName", "$callbackName")
-        val background: LinearLayout = findViewById(R.id.back)
-        background.setBackgroundColor(Color.parseColor("#9965f4"))
+//        val background: LinearLayout = findViewById(R.id.back)
+//        background.setBackgroundColor(Color.parseColor("#9965f4"))
         val button: Button = findViewById(R.id.button)
         button.setOnClickListener {
 //            val contextView = findViewById<View>(R.id.context)
 //            Snackbar.make(contextView,"사진을 불러오는 중입니다.", Snackbar.LENGTH_SHORT).show()
-            //Toast.makeText(applicationContext,"사진을 불러오는 중입니다.",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(applicationContext,"사진을 불러오는 중입니다.",Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("msg", "사진을 가져오는 중")
             startActivity(intent)
@@ -43,20 +44,20 @@ class SecondActivity : AppCompatActivity() {
     }
     override fun onRestart() {
         super.onRestart()
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onRestart"
         Log.d("$activityName", "$callbackName")
     }
 
     override fun onStart() {
         super.onStart()
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onStart"
         Log.d("$activityName", "$callbackName")
     }
 
     override fun onResume() {
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onResume"
         Log.d("$activityName", "$callbackName")
         super.onResume()
@@ -64,14 +65,14 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onStop"
         Log.d("$activityName", "$callbackName")
     }
 
     override fun onPause() {
         super.onPause()
-        val activityName = this.localClassName
+        activityName = this.localClassName
         val callbackName = "onStop"
         Log.d("$activityName", "$callbackName")
     }

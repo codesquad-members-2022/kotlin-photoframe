@@ -15,11 +15,12 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.snackbar.Snackbar
 
 
-fun String.Snackbar(contextView: View, intent: Intent) {
+fun String.Snackbar(contextView: View) {
     Snackbar.make(contextView, this, Snackbar.LENGTH_SHORT).show()
 }
 
@@ -38,36 +39,43 @@ class MainActivity : AppCompatActivity() {
         text.text = "${name}의 사진 액자"
         text.setTextColor(Color.parseColor("#3d00e0"))
         val button: Button = findViewById(R.id.button)
-        val contextView = findViewById<View>(R.id.context)
         val switch: SwitchMaterial = findViewById(R.id.darkMode)
         switch.text = "dark"
-        switch.setOnCheckedChangeListener { buttonView, isChecked ->
+        setDarkMode(switch)
+        val contextView = findViewById<View>(R.id.context)
+        val msg = intent.getStringExtra("msg")
+        msg?.Snackbar(contextView)
+        intent.removeExtra("msg")
+        val imageView: ImageView = findViewById(R.id.image_view)
+        imageView.setBackgroundColor(Color.GRAY)
+        imageLoad(button, imageView)
+        val floatActionButton: FloatingActionButton = findViewById(R.id.floating_action_button)
+        moveActivity(floatActionButton)
+    }
+
+    private fun setDarkMode(switch: SwitchMaterial) {
+        switch.setOnCheckedChangeListener { _, isChecked ->
             when (isChecked) {
                 true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
-        val msg = intent.getStringExtra("msg")
-        msg?.Snackbar(contextView, intent)
-        intent.removeExtra("msg")
-        val imageView: ImageView = findViewById(R.id.image_view)
-        imageView.setBackgroundColor(Color.GRAY)
-        button.setOnClickListener {
-//            val secondIntent = Intent(this, SecondActivity::class.java)
-//            startActivity(secondIntent)
-            imageLoad(imageView)
+    }
+
+    private fun moveActivity(floatActionButton: FloatingActionButton){
+        floatActionButton.setOnClickListener {
+            val secondIntent = Intent(this, SecondActivity::class.java)
+            startActivity(secondIntent)
         }
     }
 
-    fun imageLoad(imageView: ImageView) {
-        val fileName = makeFileName((1..22).random())
-
-        //step 1. asset 폴더에서 파일 열기
-        val image = resources.assets.open("$fileName.jpg")
-        val bitmap = BitmapFactory.decodeStream(image)
-
-        //step 2. imageView에 표시
-        imageView.setImageBitmap(bitmap)
+    private fun imageLoad(button: Button, imageView: ImageView) {
+        button.setOnClickListener {
+            val fileName = makeFileName((1..22).random())
+            val image = resources.assets.open("$fileName.jpg")
+            val bitmap = BitmapFactory.decodeStream(image)
+            imageView.setImageBitmap(bitmap)
+        }
     }
 
     fun makeFileName(fileName: Int) = when (fileName / 10 == 0) {
