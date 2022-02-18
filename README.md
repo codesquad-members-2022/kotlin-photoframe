@@ -51,3 +51,26 @@ android:layout_gravity="center"를 추가하면 된다고하는데 작동을 하
 
 ![로그d](https://user-images.githubusercontent.com/91953080/154432852-56409b9b-3824-420d-b5f4-01ad9d291ad9.png)
 
+# Step5 
+
+## 1. ImageView크기
+
+android:layout_width="240dp"
+android:layout_height="240dp"
+xml 코드에서 수정함
+   
+## 2. scalType
+
+imageView의 scaleType을 fitCenter를 사용해 언제나 imageView의 가운데에 이미지가 오도록 만듦
+
+## 3. 중앙정렬
+
+우선 디자인에서 Constraints의 항목의 
+Bottom -> TopOf textView와 이어주고
+Top -> TopOf parent로 해주는것으로 텍스트뷰와 레이아웃사이의 가운데 정렬이 되도록 만듦
+
+![이미지뷰 가운데정렬](https://user-images.githubusercontent.com/91953080/154624074-5973a925-7c64-48b3-832a-5754a0cbb338.png)
+![제약조건](https://user-images.githubusercontent.com/91953080/154624056-d943ed47-ce41-44ed-bb76-df6ca6512515.png)
+
+마찬가지 방법으로 Start,End도 똑같이 parent와 이어주는것으로 양옆기준 가운데 정렬이 되도록 만듦
+

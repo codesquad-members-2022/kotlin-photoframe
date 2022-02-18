@@ -1,13 +1,11 @@
 package com.codesquad.kotlinphotoframe
 
-import android.content.Intent
-import android.graphics.Color
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,19 +13,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.d("MainActivity", "onCreate")
 
-        val text1 = findViewById<TextView>(R.id.textView1)
         val button1 = findViewById<Button>(R.id.button1)
+        val image1 = findViewById<ImageView>(R.id.imageView1)
 
-        text1.text = "사진액자"
-        text1.setBackgroundColor(Color.YELLOW)
-        text1.setTextColor(Color.GREEN)
-        text1.textSize = 42.0F
-
-        button1.setOnClickListener {
-            val intent = Intent(this,MainActivity2::class.java)
-            startActivity(intent)
-            Snackbar.make(button1,"사진을 불러옵니다",5000).show()
+        button1.setOnClickListener{
+            val str = resources.assets.open("${(1..22).random()}.jpg")
+            val result = BitmapFactory.decodeStream(str)
+            image1.setImageBitmap(result)
         }
+        println((1..22).random())
     }
     override fun onStart() {
         super.onStart()
