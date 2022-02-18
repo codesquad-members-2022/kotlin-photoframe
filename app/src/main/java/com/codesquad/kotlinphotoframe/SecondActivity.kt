@@ -14,7 +14,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 
 
-
 class SecondActivity : AppCompatActivity() {
     private lateinit var layout: ConstraintLayout
     private lateinit var firstBtn: Button
@@ -33,7 +32,7 @@ class SecondActivity : AppCompatActivity() {
         putImageToImageView(firstImageView)
         setFirstButtonForTextAndColor(firstBtn)
         val photoFromGallery = registerActivityResultToSetImageFromGallery()
-        clickBtnToSelectPhoto(firstBtn,photoFromGallery)
+        clickBtnToSelectPhoto(firstBtn, photoFromGallery)
     }
 
     private fun putImageToImageView(imageView: ImageView) {
@@ -57,10 +56,11 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerActivityResultToSetImageFromGallery() = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        secondImageView.setImageURI(it.data!!.data)
-        Snackbar.make(layout, "사진을 불러왔습니다",Snackbar.LENGTH_SHORT).show()
-    }
+    private fun registerActivityResultToSetImageFromGallery() =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            secondImageView.setImageURI(it.data!!.data)
+            Snackbar.make(layout, "사진을 불러왔습니다", Snackbar.LENGTH_SHORT).show()
+        }
 
     private fun clickBtnToSelectPhoto(button: Button, intent: ActivityResultLauncher<Intent>) {
         button.setOnClickListener {
