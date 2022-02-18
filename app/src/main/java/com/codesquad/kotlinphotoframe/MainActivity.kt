@@ -99,5 +99,4 @@ class MainActivity : AppCompatActivity() {
         photoFrameTv.setTextSize(Dimension.SP, 20F)
     }
 
-
 }

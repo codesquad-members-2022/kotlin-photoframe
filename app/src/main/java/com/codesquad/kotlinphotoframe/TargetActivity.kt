@@ -18,9 +18,6 @@ import com.google.android.material.snackbar.Snackbar
 import java.lang.Exception
 
 class TargetActivity : AppCompatActivity() {
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
@@ -39,24 +36,6 @@ class TargetActivity : AppCompatActivity() {
 
     private fun getPhotoUriFromGallery(){
         getPhotoUri.launch("image/*")
-    }
-
-
-    private val getPhotoUri = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        val photo = findViewById<ImageView>(R.id.target_iv_photo)
-        lateinit var bitmap:Bitmap
-        uri.let {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                val source = ImageDecoder.createSource(this.contentResolver, uri)
-                bitmap = ImageDecoder.decodeBitmap(source)
-                photo?.setImageBitmap(bitmap)
-            } else {
-                bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
-                photo?.setImageBitmap(bitmap)
-            }
-            photo?.setImageBitmap(bitmap)
-            Snackbar.make(findViewById<ConstraintLayout>(R.id.target_const_layout), "사진을 불러왔습니다.", Snackbar.LENGTH_SHORT).show()
-        }
     }
 
     private val getPhoto: ActivityResultLauncher<Intent> =
@@ -84,4 +63,23 @@ class TargetActivity : AppCompatActivity() {
                 Snackbar.make(findViewById<ConstraintLayout>(R.id.target_const_layout), "사진을 가져오지 못했습니다.", Snackbar.LENGTH_SHORT).show()
             }
         }
+
+    private val getPhotoUri = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        val photo = findViewById<ImageView>(R.id.target_iv_photo)
+        lateinit var bitmap:Bitmap
+        uri.let {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                val source = ImageDecoder.createSource(this.contentResolver, uri)
+                bitmap = ImageDecoder.decodeBitmap(source)
+                photo?.setImageBitmap(bitmap)
+            } else {
+                bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
+                photo?.setImageBitmap(bitmap)
+            }
+            photo?.setImageBitmap(bitmap)
+            Snackbar.make(findViewById<ConstraintLayout>(R.id.target_const_layout), "사진을 불러왔습니다.", Snackbar.LENGTH_SHORT).show()
+        }
+    }
+
+
 }
