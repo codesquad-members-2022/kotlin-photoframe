@@ -148,3 +148,34 @@
 * <intent-filter> 요소를 포함하는 컴포넌트안에 android:exported 값을 명시적으로 넣어야 한다
 * 이 속성은 앱 구성 요소가 다른 앱에 엑세스 할 수 있는지 여부를 나타낸다. 
 
+### PendingIntent
+* 펜딩 인텐트는 이름에서 볼수 있듯이 보류된 인텐트로, 당장 해당 작업을 다른 컴포넌트에 요청하는게 아닌 특정시점에 자신이 아닌 컴포넌트가 다른 컴포넌트에게 펜딩 인텐트를 사용하여 작업을 요청한다는 특징이 있다.
+* 대표적으로, 사용자가 Notification을 클릭했을 때 특정한 작업을 수행시키거나, 위젯을 통해 앱을 실행시키거나, 미래의 특정 시점에 실행되는 인텐트를 선언하는 경우에 펜딩 인텐트를 사용한다.
+* 팬딩인덴트 인스턴스 생성방법
+  * getActivity(Context, int, Intent, int): 매개변수에 포함된 Intent를 통해 한가지 액티비티를 실행시킬때 사용
+  * getActivities(Context, int, Intent[], int): 매개변수에 포함된 Intent배열을 통해 여러개의 액티비티를 실행시킬때 사용. 이때 Context.startActivities와 똑같이 작동한다. startActivities는 거의 사용되지 않지만 액티비티들을 백스택에 넣고 싶을때 사용되기 때문에 실행된 액티비티에서 백버튼을 눌렀을때 다른 액티비티로 이동하고 싶다면 사용한다.
+  * getBroadcast(Context, int, Intent, int): context.sendBroadCast(intent)를 하고 싶을때 사용
+  * getService(Context, int, Intent, int): Intent를 통해 context.startService(intent)를 하고 싶을때 사용
+  
+## 갤러리에서 이미지를 가져오는 방법
+* registerForActivityResult() 을 이용해 갤러리로 부터 이미지 정보를 리턴받아야 한다
+* ActivityResultContracts.StartActivityForResult 를 통해 ActivityResult 정보를 받는 방법이 있고
+* ActivityResultContracts.GetContent() 를 통해 uri 정보를 리턴받는 방법이 있다
+* 리턴받은 정보를 통해 ActivityResult의 경우 it.data.data로 uri 정보 알아냄
+* uri를 통해 bitMap 이미지를 생성해 ImageView에 추가
+  * API28 이하에서는 MediaStore.Images.Media.getBitmap(contentResolver, uri)를 통해서 생성가능 => getBitMap은 현재 depreicated됨
+  * 이상 버전에는 ImageDecoder.createSource(contentResolver, Uri)를 통해 source 인스턴스를 생성하고, source인스턴스를 통해 bitMap 이미지 생성
+  
+* 갤러리에 요청하기 위해서는 intent에도 type, action을 지정해줘야 한다
+* type
+  * 기기의 기본 갤러리에 접근하기 위해서는 android.provider.MediaStore.Images.Media.CONTENT_TYPE를 지정해주면된다
+  * 구글 구글갤러리로 접근하기 위해서는 "image/*"를 지정해주면된다
+* action
+  * ACTION_PICK :데이터로부터 아이템을 선택하고 선택한 아이템을 리턴시키라는 액션
+  * ACTION_GET_CONTENT:  사용자가 선택한 특별한 종류의 데이터 선택과 데이터의 리턴을 원하는 액션
+
+
+
+
+
+

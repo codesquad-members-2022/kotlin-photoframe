@@ -69,11 +69,7 @@ class MainActivity : AppCompatActivity() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 if (it.resultCode == RESULT_OK) {
                     val message = it.data?.getStringExtra("message").toString()
-                    Snackbar.make(
-                        findViewById<ConstraintLayout>(R.id.const_layout),
-                        "${message}",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    Snackbar.make(addPhotoBtn,"${message}", Snackbar.LENGTH_LONG).show()
                 }
             }
         addPhotoBtn.setOnClickListener {
@@ -84,11 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     fun printPhotoLoadMessage(addPhotoBtn: Button) {
         addPhotoBtn.setOnClickListener {
-            val snackBar = Snackbar.make(
-                findViewById<ConstraintLayout>(R.id.const_layout),
-                "사진을 불러옵니다",
-                Snackbar.LENGTH_LONG
-            )
+            val snackBar = Snackbar.make(addPhotoBtn, "사진을 불러옵니다", Snackbar.LENGTH_LONG)
             snackBar.show()
         }
     }

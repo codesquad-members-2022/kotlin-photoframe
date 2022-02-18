@@ -3,6 +3,8 @@ package com.codesquad.kotlinphotoframe
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
+import android.graphics.ImageFormat
+import android.media.Image
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -40,9 +42,9 @@ class TargetActivity : AppCompatActivity() {
 
     private val getPhoto: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            val photo = findViewById<ImageView>(R.id.target_iv_photo)
             if (it.resultCode == RESULT_OK && it.data != null) {
                 val currentImageUri = it.data?.data
-                val photo = findViewById<ImageView>(R.id.target_iv_photo)
                 lateinit var bitmap:Bitmap
                 try {
                     currentImageUri?.let {
@@ -55,12 +57,12 @@ class TargetActivity : AppCompatActivity() {
                         }
                     }
                     photo?.setImageBitmap(bitmap)
-                    Snackbar.make(findViewById<ConstraintLayout>(R.id.target_const_layout), "사진을 불러왔습니다.", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(photo, "사진을 불러왔습니다.", Snackbar.LENGTH_SHORT).show()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
             } else {
-                Snackbar.make(findViewById<ConstraintLayout>(R.id.target_const_layout), "사진을 가져오지 못했습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(photo, "사진을 가져오지 못했습니다.", Snackbar.LENGTH_SHORT).show()
             }
         }
 
@@ -77,9 +79,8 @@ class TargetActivity : AppCompatActivity() {
                 photo?.setImageBitmap(bitmap)
             }
             photo?.setImageBitmap(bitmap)
-            Snackbar.make(findViewById<ConstraintLayout>(R.id.target_const_layout), "사진을 불러왔습니다.", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(photo, "사진을 불러왔습니다.", Snackbar.LENGTH_SHORT).show()
         }
     }
-
 
 }
