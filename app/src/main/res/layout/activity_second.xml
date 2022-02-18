@@ -12,19 +12,26 @@
         android:id="@+id/second_activity_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/second_activity_first_imageview"
         app:layout_constraintVertical_bias="0.5"
         tools:ignore="SpeakableTextPresentCheck"/>
 
     <ImageView
-        android:id="@+id/second_activity_first_imageview" android:layout_width="300dp"
+        android:id="@+id/second_activity_first_imageview"
+        android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginBottom="40dp" app:layout_constraintBottom_toTopOf="@id/second_activity_btn"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" tools:srcCompat="@drawable/frame"/>
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@id/second_activity_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:srcCompat="@drawable/frame"/>
 
     <ImageView
         android:id="@+id/second_activity_second_imageview"

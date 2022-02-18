@@ -58,8 +58,12 @@ class SecondActivity : AppCompatActivity() {
 
     private fun registerActivityResultToSetImageFromGallery() =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            secondImageView.setImageURI(it.data!!.data)
-            Snackbar.make(layout, "사진을 불러왔습니다", Snackbar.LENGTH_SHORT).show()
+            if (it.resultCode == RESULT_OK) {
+                secondImageView.setImageURI(it.data?.data)
+                Snackbar.make(layout, "사진을 불러왔습니다", Snackbar.LENGTH_SHORT).show()
+            } else {
+                Snackbar.make(layout, "사진을 불러오지 못하였습니다", Snackbar.LENGTH_SHORT).show()
+            }
         }
 
     private fun clickBtnToSelectPhoto(button: Button, intent: ActivityResultLauncher<Intent>) {
