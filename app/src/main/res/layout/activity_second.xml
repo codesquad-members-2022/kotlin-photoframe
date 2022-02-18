@@ -7,37 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frame"
+
+    <ImageView
+        android:id="@+id/cast"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        app:layout_constraintBottom_toBottomOf="@id/back"
-        app:layout_constraintEnd_toEndOf="@id/back"
-        app:layout_constraintStart_toStartOf="@id/back"
-        app:layout_constraintTop_toTopOf="@id/back">
+        android:contentDescription="@string/cd_label"
+        android:src="@drawable/photoframe_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/cast"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/cd_label"
-            android:src="@drawable/photoframe_border"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-            android:contentDescription="@string/cd_label"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@id/cast"
-            app:layout_constraintEnd_toEndOf="@id/cast"
-            app:layout_constraintStart_toStartOf="@id/cast"
-            app:layout_constraintTop_toTopOf="@id/cast" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:contentDescription="@string/cd_label"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/cast"
+        app:layout_constraintEnd_toEndOf="@id/cast"
+        app:layout_constraintStart_toStartOf="@id/cast"
+        app:layout_constraintTop_toTopOf="@id/back" />
 
     <Button
         android:id="@+id/button"
@@ -47,6 +38,6 @@
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame" />
+        app:layout_constraintTop_toBottomOf="@id/cast" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
