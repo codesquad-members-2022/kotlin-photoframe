@@ -1,5 +1,6 @@
 package com.codesquad.kotlinphotoframe
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -37,11 +38,23 @@ class GalleryActivity : AppCompatActivity() {
             }
         }
 
+        val requestPermissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()
+            ) { isGranted: Boolean ->
+                if (isGranted) {
+                    Log.d("AppTest", "권한 승인 ok")
+                    val intent = Intent(Intent.ACTION_PICK) // 갤러리관련 앱
+                    //val intent = Intent(Intent.ACTION_GET_CONTENT)  // 전체 이미지 관련 파일 선택 가능한 화면으로 이동
+                    intent.type = "image/*"
+                    getContent.launch(Intent.createChooser(intent, "Chooser Test"))
+                } else {
+                    Snackbar.make(binding.root, "권한이 승인되지 않았습니다", Snackbar.LENGTH_SHORT ).show()
+                }
+            }
+
         binding.btnOpenGallery.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK) // 갤러리로 이동
-            //val intent = Intent(Intent.ACTION_GET_CONTENT)  // 전체 이미지 관련 파일 선택 가능한 화면으로 이동
-            intent.type = "image/*"
-            getContent.launch(intent)
+            requestPermissionLauncher.launch(
+                Manifest.permission.READ_EXTERNAL_STORAGE)
         }
     }
 
