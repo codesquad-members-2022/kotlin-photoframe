@@ -3,56 +3,45 @@ package com.codesquad.kotlinphotoframe
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import androidx.activity.result.contract.ActivityResultContracts
+import com.bumptech.glide.Glide
+import com.codesquad.kotlinphotoframe.databinding.ActivityMainBinding
+import com.codesquad.kotlinphotoframe.databinding.ActivitySecondBinding
 import com.google.android.material.snackbar.Snackbar
 
 private const val TAG = "SecondActivity"
+private lateinit var binding: ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second2)
+        binding = ActivitySecondBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        Log.d(TAG, "onCreate")
+        fillFrame(binding.secondConstraintLayout)
+    }
 
-        val btn_close = findViewById<Button>(R.id.btn_close)
+    private fun fillFrame(layout: View) {
+        val getResult =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == RESULT_OK) {
+                    // 방법 1
+                    binding.contentImage.setImageURI(it.data?.data)
+                    /* 방법 2
+                    Glide.with(this).load(it.data?.data).override(210, 210).centerCrop()
+                        .into(binding.contentImage)
+                    Snackbar.make(layout, "이미지를 가져왔습니다", Snackbar.LENGTH_SHORT).show()*/
+                }
+            }
 
-        btn_close.setOnClickListener {
-            setResult(RESULT_OK, Intent(this, MainActivity::class.java))
-            finish()
+        binding.imageSelectButton.setOnClickListener {
+            intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            getResult.launch(intent)
         }
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "onStop")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(TAG, "onRestart")
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG, "onDestroy")
     }
 }
