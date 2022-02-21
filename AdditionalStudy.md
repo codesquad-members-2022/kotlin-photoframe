@@ -80,3 +80,9 @@ This predictable sequence of lifecycle callbacks allows you to manage the transi
   ![12](https://user-images.githubusercontent.com/95393311/154180273-91c9168b-4803-4962-a347-84abca5e6daa.JPG)
 ### 👉 Activity는 화면 이동을 어떻게 관리?
 
+
+
+
+
+### 👉 Floating 버튼 추가
+1. [플로팅 작업 버튼 추가](https://developer.android.com/guide/topics/ui/floating-action-button)

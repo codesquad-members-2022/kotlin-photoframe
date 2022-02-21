@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:id="@+id/mainLayout"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textForFrame"
+        android:id="@+id/text_for_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:visibility="visible" app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <Button
-        android:id="@+id/button"
+        android:layout_marginTop="20dp" android:layout_marginBottom="20dp"
+        android:visibility="visible" app:layout_constraintBottom_toTopOf="@+id/second_btn"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/first_image_view"
+    />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588" tools:ignore="SpeakableTextPresentCheck"/>
+        android:layout_margin="16dp" android:contentDescription="@string/fabtomove"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintRight_toRightOf="parent"
+        app:fabSize="auto" app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
+    />
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/second_btn"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:text="@string/button2"
-        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.872"/>
-
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_for_frame" app:layout_constraintVertical_bias="0.5"
+    />
+    <ImageView
+        android:id="@+id/first_image_view"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:background="#C1BEBE" app:layout_constraintBottom_toTopOf="@+id/text_for_frame"
+        app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_chainStyle="packed"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

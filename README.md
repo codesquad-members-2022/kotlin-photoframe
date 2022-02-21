@@ -96,6 +96,61 @@
       ![11](https://user-images.githubusercontent.com/95393311/154078597-734aae6b-868b-49b7-870a-6d513b1b1e02.JPG)
 
 
+# 👉 두번째 미션
 
-#### 6. 🔖 코드로 ConstraintLayout에 View 배치하기
+#### 1. 🔖 XML 코드로 ConstraintLayout에 View 배치하기
+1. [x] 1단계
+   1. 알고있는 xml 코드로 직접 imageview와 dp 사이즈를 설정
+   2. 잘 모르는 속성이 있다면 design editor로 추가한 후에 어떤 코드가 추가되는지 확인하고 지우고 다시 코드로 작성해서 추가
+2. [x] 2단계
+   1. 각 속성에서 오른쪽과 왼쪽에 제약 조건을 추가하고 bias를 0.5씩 주었습니다.
+   2. 3개의 view를 체인화하고 체인 스타일을 `packed`로 했습니다.
+   3. 그리고 textview 위 아래로 여백을 주어 보기 좋도록 배치하였습니다.
+3. [x] 3단계
+   1. main 폴더 및에 assets 파일 폴더를 생성하고 다운받은 이미지를 넣었습니다.
+   2. jpg, png 파일 등은 압축되어져 있는 파일이지만 bitmap 압축되지 않은 파일이다. 따라서 bitmap으로 변환하기 위해서는 이런 파일들을 decode해야합니다.
+   3. decode하기 위해서는 [BitmapFactor](https://developer.android.com/reference/android/graphics/BitmapFactory?hl=en#BitmapFactory()) 클래스를 활용했습니다.  
+      `val bitmap = BitmapFactory.decodeStream(resources.assets.open(filename))`
+4. [x] 4단계
+   1. `배열.random()`를 통해 배열의 요소를 랜덤하게 반환하도록 했습니다.
+   2. 미리 사이즈가 정해져있기 때문에 Array(22)를 사용했습니다.
+   3. `val filename = Array<String>(22) {i -> String.format("%02d", i+1) + ".jpg"}.random()`
+   4. 이미지는 imageView 메서드를 활용했습니다. `imageView.setImageBitmap(bitmap)`
+5. [x] 5단계
+   1. scaleType은 넣어둔 imageView에 꽉차도록 `FIT_XY` 를 선택했습니다.
+   2. `imageView.scaleType = ImageView.ScaleType.FIT_XY`
+   3. 더 많은 scaleType은 [여기](https://developer.android.com/reference/kotlin/android/widget/ImageView.ScaleType)를 참고하시기 바랍니다.
+![결과11](https://user-images.githubusercontent.com/95393311/154611829-d0a81254-910e-4eb2-a00a-04be694a1466.gif)
 
+#### 2. 🔖  갤러리에서 사진 선택하기
+##### 🤡  1. Activity 연결하기
+1. [x] 1단계
+   1. [x] 1-1
+      - 공식사이트가 굉장히 친절해서 간단하게 구현할 수 있었습니다.
+      - [Add a Floating Action Button](https://developer.android.com/guide/topics/ui/floating-action-button)
+      - [Buttons: floating action button](https://material.io/components/buttons-floating-action-button)
+   2. [x] 1-2
+      1. 역시나 공식사이트가 유용했습니다.
+         - [Create app icons with Image Asset Studio](https://developer.android.com/studio/write/image-asset-studio?hl=ko)
+##### 🤡  2. 액자 꾸미기
+1. [x] 2단계
+   1. png 리소스를 어느 폴더에 추가할지 찾아보고 선택한다. 
+      - png리소스는 bitmap이다. bitmap 리소스는 drawable 리소스에 속한다. 따라서 png 리소스는 drawable 폴더에 추가해야 합니다.  
+      - [Bitmap](https://developer.android.com/guide/topics/resources/drawable-resource#Bitmap)
+   2. Android Studio에서 허용하는 file명으로 변경한다.
+      - `'-' is not a valid file-based resource name character: File-based resource names must contain only lowercase a-z, 0-9, or underscore`
+      - 위의 원칙에 따라 `frame`으로 변경했습니다.
+   3. 두번째 Activity의 화면 디자인을 아래와 같이 구현한다. 
+      - 커스텀 마이징한 디자인으로 구현했습니다.
+
+##### 🤡  3. 앨범에서 선택하기 
+- `An implicit intent specifies an action that can invoke any app on the device able to perform the action. Using an implicit intent is useful when your app cannot perform the action, but other apps probably can and you'd like the user to pick which app to use.`
+- 위 내용은 [인텐트공식문서](https://developer.android.com/guide/components/intents-filters#ExampleSend) 에서 발췌한 것이며, `본인의 앱은 작업을 수행할 수 없지만 다른 앱은 그 작업을 수행할 수 있는 가능성이 있고, 사용자가 어떤 앱을 사용할지 선택하기를 원할 경우에 암시적 인텐트가 유용합니다.`
+- 암시적 인텐트를 사용했으며, 액션에는 `ACTION_PICK`과 `타입 "image/*"`을 활용하여 갤러리로부터 사진을 가져왔습니다.
+- [공통인텐트](https://developer.android.com/guide/components/intents-common#ImageCapture))
+- 끝으로 `registerForActivityResult`를 활용하여 스낵바 출력과 가져온 이미지를 이미지뷰에 삽입하는 기능을 구현했습니다.
+<결과>
+  ![20](https://user-images.githubusercontent.com/95393311/154612140-87507abf-9bab-4a6f-b718-189d82f41317.JPG)
+  ![21](https://user-images.githubusercontent.com/95393311/154612145-9cf435f7-c52d-4fc3-8dde-0815206ad0c7.JPG)
+  ![22](https://user-images.githubusercontent.com/95393311/154612152-4e16bbd4-f10c-47a6-a151-1bf836cf6fe9.JPG)
+  ![23](https://user-images.githubusercontent.com/95393311/154612159-8e6bddc3-f338-432e-b777-062910a314cd.JPG)
