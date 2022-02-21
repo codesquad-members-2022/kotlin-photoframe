@@ -1,44 +1,63 @@
 package com.codesquad.kotlinphotoframe
 
-import android.app.Activity
-import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.snackbar.Snackbar
+import android.view.View
+import android.widget.ImageView
+import java.lang.Exception
+import kotlin.random.Random
+import android.content.Intent
+import com.codesquad.kotlinphotoframe.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    // binding 객체를 담을 변수
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        // binding 객체를 추출
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        // 화면을 세팅
+        setContentView(binding.root)
 
-        val const_layout = findViewById<ConstraintLayout>(R.id.const_layout)
+        binding.mainText.text = "Stark의 사진액자"
+        binding.mainText.setTextColor(Color.BLUE)
+        binding.mainText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30f)
 
-        val myTextView = findViewById<TextView>(R.id.mainText) // UI 요소를 사용 시 보통 lateinit 을 사용해 객체를 선언하면 좋다.
-        myTextView.text = "Stark의 사진액자"
-        myTextView.setTextColor(Color.BLUE) // 텍스트 색깔이나 사이즈를 xml 이 아니라 틀린 코드에서 동적으로 처리하는 이유?
-        myTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30f)
+        binding.mainButton.text = "사진 추가"
+        binding.mainButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
+        binding.mainButton.setOnClickListener(this)
 
-        val button = findViewById<Button>(R.id.main_button)
-        button.text = "사진 추가"
-        button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
-
-        val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val message = result.data?.getStringExtra("message").toString()
-                Snackbar.make(const_layout, message, Snackbar.LENGTH_LONG).show()
-            }
-        }
-
-        button.setOnClickListener {
+        binding.buttonGoSubActivity.setOnClickListener {
             val intent = Intent(this, SubActivity::class.java)
-            getResult.launch(intent)
+            startActivity(intent)
+
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.main_button -> {
+                val images =
+                    listOf( // Int 로 숫자를 랜덤 생성할 시 01, 02 와 같이 앞에 0을 구현하기 힘들어서 String 리스트로 처리
+                        "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
+                        "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"
+                    )
+                val randomIdx = Random.nextInt(images.size)
+                val image = images[randomIdx]
+                try {
+                    val assetManager = resources.assets
+                    val inputStream = assetManager.open("Demo Images/$image.jpg")
+                    val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
+                    binding.mainImage.setImageBitmap(bitmap)
+                } catch (e: Exception) {
+                    e.message
+                }
+            }
         }
     }
 }
