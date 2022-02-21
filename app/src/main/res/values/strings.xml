@@ -2,4 +2,5 @@
     <string name="app_name">kotlin-photoframe</string>
     <string name="button_text">사진 추가</string>
     <string name="button_send">send</string>
+    <string name="cd_label">gallery</string>
 </resources>
