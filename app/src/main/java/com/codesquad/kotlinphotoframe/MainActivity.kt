@@ -1,7 +1,8 @@
 package com.codesquad.kotlinphotoframe
 
-import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,9 +10,14 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import java.io.IOException
+import kotlin.random.Random
 
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
@@ -28,17 +34,31 @@ class MainActivity : AppCompatActivity() {
         tvExplain.setBackgroundColor(Color.YELLOW)
         tvExplain.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24F)
 
-        val btnAddImage: Button = findViewById(R.id.btn_add_image)
-        val layoutMain: View = findViewById(R.id.layout_main)
-        val getStartResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == RESULT_OK) {
-                Snackbar.make(layoutMain, "사진을 불러왔습니다.", Snackbar.LENGTH_LONG).show()
+        val btnNext: Button = findViewById(R.id.btn_next_picture)
+        val ivPicture: ImageView = findViewById(R.id.iv_picture)
+        btnNext.setOnClickListener {
+            val randomIndex = Random.nextInt(1, 23)
+            val fileName = String.format("%02d.jpg", randomIndex)
+            if (ivPicture.setImageBitmap(getBitmapFromAssetsDirectory(fileName)) == null) {
+                Toast.makeText(this, "이미지를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show()
             }
         }
 
-        btnAddImage.setOnClickListener {
-            val intent = Intent(this, PhotoActivity::class.java)
-            getStartResult.launch(intent)
+        val btnNextActivity: FloatingActionButton = findViewById(R.id.btn_next_activity)
+        val intentNextActivity = Intent(this, PhotoActivity::class.java)
+        btnNextActivity.setOnClickListener {
+            startActivity(intentNextActivity)
+        }
+    }
+
+    private fun getBitmapFromAssetsDirectory(filename: String): Bitmap? {
+        try {
+            val assetMgr = resources.assets
+            val inputStream = assetMgr.open(filename)
+            return BitmapFactory.decodeStream(inputStream)
+        } catch (e: IOException) {
+            Log.e(TAG, e.toString())
+            return null
         }
     }
 
