@@ -4,4 +4,6 @@
     <string name="닫기">닫기</string>
     <string name="next">다음</string>
     <string name="Start">시작</string>
+    <string name="textView1">사진액자</string>
+    <string name="todo">TODO</string>
 </resources>

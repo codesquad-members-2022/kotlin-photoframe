@@ -27,7 +27,8 @@ onCreate함수에 코드를 추가후 CTRL+F 로 onCreate를 검색해서 찾음
 findViewByid를 활용해 activity_main.xml의 id를 참조해서 onCreate함수에서 text,글자색,글자 크기를 변경했다.
 
 그 이후 텍스트를 가운데 정렬하려했는데 레이아웃 내에서 가운데 정렬하는방법은 activity_main.xml 의 코드에
-android:textAlignment="center"를 추가하면 됐지만 
+
+android:textAlignment="center"를 추가하면 됐지만
 레이아웃 자체를 앱화면의 가운데에 정렬하는방법은
 android:layout_gravity="center"를 추가하면 된다고하는데 작동을 하지않았다.
 
@@ -39,6 +40,7 @@ android:layout_gravity="center"를 추가하면 된다고하는데 작동을 하
 ![레이아웃 정렬2](https://user-images.githubusercontent.com/91953080/154185412-8f30b7d6-468b-4413-8de2-1ce8c1f6da74.png)
 버튼은 textView를 수정하는 방법과 비슷하게 진행함
 
+버튼은 textView를 수정하는 방법과 비슷하게 진행함
 # Step4 라이프싸이클 별 로그챗 및 두번쨰 Activity 구현
 
 패키지에서 우클릭>new를 통해서 새로운 액티비티를 만들었음
@@ -49,3 +51,26 @@ android:layout_gravity="center"를 추가하면 된다고하는데 작동을 하
 라이프싸이클 함수를 추가해서 해당 라이프싸이클 함수 실행시 로그챗이 실행되도록 Log.d함수를 추가함
 
 ![로그d](https://user-images.githubusercontent.com/91953080/154432852-56409b9b-3824-420d-b5f4-01ad9d291ad9.png)
+
+# Step5 
+
+## 1. ImageView크기
+
+android:layout_width="240dp"
+android:layout_height="240dp"
+xml 코드에서 수정함
+   
+## 2. scalType
+
+imageView의 scaleType을 fitCenter를 사용해 언제나 imageView의 가운데에 이미지가 오도록 만듦
+
+## 3. 중앙정렬
+
+우선 디자인에서 Constraints의 항목의 
+Bottom -> TopOf textView와 이어주고
+Top -> TopOf parent로 해주는것으로 텍스트뷰와 레이아웃사이의 가운데 정렬이 되도록 만듦
+
+![이미지뷰 가운데정렬](https://user-images.githubusercontent.com/91953080/154624074-5973a925-7c64-48b3-832a-5754a0cbb338.png)
+![제약조건](https://user-images.githubusercontent.com/91953080/154624056-d943ed47-ce41-44ed-bb76-df6ca6512515.png)
+
+마찬가지 방법으로 Start,End도 똑같이 parent와 이어주는것으로 양옆기준 가운데 정렬이 되도록 만듦
