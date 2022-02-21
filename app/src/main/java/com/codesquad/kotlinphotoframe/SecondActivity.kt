@@ -1,5 +1,6 @@
 package com.codesquad.kotlinphotoframe
 
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -30,13 +31,20 @@ class SecondActivity : AppCompatActivity() {
                 }
             }
 
-        selectButton.setOnClickListener {
-            val intent = Intent()
-            .apply {
-                action = Intent.ACTION_GET_CONTENT
-                type = "image/*"
+        val permissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+                if (isGranted) {
+                    val intent = Intent()
+                        .apply {
+                            action = Intent.ACTION_PICK
+                            type = "image/*"
+                        }
+                    getResult.launch(Intent.createChooser(intent, "앨범 가져오기"))
+                }
             }
-            getResult.launch(Intent.createChooser(intent, "앨범 가져오기"))
+
+        selectButton.setOnClickListener {
+            permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
     }
 

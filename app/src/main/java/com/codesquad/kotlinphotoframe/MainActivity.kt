@@ -38,13 +38,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeImage(layout: ConstraintLayout, photo: ImageView, imageName: String) {
-        photo.setImageBitmap(BitmapFactory.decodeStream(BufferedInputStream(resources.assets.open("${imageName}.jpg"))))
+    private fun changeImage(layout: ConstraintLayout, photo: ImageView, imageName: Int) {
+        val file = String.format("%02d.jpg", imageName)
+        photo.setImageBitmap(BitmapFactory.decodeStream(BufferedInputStream(resources.assets.open(file))))
     }
 
-    private fun getRandomNumber(number: Int): String {
-        val randomNumber = (1..number).random().toString()
-        return if(randomNumber.length != 1) randomNumber else "0$randomNumber"
+    private fun getRandomNumber(number: Int): Int {
+        return (1..number).random()
     }
 
     override fun onStart() {
